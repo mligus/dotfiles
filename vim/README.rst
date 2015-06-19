@@ -1,6 +1,12 @@
-**************
-Install Vundle
-**************
+======================
+Steps to configure Vim
+======================
+
+------------------------
+Install and setup Vundle
+------------------------
+
+.. _vundle: https://github.com/gmarik/Vundle.vim 
 
 
 .. code-block:: none
