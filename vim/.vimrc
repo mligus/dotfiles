@@ -23,6 +23,7 @@ Bundle 'vim-scripts/L9'
 Bundle 'vim-scripts/FuzzyFinder'
 Bundle 'Lokaltog/vim-easymotion'
 Bundle "https://github.com/altercation/vim-colors-solarized"
+Bundle 'wakatime/vim-wakatime'
 
 " The rest of your config follows here
 
@@ -73,9 +74,23 @@ set noswapfile
 " reload files changed outside vim
 set autoread   
 
+" visual autocomplete for command menu
+set wildmenu 
+
+" redraw only when we need to.
+set lazyredraw
+
 " search settings
-"set incsearch        " find the next match as we type the search
-"set hlsearch         " hilight searches by default
+set incsearch        " find the next match as we type the search
+set hlsearch         " highlight searches by default
+" turn off search highlight
+nnoremap <leader><space> :nohlsearch<CR>
+
+" set leader to be ...
+let mapleader=","      
+
+" jk is escape
+inoremap jk <esc>
 
 " enable matchit plugin which ships with vim and greatly enhances '%'
 runtime macros/matchit.vim
