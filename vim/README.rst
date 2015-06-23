@@ -32,4 +32,5 @@ Initial ``.vimrc`` can look like this one::
 
 Good reading:
 
-1. .. _A_Good_Vimrc: http://dougblack.io/words/a-good-vimrc.html
+1. http://dougblack.io/words/a-good-vimrc.html
+2. http://gosukiwi.svbtle.com/vim-configuration-for-web-development
