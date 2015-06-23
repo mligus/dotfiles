@@ -6,14 +6,13 @@ Steps to configure Vim
 Install and setup Vundle
 ------------------------
 
-.. _vundle: https://github.com/gmarik/Vundle.vim 
+To get things working firstly install Vundle
 
-
-.. code-block:: none
+.. code-block:: bash 
 
     git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
 
-Edit ``.vimrc`` to look like this::
+Initial ``.vimrc`` can look like this one::
 
     set nocompatible
     filetype off
@@ -30,3 +29,7 @@ Edit ``.vimrc`` to look like this::
     filetype plugin indent on
 
     " The rest of your config follows here
+
+Good reading:
+
+1. .. _A_Good_Vimrc: http://dougblack.io/words/a-good-vimrc.html
