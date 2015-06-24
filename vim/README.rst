@@ -10,7 +10,7 @@ To get things working firstly install Vundle
 
 .. code-block:: bash 
 
-    git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+    git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/vundle
 
 Initial ``.vimrc`` can look like this one::
 
