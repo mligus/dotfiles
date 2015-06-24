@@ -1,29 +1,30 @@
 " Vundle {{{
-set rtp+=~/.vim/bundle/Vundle.vim
+set rtp+=~/.vim/bundle/vundle
 call vundle#begin()
 
 " let Vundle manage Vundle required! 
 Plugin 'gmarik/vundle'
 
-" The bundles you install will be listed here
+" The Plugins you install will be listed here
 Plugin 'scrooloose/nerdtree'
 Plugin 'scrooloose/nerdcommenter'
-Plugin 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
-Bundle 'https://github.com/altercation/vim-colors-solarized'
-Bundle 'http://github.com/sjl/gundo.vim.git' 
-Bundle 'majutsushi/tagbar'
-Bundle 'kien/ctrlp.vim'
-Bundle 'tpope/vim-fugitive'
-Bundle 'klen/python-mode'
-Bundle 'Lokaltog/vim-easymotion'
-Bundle 'wakatime/vim-wakatime'
+Plugin 'bling/vim-airline'
+Plugin 'https://github.com/altercation/vim-colors-solarized'
+Plugin 'http://github.com/sjl/gundo.vim.git' 
+Plugin 'majutsushi/tagbar'
+Plugin 'kien/ctrlp.vim'
+Plugin 'tpope/vim-fugitive'
+Plugin 'klen/python-mode'
+Plugin 'Lokaltog/vim-easymotion'
+Plugin 'wakatime/vim-wakatime'
+Plugin 'jmcantrell/vim-virtualenv'
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
 " }}}
 " Colors {{{
 syntax enable           " enable syntax processing
-set background=light
+set background=dark
 colorscheme solarized 
 " }}}
 " Misc {{{
@@ -112,14 +113,15 @@ noremap <leader>q :bp<CR>                           " previous buffer
 noremap <leader>w :bn<CR>                           " next buffer
 nmap <leader>l :set list!<CR>                       " toggle display of whitespaces
 " }}}
-" Powerline {{{
-set guifont=Inconsolata\ for\ Powerline:h15
-let g:Powerline_symbols = 'fancy'
-set t_Co=256
-set fillchars+=stl:\ ,stlnc:\
-set term=xterm-256color
-set termencoding=utf-8
-set laststatus=2          " last window will always have a status line (required for Powerline)
+" Airline {{{
+set laststatus=2
+let g:airline#extensions#tabline#enabled = 1
+let g:airline_powerline_fonts = 1
+"let g:airline_theme = 'bubblegum'
+"let g:airline_left_sep=''
+"let g:airline_right_sep=''
+let g:airline#extensions#tagbar#enabled = 1
+let g:airline#extensions#virtualenv#enabled = 1
 " }}}
 " NERDTree {{{
 let NERDTreeIgnore = ['\.pyc$', 'build', 'venv', 'egg', 'egg-info/', 'dist', 'docs']
