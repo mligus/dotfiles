@@ -18,6 +18,9 @@ Plugin 'klen/python-mode'
 Plugin 'Lokaltog/vim-easymotion'
 Plugin 'wakatime/vim-wakatime'
 Plugin 'jmcantrell/vim-virtualenv'
+Plugin 'fholgado/minibufexpl.vim'
+Plugin 'motemen/git-vim' 
+Plugin 'mhinz/vim-signify'
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -75,7 +78,7 @@ nnoremap <S-Down> :m+<CR>
 inoremap <S-Up> <Esc>:m-2<CR>
 inoremap <S-Down> <Esc>:m+<CR>
 " }}}
-" Navifation {{{
+" Navigation {{{
 " tab navigation
 map tn :tabn<CR>
 map tp :tabp<CR>
@@ -96,6 +99,11 @@ imap <M-Right> <ESC><c-w>l
 imap <M-Left> <ESC><c-w>h
 imap <M-Up> <ESC><c-w>k
 imap <M-Down> <ESC><c-w>j
+
+map <c-j> <c-w>j
+map <c-k> <c-w>k
+map <c-l> <c-w>l
+map <c-h> <c-w>h
 " }}}
 " Leader Shortcuts {{{
 let mapleader=","
@@ -115,7 +123,7 @@ nmap <leader>l :set list!<CR>                       " toggle display of whitespa
 " }}}
 " Airline {{{
 set laststatus=2
-let g:airline#extensions#tabline#enabled = 1
+"let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
 "let g:airline_theme = 'bubblegum'
 "let g:airline_left_sep=''
@@ -194,5 +202,15 @@ let g:pymode_syntax_space_errors = g:pymode_syntax_all
 
 " Don't autofold code
 let g:pymode_folding = 0
+" }}}
+" Signify {{{
+let g:signify_vcs_list = [ 'git', 'hg' ]
+" nicer colors
+highlight DiffAdd           cterm=bold ctermbg=none ctermfg=119
+highlight DiffDelete        cterm=bold ctermbg=none ctermfg=167
+highlight DiffChange        cterm=bold ctermbg=none ctermfg=227
+highlight SignifySignAdd    cterm=bold ctermbg=237  ctermfg=119
+highlight SignifySignDelete cterm=bold ctermbg=237  ctermfg=167
+highlight SignifySignChange cterm=bold ctermbg=237  ctermfg=227
 " }}}
 " vim:foldmethod=marker:foldlevel=0
