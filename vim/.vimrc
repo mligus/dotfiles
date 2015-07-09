@@ -21,6 +21,7 @@ Plugin 'jmcantrell/vim-virtualenv'
 Plugin 'fholgado/minibufexpl.vim'
 Plugin 'motemen/git-vim' 
 Plugin 'mhinz/vim-signify'
+Plugin 'nvie/vim-rst-tables'
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -132,7 +133,7 @@ let g:airline#extensions#tagbar#enabled = 1
 let g:airline#extensions#virtualenv#enabled = 1
 " }}}
 " NERDTree {{{
-let NERDTreeIgnore = ['\.pyc$', 'build', 'venv', 'egg', 'egg-info/', 'dist', 'docs']
+"let NERDTreeIgnore = ['\.pyc$', 'build', 'venv', 'egg', 'egg-info/', 'dist', 'docs']
 " }}}
 " CtrlP {{{
 let g:ctrlp_match_window = 'bottom,order:ttb'
@@ -146,6 +147,12 @@ nmap ,G :CtrlPBufTagAll<CR>
 nmap ,f :CtrlPLine<CR>
 nmap ,m :CtrlPMRUFiles<CR>
 nmap ,c :CtrlPCmdPalette<CR>
+" }}}
+" MiniBuff {{{
+let g:miniBufExplStatusLineText=""
+let g:miniBufExplCycleArround=1
+noremap <C-TAB>   :MBEbn<CR>
+noremap <C-S-TAB> :MBEbp<CR>
 " }}}
 " Backups {{{
 set backup 
@@ -212,5 +219,12 @@ highlight DiffChange        cterm=bold ctermbg=none ctermfg=227
 highlight SignifySignAdd    cterm=bold ctermbg=237  ctermfg=119
 highlight SignifySignDelete cterm=bold ctermbg=237  ctermfg=167
 highlight SignifySignChange cterm=bold ctermbg=237  ctermfg=227
+" }}}
+" Specific tab lengths {{{
+" tablength exceptions
+autocmd FileType html setlocal shiftwidth=2 tabstop=2 softtabstop=2
+autocmd FileType javascript setlocal shiftwidth=2 tabstop=2 softtabstop=2
+autocmd FileType yaml setlocal shiftwidth=2 tabstop=2 softtabstop=2
+autocmd FileType css setlocal shiftwidth=2 tabstop=2 softtabstop=2
 " }}}
 " vim:foldmethod=marker:foldlevel=0
