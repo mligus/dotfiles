@@ -22,6 +22,7 @@ Plugin 'fholgado/minibufexpl.vim'
 Plugin 'motemen/git-vim' 
 Plugin 'mhinz/vim-signify'
 Plugin 'nvie/vim-rst-tables'
+Plugin 'rust-lang/rust.vim'
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
