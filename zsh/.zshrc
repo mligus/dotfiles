@@ -87,3 +87,9 @@ alias tmux="TERM=screen-256color-bce tmux"
 
 # Custom env vars
 export P4CONFIG=.p4config
+
+# Brew update/upgrade caveats
+# Add the following to your zshrc to access the online help:
+unalias run-help
+autoload run-help
+HELPDIR=/usr/local/share/zsh/help
