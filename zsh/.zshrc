@@ -93,3 +93,6 @@ export P4CONFIG=.p4config
 unalias run-help
 autoload run-help
 HELPDIR=/usr/local/share/zsh/help
+
+# Activate the syntax highlighting
+source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
