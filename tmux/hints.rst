@@ -1,6 +1,26 @@
 tmux hints
 ==========
 
+
+Configuration
+-------------
+
+A user-specific configuration file should be located at ``~/.tmux.conf``, 
+while a global configuration file should be located at ``/etc/tmux.conf``. 
+
+Default configuration files can be found in ``/usr/share/tmux/``.
+
+
+Configuration modifications
+---------------------------
+
+  * command key binding ``Ctrl-b`` is changed to ``Ctrl-a``;
+    (convinient to use when ``Caps Lock`` is mapped to ``Ctrl``);
+  * set escape timeout to zero;
+  * re-mapped windows navigation (Vim-like);
+  * *... (commented in config)*
+
+
 Start tmux (on target machine)
 ------------------------------
 
@@ -112,5 +132,6 @@ Misc
 Resource
 --------
 
-1. `A tmux Primer<https://danielmiessler.com/study/tmux/>` by Daniel Miessler.
-2. Daniel's tmux config as `reference <https://raw.github.com/danielmiessler/tmux/master/.tmux.config>`.
+  1. `A tmux Primer<https://danielmiessler.com/study/tmux/>` by Daniel Miessler.
+  2. Daniel's tmux config as `reference <https://raw.github.com/danielmiessler/tmux/master/.tmux.config>`.
+  3. `Practical Tmux <http://mutelight.org/practical-tmux>`. 
