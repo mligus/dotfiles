@@ -134,4 +134,5 @@ Resource
 
   1. `A tmux Primer<https://danielmiessler.com/study/tmux/>` by Daniel Miessler.
   2. Daniel's tmux config as `reference <https://raw.github.com/danielmiessler/tmux/master/.tmux.config>`.
-  3. `Practical Tmux <http://mutelight.org/practical-tmux>`. 
+  3. `Practical Tmux <http://mutelight.org/practical-tmux>`.
+  4. `Tmux on ArchLinux wiki <https://wiki.archlinux.org/index.php/Tmux>`.
