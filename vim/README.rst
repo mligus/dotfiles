@@ -36,5 +36,7 @@ Initial ``.vimrc`` can look like this one::
 Resource
 --------
 
-    1. `<http://dougblack.io/words/a-good-vimrc.html>`.
-    2. `<http://gosukiwi.svbtle.com/vim-configuration-for-web-development>`.
+    1. `<http://dougblack.io/words/a-good-vimrc.html>`
+    2. `<http://gosukiwi.svbtle.com/vim-configuration-for-web-development>`
+    3. `<http://www.fullstackpython.com/vim.html>`
+    4. `<https://justin.abrah.ms/vim/vim_and_python.html>`
