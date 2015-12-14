@@ -1,3 +1,4 @@
+" Vundle {{{
 " next 2 lines are required by Vaundle
 set nocompatible
 filetype off
@@ -8,11 +9,13 @@ call vundle#begin()
 
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
+Plugin 'badwolf'
 
 " All of your Plugins must be added before the following line
 " next 2 lines are required by Vaundle
 call vundle#end()
 filetype plugin indent on
+" }}}
 
 " Common {{{
 syntax enable                   " enable syntax highlighting
@@ -25,6 +28,7 @@ set showcmd                     " show command in bottom bar
 set wildmenu                    " visual autocomplete for command menu
 set lazyredraw                  " redraw only when we need to
 set showmatch                   " show matching part of the pair for [] {} ()
+colorscheme badwolf
 " }}}
 
 " Searching {{{
