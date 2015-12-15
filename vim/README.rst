@@ -33,6 +33,20 @@ Initial ``.vimrc`` can look like this one::
     " }}}
 
 
+Plugins
+-------
+
+  * `Color scheme - Badwolf <https://github.com/sjl/badwolf>`
+  * `Airline <https://github.com/bling/vim-airline>` - an Powerline for
+  * `CtrlP <https://github.com/ctrlpvim/ctrlp.vim>` - full path fuzzy finder
+  * `Gundo <https://github.com/sjl/gundo.vim>` - visualize your Vim undo tree
+  * `Tagbar <https://github.com/majutsushi/tagbar>` - browse the tags of the current file
+  * `Signify <https://github.com/mhinz/vim-signify>` - indicate added, modified and removed lines based on VCS
+  * `NERDTree <https://github.com/scrooloose/nerdtree>` - explore your filesystem and to open files and directories
+  * `NERDCommenter <https://github.com/scrooloose/nerdcommenter>` - comment your code **sexy**
+  * `MiniBuf <https://github.com/fholgado/minibufexpl.vim>` -tabbed buffer manager
+
+
 Resource
 --------
 
