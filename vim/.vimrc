@@ -9,15 +9,17 @@ call vundle#begin()
 
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
-Plugin 'badwolf'                    " nice theme
-Plugin 'bling/vim-airline'          " powerline fork
-Plugin 'ctrlpvim/ctrlp.vim'         " full path fuzzy finder
-Plugin 'sjl/gundo.vim'              " visualize your Vim undo tree
-Plugin 'majutsushi/tagbar'          " browse the tags of the current file
-Plugin 'mhinz/vim-signify'          " indicate added, modified and removed lines based on VCS
-Plugin 'scrooloose/nerdtree'        " explore your filesystem and to open files and directories
-Plugin 'scrooloose/nerdcommenter'   " comment your code 'sexy'
-Plugin 'fholgado/minibufexpl.vim'   " buffer tabbed manager
+Plugin 'badwolf'                        " nice theme
+Plugin 'bling/vim-airline'              " powerline fork
+Plugin 'ctrlpvim/ctrlp.vim'             " full path fuzzy finder
+Plugin 'sjl/gundo.vim'                  " visualize your Vim undo tree
+Plugin 'majutsushi/tagbar'              " browse the tags of the current file
+Plugin 'mhinz/vim-signify'              " indicate added, modified and removed lines based on VCS
+Plugin 'scrooloose/nerdtree'            " explore your filesystem and to open files and directories
+Plugin 'scrooloose/nerdcommenter'       " comment your code 'sexy'
+Plugin 'fholgado/minibufexpl.vim'       " buffer tabbed manager
+Plugin 'ggreer/the_silver_searcher'     " fast code search tool like ack 
+Plugin 'klen/python-mode'
 
 " All of your Plugins must be added before the following line
 " next 2 lines are required by Vaundle
@@ -36,6 +38,7 @@ set showcmd                     " show command in bottom bar (used with powerlin
 set wildmenu                    " visual autocomplete for command menu
 set lazyredraw                  " redraw only when we need to
 set showmatch                   " show matching part of the pair for [] {} ()
+set shell=zsh                   " use ZSH, Luke!
 filetype indent on              " load filetype-specific indent files
 colorscheme badwolf
 " }}}
@@ -78,20 +81,11 @@ imap <C-S-Right> <ESC>:tabn<CR>
 map <C-S-Left> :tabp<CR>
 imap <C-S-Left> <ESC>:tabp<CR>
 
-" navigate windows with meta+arrows
-map <M-Right> <c-w>l
-map <M-Left> <c-w>h
-map <M-Up> <c-w>k
-map <M-Down> <c-w>j
-imap <M-Right> <ESC><c-w>l
-imap <M-Left> <ESC><c-w>h
-imap <M-Up> <ESC><c-w>k
-imap <M-Down> <ESC><c-w>j
-
-map <c-j> <c-w>j
-map <c-k> <c-w>k
-map <c-l> <c-w>l
-map <c-h> <c-w>h
+" navigate windows
+map <C-j> <C-w>j
+map <C-k> <C-w>k
+map <C-l> <C-w>l
+map <C-h> <C-w>h
 " }}}
 
 " Bindings {{{
@@ -111,7 +105,7 @@ nnoremap k gk
 " move to beginning/end of line
 nnoremap B ^
 nnoremap E $
-" $/^ doesn't do anything
+" ... and '$' / '^' doesn't do anything
 nnoremap $ <nop>
 nnoremap ^ <nop>
 " highlight last inserted text
@@ -129,6 +123,15 @@ noremap <leader>q :bp<CR>
 noremap <leader>w :bn<CR>
 " toggle display of whitespaces
 nmap <leader>l :set list!<CR>
+" do not discard selection on indentation
+vnoremap < <gv
+vnoremap > >gv
+" save session - reopen it with `vim -S`
+nnoremap <leader>s :mksession<CR>
+" open ag.vim
+nnoremap <leader>a :Ag
+" destroy buffer
+map <C-d> :bd<CR>
 " }}}
 
 " Folding {{{
@@ -136,6 +139,14 @@ set foldenable                  " enable folding
 set foldlevelstart=10           " open most folds by default
 set foldnestmax=10              " 10 nested fold max
 set foldmethod=indent           " fold based on indent level
+" }}}
+
+" Vim file backup {{{
+set backup
+set backupdir=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
+set backupskip=/tmp/*,/private/tmp/*
+set directory=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
+set writebackup
 " }}}
 
 " Airline plugin {{{
@@ -151,8 +162,67 @@ let g:miniBufExplCycleArround=1
 noremap <C-TAB>   :MBEbn<CR>
 noremap <C-S-TAB> :MBEbp<CR>
 " }}}
+
+" Signify plugin {{{
+let g:signify_vcs_list = [ 'git', 'hg' ]
+" nicer colors
+highlight DiffAdd           cterm=bold ctermbg=none ctermfg=119
+highlight DiffDelete        cterm=bold ctermbg=none ctermfg=167
+highlight DiffChange        cterm=bold ctermbg=none ctermfg=227
+highlight SignifySignAdd    cterm=bold ctermbg=237  ctermfg=119
+highlight SignifySignDelete cterm=bold ctermbg=237  ctermfg=167
+highlight SignifySignChange cterm=bold ctermbg=237  ctermfg=227
 " }}}
 
-" Python {{{
-let python_highlight_all = 1    " enable all Python syntax highlighting
+" CtrlP plugin {{{
+let g:ctrlp_match_window = 'bottom,order:ttb'
+let g:ctrlp_switch_buffer = 0
+let g:ctrlp_working_path_mode = 0
+" speed up CtrlP with Ag
+let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
 " }}}
+
+" Python-Mode plugin {{{
+" Activate rope
+" Keys:
+" K             Show python docs
+" <Ctrl-Space>  Rope autocomplete
+" <Ctrl-c>g     Rope goto definition
+" <Ctrl-c>d     Rope show documentation
+" <Ctrl-c>f     Rope find occurrences
+" <Leader>b     Set, unset breakpoint (g:pymode_breakpoint enabled)
+" [[            Jump on previous class or function (normal, visual, operator modes)
+" ]]            Jump on next class or function (normal, visual, operator modes)
+" [M            Jump on previous class or method (normal, visual, operator modes)
+" ]M            Jump on next class or method (normal, visual, operator modes)
+let g:pymode_rope = 1
+
+" Documentation
+let g:pymode_doc = 1
+let g:pymode_doc_key = 'K'
+
+" Linting
+let g:pymode_lint = 1
+let g:pymode_lint_checker = "pyflakes,pep8"
+" Auto check on save
+let g:pymode_lint_write = 1
+
+" Support virtualenv
+let g:pymode_virtualenv = 1
+
+" Enable breakpoints plugin
+let g:pymode_breakpoint = 1
+let g:pymode_breakpoint_bind = '<leader>b'
+
+" syntax highlighting
+let g:pymode_syntax = 1
+let g:pymode_syntax_all = 1
+let g:pymode_syntax_indent_errors = g:pymode_syntax_all
+let g:pymode_syntax_space_errors = g:pymode_syntax_all
+
+" Don't autofold code
+let g:pymode_folding = 0
+" }}}
+
+" setup folding for .vimrc
+" vim:foldmethod=marker:foldlevel=0

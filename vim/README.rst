@@ -45,7 +45,8 @@ Plugins
   * `NERDTree <https://github.com/scrooloose/nerdtree>` - explore your filesystem and to open files and directories
   * `NERDCommenter <https://github.com/scrooloose/nerdcommenter>` - comment your code **sexy**
   * `MiniBuf <https://github.com/fholgado/minibufexpl.vim>` -tabbed buffer manager
-
+  * `The Silver Searcher <https://github.com/ggreer/the_silver_searcher>` - A code searching tool similar to ack, with a focus on speed.
+  * `Python Mode <https://github.com/klen/python-mode>`
 
 Resource
 --------
