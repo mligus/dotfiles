@@ -131,7 +131,7 @@ nnoremap <leader>s :mksession<CR>
 " open ag.vim
 nnoremap <leader>a :Ag
 " destroy buffer
-map <C-d> :bd<CR>
+map <C-x> :bd<CR>
 " }}}
 
 " Folding {{{
