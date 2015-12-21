@@ -20,6 +20,7 @@ Plugin 'scrooloose/nerdcommenter'       " comment your code 'sexy'
 Plugin 'fholgado/minibufexpl.vim'       " buffer tabbed manager
 Plugin 'ggreer/the_silver_searcher'     " fast code search tool like ack 
 Plugin 'klen/python-mode'
+Plugin 'wakatime/vim-wakatime'
 
 " All of your Plugins must be added before the following line
 " next 2 lines are required by Vaundle
@@ -182,44 +183,29 @@ let g:ctrlp_working_path_mode = 0
 let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
 " }}}
 
-" Python-Mode plugin {{{
-" Activate rope
-" Keys:
-" K             Show python docs
-" <Ctrl-Space>  Rope autocomplete
-" <Ctrl-c>g     Rope goto definition
-" <Ctrl-c>d     Rope show documentation
-" <Ctrl-c>f     Rope find occurrences
-" <Leader>b     Set, unset breakpoint (g:pymode_breakpoint enabled)
-" [[            Jump on previous class or function (normal, visual, operator modes)
-" ]]            Jump on next class or function (normal, visual, operator modes)
-" [M            Jump on previous class or method (normal, visual, operator modes)
-" ]M            Jump on next class or method (normal, visual, operator modes)
-let g:pymode_rope = 1
+" NERDTree plugin {{{
+let NERDTreeIgnore=['\.vim$', '\~$', '\.pyc$', '\.swp$']
+let NERDTreeSortOrder=['^__\.py$', '\/$', '*', '\.swp$',  '\~$']
+let NERDTreeShowBookmarks=1
+" }}}
 
-" Documentation
+" Python-Mode plugin {{{
+let g:pymode_rope = 1
 let g:pymode_doc = 1
 let g:pymode_doc_key = 'K'
-
-" Linting
 let g:pymode_lint = 1
 let g:pymode_lint_checker = "pyflakes,pep8"
 " Auto check on save
 let g:pymode_lint_write = 1
-
-" Support virtualenv
 let g:pymode_virtualenv = 1
-
-" Enable breakpoints plugin
 let g:pymode_breakpoint = 1
 let g:pymode_breakpoint_bind = '<leader>b'
-
-" syntax highlighting
 let g:pymode_syntax = 1
 let g:pymode_syntax_all = 1
 let g:pymode_syntax_indent_errors = g:pymode_syntax_all
 let g:pymode_syntax_space_errors = g:pymode_syntax_all
-
+" Trim unused white spaces on save
+let g:pymode_trim_whitespaces = 1
 " Don't autofold code
 let g:pymode_folding = 0
 " }}}
