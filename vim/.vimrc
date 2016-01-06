@@ -20,6 +20,7 @@ Plugin 'scrooloose/nerdcommenter'       " comment your code 'sexy'
 Plugin 'fholgado/minibufexpl.vim'       " buffer tabbed manager
 Plugin 'ggreer/the_silver_searcher'     " fast code search tool like ack 
 Plugin 'klen/python-mode'
+Plugin 'rust-lang/rust.vim'             " Rust-lang support
 Plugin 'wakatime/vim-wakatime'
 
 " All of your Plugins must be added before the following line
