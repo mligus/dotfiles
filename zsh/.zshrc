@@ -75,6 +75,12 @@ source $ZSH/oh-my-zsh.sh
 # ssh
 # export SSH_KEY_PATH="~/.ssh/rsa_id"
 
+# Setup virtualenvwrapper (Python)
+export WORKON_HOME='~/.virtualenvs'
+export PROJECT_HOME='~/projects'
+export VIRTUALENVWRAPPER_PYTHON='/usr/local/bin/python3'
+source /usr/local/bin/virtualenvwrapper.sh
+
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
