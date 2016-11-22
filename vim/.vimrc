@@ -9,7 +9,7 @@ call vundle#begin()
 
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
-Plugin 'badwolf'                        " nice theme
+Plugin 'twilight'
 Plugin 'bling/vim-airline'              " powerline fork
 Plugin 'ctrlpvim/ctrlp.vim'             " full path fuzzy finder
 Plugin 'sjl/gundo.vim'                  " visualize your Vim undo tree
@@ -22,6 +22,8 @@ Plugin 'ggreer/the_silver_searcher'     " fast code search tool like ack
 Plugin 'klen/python-mode'
 Plugin 'rust-lang/rust.vim'             " Rust-lang support
 Plugin 'wakatime/vim-wakatime'
+Plugin 'vim-syntastic/syntastic.git'    " syntax checker
+
 
 " All of your Plugins must be added before the following line
 " next 2 lines are required by Vaundle
@@ -42,7 +44,7 @@ set lazyredraw                  " redraw only when we need to
 set showmatch                   " show matching part of the pair for [] {} ()
 set shell=zsh                   " use ZSH, Luke!
 filetype indent on              " load filetype-specific indent files
-colorscheme badwolf
+colorscheme twilight 
 " }}}
 
 " Searching {{{
@@ -189,6 +191,18 @@ let NERDTreeIgnore=['\.vim$', '\~$', '\.pyc$', '\.swp$']
 let NERDTreeSortOrder=['^__\.py$', '\/$', '*', '\.swp$',  '\~$']
 let NERDTreeShowBookmarks=1
 " }}}
+
+" Syntastic plugin {{{
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+" }}}
+
 
 " Python-Mode plugin {{{
 let g:pymode_rope = 1

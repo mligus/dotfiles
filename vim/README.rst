@@ -33,10 +33,19 @@ Initial ``.vimrc`` can look like this one::
     " }}}
 
 
+Color Scheme (iTerm2 also)
+--------------------------
+
+Current theme is **Twilight**.
+All themes are here: `Iterm2-color-schemes <http://iterm2colorschemes.com>`.
+
+Font: **Inconsolata for Powerline** (patched to support Powerline plugin).
+Size: **15 pt**
+
+
 Plugins
 -------
 
-  * `Color scheme - Badwolf <https://github.com/sjl/badwolf>`
   * `Airline <https://github.com/bling/vim-airline>` - an Powerline for
   * `CtrlP <https://github.com/ctrlpvim/ctrlp.vim>` - full path fuzzy finder
   * `Gundo <https://github.com/sjl/gundo.vim>` - visualize your Vim undo tree
@@ -47,6 +56,9 @@ Plugins
   * `MiniBuf <https://github.com/fholgado/minibufexpl.vim>` -tabbed buffer manager
   * `The Silver Searcher <https://github.com/ggreer/the_silver_searcher>` - A code searching tool similar to ack, with a focus on speed.
   * `Python Mode <https://github.com/klen/python-mode>`
+  * `Rust Vim <https://github.com/rust-lang/rust.vim>`
+  * `Syntastic <https://github.com/vim-syntastic/syntastic>` is a syntax checking plugin for Vim created by Martin Grenfell.
+
 
 Resource
 --------
