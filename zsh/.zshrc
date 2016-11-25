@@ -51,7 +51,7 @@ ZSH_THEME="robbyrussell"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git vagrant)
+plugins=(git python vagrant)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -60,7 +60,7 @@ source $ZSH/oh-my-zsh.sh
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # You may need to manually set your language environment
-# export LANG=en_US.UTF-8
+export LANG=en_US.UTF-8
 
 # Preferred editor for local and remote sessions
 # if [[ -n $SSH_CONNECTION ]]; then
@@ -76,14 +76,11 @@ source $ZSH/oh-my-zsh.sh
 # export SSH_KEY_PATH="~/.ssh/rsa_id"
 
 # Setup virtualenvwrapper (Python)
-export WORKON_HOME='~/.virtualenvs'
-export PROJECT_HOME='~/projects'
+export WORKON_HOME=$HOME/.virtualenvs
+export PROJECT_HOME=$HOME/projects
 export VIRTUALENVWRAPPER_PYTHON='/usr/local/bin/python3'
 source /usr/local/bin/virtualenvwrapper.sh
 
-# Set personal aliases, overriding those provided by oh-my-zsh libs,
-# plugins, and themes. Aliases can be placed here, though oh-my-zsh
-# users are encouraged to define aliases within the ZSH_CUSTOM folder.
-# For a full list of active aliases, run `alias`.
-alias ll='ls -all'
-alias vi='vim'
+# Custom aliases
+alias ll="ls -all"
+alias vi=“vim”
