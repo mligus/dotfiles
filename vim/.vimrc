@@ -9,19 +9,13 @@ call vundle#begin()
 
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
-Plugin 'twilight'
+Plugin 'flazz/vim-colorschemes'
 Plugin 'bling/vim-airline'              " powerline fork
-Plugin 'ctrlpvim/ctrlp.vim'             " full path fuzzy finder
-Plugin 'sjl/gundo.vim'                  " visualize your Vim undo tree
 Plugin 'majutsushi/tagbar'              " browse the tags of the current file
 Plugin 'mhinz/vim-signify'              " indicate added, modified and removed lines based on VCS
 Plugin 'scrooloose/nerdtree'            " explore your filesystem and to open files and directories
-Plugin 'scrooloose/nerdcommenter'       " comment your code 'sexy'
 Plugin 'fholgado/minibufexpl.vim'       " buffer tabbed manager
-Plugin 'ggreer/the_silver_searcher'     " fast code search tool like ack 
 Plugin 'klen/python-mode'
-Plugin 'rust-lang/rust.vim'             " Rust-lang support
-Plugin 'wakatime/vim-wakatime'
 Plugin 'vim-syntastic/syntastic.git'    " syntax checker
 
 
@@ -44,7 +38,7 @@ set lazyredraw                  " redraw only when we need to
 set showmatch                   " show matching part of the pair for [] {} ()
 set shell=zsh                   " use ZSH, Luke!
 filetype indent on              " load filetype-specific indent files
-colorscheme twilight 
+colorscheme wombat256i 
 " }}}
 
 " Searching {{{
@@ -107,21 +101,16 @@ nnoremap <space> za
 nnoremap j gj
 nnoremap k gk
 " move to beginning/end of line
-nnoremap B ^
-nnoremap E $
+" nnoremap B ^
+" nnoremap E $
 " ... and '$' / '^' doesn't do anything
 nnoremap $ <nop>
 nnoremap ^ <nop>
 " highlight last inserted text
 nnoremap gV `[v`]
-" toggle GUndo, Tagbar, NERDTree
-nnoremap <leader>u :GundoToggle<CR>
+" toggle Tagbar, NERDTree
 nnoremap <leader>tb :TagbarToggle<CR>
 nnoremap <leader>t :NERDTreeToggle<CR>
-" edit vimrc/zshrc and load vimrc bindings
-nnoremap <leader>ev :vsp $MYVIMRC<CR>
-nnoremap <leader>ez :vsp ~/.zshrc<CR>
-nnoremap <leader>sv :source $MYVIMRC<CR>
 " previous/next buffer
 noremap <leader>q :bp<CR>
 noremap <leader>w :bn<CR>
@@ -132,8 +121,6 @@ vnoremap < <gv
 vnoremap > >gv
 " save session - reopen it with `vim -S`
 nnoremap <leader>s :mksession<CR>
-" open ag.vim
-nnoremap <leader>a :Ag
 " destroy buffer
 map <C-x> :bd<CR>
 " }}}
@@ -178,14 +165,6 @@ highlight SignifySignDelete cterm=bold ctermbg=237  ctermfg=167
 highlight SignifySignChange cterm=bold ctermbg=237  ctermfg=227
 " }}}
 
-" CtrlP plugin {{{
-let g:ctrlp_match_window = 'bottom,order:ttb'
-let g:ctrlp_switch_buffer = 0
-let g:ctrlp_working_path_mode = 0
-" speed up CtrlP with Ag
-let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
-" }}}
-
 " NERDTree plugin {{{
 let NERDTreeIgnore=['\.vim$', '\~$', '\.pyc$', '\.swp$']
 let NERDTreeSortOrder=['^__\.py$', '\/$', '*', '\.swp$',  '\~$']
@@ -203,9 +182,9 @@ let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 " }}}
 
-
 " Python-Mode plugin {{{
 let g:pymode_rope = 1
+set completeopt=menu        " disable doc preview on 'dot' completion for Rope
 let g:pymode_doc = 1
 let g:pymode_doc_key = 'K'
 let g:pymode_lint = 1
