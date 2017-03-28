@@ -17,7 +17,7 @@ Plugin 'scrooloose/nerdtree'            " explore your filesystem and to open fi
 Plugin 'fholgado/minibufexpl.vim'       " buffer tabbed manager
 Plugin 'klen/python-mode'
 Plugin 'vim-syntastic/syntastic.git'    " syntax checker
-
+Plugin 'embear/vim-localvimrc'          " add support for local .vimrc
 
 " All of your Plugins must be added before the following line
 " next 2 lines are required by Vaundle
@@ -84,6 +84,12 @@ map <C-j> <C-w>j
 map <C-k> <C-w>k
 map <C-l> <C-w>l
 map <C-h> <C-w>h
+
+" disable arrow keys - as habbit breaker
+noremap <Up> <NOP>
+noremap <Down> <NOP>
+noremap <Left> <NOP>
+noremap <Right> <NOP>
 " }}}
 
 " Bindings {{{
