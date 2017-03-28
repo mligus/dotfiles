@@ -38,12 +38,12 @@ set lazyredraw                  " redraw only when we need to
 set showmatch                   " show matching part of the pair for [] {} ()
 set shell=zsh                   " use ZSH, Luke!
 filetype indent on              " load filetype-specific indent files
-colorscheme wombat256i 
+" colorscheme wombat256i 
 " }}}
 
 " Searching {{{
 set ignorecase                  " ignore case when searching
-set incsearch                   " search as characters are entered
+" set incsearch                   " search as characters are entered
 set hlsearch                    " highlight all matches
 " }}}
 
@@ -104,8 +104,8 @@ nnoremap k gk
 " nnoremap B ^
 " nnoremap E $
 " ... and '$' / '^' doesn't do anything
-nnoremap $ <nop>
-nnoremap ^ <nop>
+" nnoremap $ <nop>
+" nnoremap ^ <nop>
 " highlight last inserted text
 nnoremap gV `[v`]
 " toggle Tagbar, NERDTree
