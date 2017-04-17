@@ -11,13 +11,13 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'flazz/vim-colorschemes'
 Plugin 'bling/vim-airline'              " powerline fork
-Plugin 'majutsushi/tagbar'              " browse the tags of the current file
+" Plugin 'majutsushi/tagbar'              " browse the tags of the current file
 Plugin 'mhinz/vim-signify'              " indicate added, modified and removed lines based on VCS
 Plugin 'scrooloose/nerdtree'            " explore your filesystem and to open files and directories
 Plugin 'fholgado/minibufexpl.vim'       " buffer tabbed manager
 Plugin 'klen/python-mode'
 Plugin 'vim-syntastic/syntastic.git'    " syntax checker
-Plugin 'embear/vim-localvimrc'          " add support for local .vimrc
+Plugin 'scrooloose/nerdcommenter'       " NERD Commenter
 
 " All of your Plugins must be added before the following line
 " next 2 lines are required by Vaundle
@@ -27,8 +27,7 @@ filetype plugin indent on
 
 " Common {{{
 syntax enable                   " enable syntax highlighting
-set backspace=indent,eol,start  " backspace over indent, end of 
-                                " line and start of insertion
+set backspace=indent,eol,start  " backspace over indent, end of line and start of insertion
 set clipboard=unnamed           " allow normal work with system buffer
 set ttyfast                     " fast redraw
 set number                      " show line numbers
@@ -38,7 +37,16 @@ set lazyredraw                  " redraw only when we need to
 set showmatch                   " show matching part of the pair for [] {} ()
 set shell=zsh                   " use ZSH, Luke!
 filetype indent on              " load filetype-specific indent files
-" colorscheme wombat256i 
+colorscheme gruvbox 
+" map leader to ,
+let mapleader=','
+" set paste toggle
+set pastetoggle=<leader>v
+" use mouse if possible - e.g. for window selection
+if has('mouse')
+	set mouse=a
+	" set ttymouse=xterm2
+endif
 " }}}
 
 " Searching {{{
@@ -84,51 +92,46 @@ map <C-j> <C-w>j
 map <C-k> <C-w>k
 map <C-l> <C-w>l
 map <C-h> <C-w>h
+" }}}
 
+" Bindings {{{
+" map <ESC> to jk 
+inoremap jk <esc>
+" remove search results highlight
+nnoremap <leader><space> :noh<CR>i
+" space open / closes folds
+nnoremap <space> za
+" move vertically by visual line
+nnoremap j gj
+nnoremap k gk
+" toggle NERDTree
+nnoremap <leader>t :NERDTreeToggle<CR>
+" previous/next buffer
+noremap <leader>q :bp<CR>
+noremap <leader>w :bn<CR>
+" destroy buffer
+map <C-x> :bd<CR>
+" do not discard selection on indentation
+vnoremap < <gv
+vnoremap > >gv
+" shortcut to save
+nmap <leader>, :w<cr>
+" show whitespaces
+nmap <leader>l :set list!<cr>
+" }}}
+
+" Hard-mode {{{
+" disable ex mode
+noremap Q <ESC>
 " disable arrow keys - as habbit breaker
 noremap <Up> <NOP>
 noremap <Down> <NOP>
 noremap <Left> <NOP>
 noremap <Right> <NOP>
-" }}}
-
-" Bindings {{{
-let mapleader=','
-" map <ESC> to jk 
-inoremap jk <esc>
-" remove search results highlight
-nnoremap <leader><space> :noh<CR>i
-" toggle line numbers on/off
-noremap <F3> :set invnumber<CR>
-inoremap <F3> <C-O>:set invnumber<CR>
-" space open/closes folds
-nnoremap <space> za
-" move vertically by visual line
-nnoremap j gj
-nnoremap k gk
-" move to beginning/end of line
-" nnoremap B ^
-" nnoremap E $
-" ... and '$' / '^' doesn't do anything
-" nnoremap $ <nop>
-" nnoremap ^ <nop>
-" highlight last inserted text
-nnoremap gV `[v`]
-" toggle Tagbar, NERDTree
-nnoremap <leader>tb :TagbarToggle<CR>
-nnoremap <leader>t :NERDTreeToggle<CR>
-" previous/next buffer
-noremap <leader>q :bp<CR>
-noremap <leader>w :bn<CR>
-" toggle display of whitespaces
-nmap <leader>l :set list!<CR>
-" do not discard selection on indentation
-vnoremap < <gv
-vnoremap > >gv
-" save session - reopen it with `vim -S`
-nnoremap <leader>s :mksession<CR>
-" destroy buffer
-map <C-x> :bd<CR>
+" inoremap <Up> <NOP>
+" inoremap <Down> <NOP>
+" inoremap <Left> <NOP>
+" inoremap <Right> <NOP>
 " }}}
 
 " Folding {{{
@@ -208,6 +211,8 @@ let g:pymode_syntax_space_errors = g:pymode_syntax_all
 let g:pymode_trim_whitespaces = 1
 " Don't autofold code
 let g:pymode_folding = 0
+" set max line length
+let g:pymode_options_max_line_length = 99
 " }}}
 
 " setup folding for .vimrc
