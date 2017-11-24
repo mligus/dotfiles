@@ -11,13 +11,10 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'flazz/vim-colorschemes'
 Plugin 'bling/vim-airline'              " powerline fork
-" Plugin 'majutsushi/tagbar'              " browse the tags of the current file
 Plugin 'mhinz/vim-signify'              " indicate added, modified and removed lines based on VCS
-Plugin 'scrooloose/nerdtree'            " explore your filesystem and to open files and directories
-Plugin 'fholgado/minibufexpl.vim'       " buffer tabbed manager
 Plugin 'klen/python-mode'
-Plugin 'vim-syntastic/syntastic.git'    " syntax checker
-Plugin 'scrooloose/nerdcommenter'       " NERD Commenter
+Plugin 'fholgado/minibufexpl.vim'
+Plugin 'scrooloose/nerdtree'
 
 " All of your Plugins must be added before the following line
 " next 2 lines are required by Vaundle
@@ -37,7 +34,6 @@ set lazyredraw                  " redraw only when we need to
 set showmatch                   " show matching part of the pair for [] {} ()
 set shell=zsh                   " use ZSH, Luke!
 filetype indent on              " load filetype-specific indent files
-colorscheme gruvbox 
 " map leader to ,
 let mapleader=','
 " set paste toggle
@@ -51,7 +47,6 @@ endif
 
 " Searching {{{
 set ignorecase                  " ignore case when searching
-" set incsearch                   " search as characters are entered
 set hlsearch                    " highlight all matches
 " }}}
 
@@ -79,8 +74,8 @@ autocmd FileType css setlocal shiftwidth=2 tabstop=2 softtabstop=2
 " tab navigation
 map tn :tabn<CR>
 map tp :tabp<CR>
-map tm :tabm 
-map tt :tabnew 
+map tm :tabm
+map tt :tabnew
 map ts :tab split<CR>
 map <C-S-Right> :tabn<CR>
 imap <C-S-Right> <ESC>:tabn<CR>
@@ -95,10 +90,10 @@ map <C-h> <C-w>h
 " }}}
 
 " Bindings {{{
-" map <ESC> to jk 
+" map <ESC> to jk
 inoremap jk <esc>
 " remove search results highlight
-nnoremap <leader><space> :noh<CR>i
+nnoremap <leader><space> :noh<CR>
 " space open / closes folds
 nnoremap <space> za
 " move vertically by visual line
@@ -156,13 +151,6 @@ let g:airline#extensions#tagbar#enabled = 1
 let g:airline#extensions#virtualenv#enabled = 1
 " }}}
 
-" MiniBuff plugin {{{
-let g:miniBufExplStatusLineText=""
-let g:miniBufExplCycleArround=1
-noremap <C-TAB>   :MBEbn<CR>
-noremap <C-S-TAB> :MBEbp<CR>
-" }}}
-
 " Signify plugin {{{
 let g:signify_vcs_list = [ 'git', 'hg' ]
 " nicer colors
@@ -172,23 +160,6 @@ highlight DiffChange        cterm=bold ctermbg=none ctermfg=227
 highlight SignifySignAdd    cterm=bold ctermbg=237  ctermfg=119
 highlight SignifySignDelete cterm=bold ctermbg=237  ctermfg=167
 highlight SignifySignChange cterm=bold ctermbg=237  ctermfg=227
-" }}}
-
-" NERDTree plugin {{{
-let NERDTreeIgnore=['\.vim$', '\~$', '\.pyc$', '\.swp$']
-let NERDTreeSortOrder=['^__\.py$', '\/$', '*', '\.swp$',  '\~$']
-let NERDTreeShowBookmarks=1
-" }}}
-
-" Syntastic plugin {{{
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
 " }}}
 
 " Python-Mode plugin {{{
