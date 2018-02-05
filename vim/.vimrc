@@ -3,6 +3,9 @@
 set nocompatible
 filetype off
 
+" set runtime pathes
+set rtp+=/usr/local/opt/fzf
+
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
@@ -15,6 +18,9 @@ Plugin 'mhinz/vim-signify'              " indicate added, modified and removed l
 Plugin 'klen/python-mode'
 Plugin 'fholgado/minibufexpl.vim'
 Plugin 'scrooloose/nerdtree'
+Plugin 'junegunn/fzf.vim'               " fuzzy find
+Plugin 'mileszs/ack.vim'                " silver searcher (ag) support
+Plugin 'wakatime/vim-wakatime'
 
 " All of your Plugins must be added before the following line
 " next 2 lines are required by Vaundle
@@ -113,6 +119,10 @@ vnoremap > >gv
 nmap <leader>, :w<cr>
 " show whitespaces
 nmap <leader>l :set list!<cr>
+" FZF bindings
+nmap ; :Buffers<CR>
+nmap <Leader>f :Files<CR>
+nmap <Leader>r :Tags<CR>
 " }}}
 
 " Hard-mode {{{
@@ -184,6 +194,10 @@ let g:pymode_trim_whitespaces = 1
 let g:pymode_folding = 0
 " set max line length
 let g:pymode_options_max_line_length = 99
+" }}}
+
+" Silver Searcher {{{
+let g:ackprg = 'ag --vimgrep'
 " }}}
 
 " setup folding for .vimrc
