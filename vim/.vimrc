@@ -1,3 +1,10 @@
+" Hacks
+" 1. /must>not&exist/foo:1: DeprecationWarning: the imp module is deprecated in favour of importlib; 
+" after Python 3.7
+if has('python3')
+  silent! python3 1
+endif
+
 " Vundle {{{
 " next 2 lines are required by Vaundle
 set nocompatible
@@ -20,7 +27,6 @@ Plugin 'fholgado/minibufexpl.vim'
 Plugin 'scrooloose/nerdtree'
 Plugin 'junegunn/fzf.vim'               " fuzzy find
 Plugin 'mileszs/ack.vim'                " silver searcher (ag) support
-Plugin 'wakatime/vim-wakatime'
 
 " All of your Plugins must be added before the following line
 " next 2 lines are required by Vaundle
@@ -193,11 +199,13 @@ let g:pymode_trim_whitespaces = 1
 " Don't autofold code
 let g:pymode_folding = 0
 " set max line length
-let g:pymode_options_max_line_length = 99
+let g:pymode_options_max_line_length = 120
 " }}}
 
 " Silver Searcher {{{
-let g:ackprg = 'ag --vimgrep'
+if executable('ag')
+  let g:ackprg = 'ag --vimgrep'
+endif
 " }}}
 
 " setup folding for .vimrc
