@@ -1,37 +1,22 @@
-" Hacks
-" 1. /must>not&exist/foo:1: DeprecationWarning: the imp module is deprecated in favour of importlib; 
-" after Python 3.7
-if has('python3')
-  silent! python3 1
+" Check if vim-plug installed {{{
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
+" }}}
 
-" Vundle {{{
-" next 2 lines are required by Vaundle
-set nocompatible
-filetype off
-
-" set runtime pathes
-set rtp+=/usr/local/opt/fzf
-
-" set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-
-" let Vundle manage Vundle, required
-Plugin 'VundleVim/Vundle.vim'
-Plugin 'flazz/vim-colorschemes'
-Plugin 'bling/vim-airline'              " powerline fork
-Plugin 'mhinz/vim-signify'              " indicate added, modified and removed lines based on VCS
-Plugin 'klen/python-mode'
-Plugin 'fholgado/minibufexpl.vim'
-Plugin 'scrooloose/nerdtree'
-Plugin 'junegunn/fzf.vim'               " fuzzy find
-Plugin 'mileszs/ack.vim'                " silver searcher (ag) support
-
-" All of your Plugins must be added before the following line
-" next 2 lines are required by Vaundle
-call vundle#end()
-filetype plugin indent on
+" vim-plug setup {{{
+call plug#begin('~/.vim/plugged')
+" Plug 'junegunn/seoul256.vim'
+" Plug 'junegunn/goyo.vim'
+" Plug 'junegunn/limelight.vim'
+Plug 'flazz/vim-colorschemes'
+Plug 'bling/vim-airline'
+Plug 'mhinz/vim-signify'
+Plug 'fholgado/minibufexpl.vim'
+Plug 'scrooloose/nerdtree'
+call plug#end()
 " }}}
 
 " Common {{{
@@ -46,14 +31,10 @@ set lazyredraw                  " redraw only when we need to
 set showmatch                   " show matching part of the pair for [] {} ()
 set shell=zsh                   " use ZSH, Luke!
 filetype indent on              " load filetype-specific indent files
-" map leader to ,
 let mapleader=','
-" set paste toggle
 set pastetoggle=<leader>v
-" use mouse if possible - e.g. for window selection
 if has('mouse')
 	set mouse=a
-	" set ttymouse=xterm2
 endif
 " }}}
 
@@ -75,7 +56,6 @@ set softtabstop=4               " number of spaces in tab when editing (insert &
 set autoindent                  " indent next line while writing code
 set expandtab                   " expand tabs into spaces
 set shiftwidth=4                " >> or << shifts lines by 4 spaces
-" specific indentation
 autocmd FileType html setlocal shiftwidth=2 tabstop=2 softtabstop=2
 autocmd FileType javascript setlocal shiftwidth=2 tabstop=2 softtabstop=2
 autocmd FileType yaml setlocal shiftwidth=2 tabstop=2 softtabstop=2
@@ -102,13 +82,12 @@ map <C-h> <C-w>h
 " }}}
 
 " Bindings {{{
-" map <ESC> to jk
-inoremap jk <esc>
 " remove search results highlight
 nnoremap <leader><space> :noh<CR>
 " space open / closes folds
 nnoremap <space> za
-" move vertically by visual line
+" move vertically by display line, not physical
+" (useful for long wrapped lines)
 nnoremap j gj
 nnoremap k gk
 " toggle NERDTree
@@ -125,10 +104,6 @@ vnoremap > >gv
 nmap <leader>, :w<cr>
 " show whitespaces
 nmap <leader>l :set list!<cr>
-" FZF bindings
-nmap ; :Buffers<CR>
-nmap <Leader>f :Files<CR>
-nmap <Leader>r :Tags<CR>
 " }}}
 
 " Hard-mode {{{
@@ -200,12 +175,6 @@ let g:pymode_trim_whitespaces = 1
 let g:pymode_folding = 0
 " set max line length
 let g:pymode_options_max_line_length = 120
-" }}}
-
-" Silver Searcher {{{
-if executable('ag')
-  let g:ackprg = 'ag --vimgrep'
-endif
 " }}}
 
 " setup folding for .vimrc
