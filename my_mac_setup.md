@@ -1,4 +1,15 @@
-# My macos setup
+# My macOS setup
+
+## Software I use
+
+* [iTerm2](https://iterm2.com/)
+* [Docker](https://www.docker.com/get-docker)
+
+
+### Setup iTerm2
+
+<TBD>
+
 
 ## Install brew
 
@@ -7,6 +18,7 @@ Go to https://brew.sh/ and get latest install command, e.g.:
 ```
 /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 ```
+
 
 ## Install some basic stuff
 
@@ -18,6 +30,7 @@ brew install python3
 brew install vim
 ```
 
+
 ### Vim setup
 
 ```
@@ -26,6 +39,7 @@ curl -o ~/.vimrc https://raw.githubusercontent.com/mligus/dotfiles/master/vim/.v
 
 > Allow access to clipboard in *iTerm2*  with `Application in terminal may access clipboard` 
 > under `General` settings
+
 
 ### Git setup
 
