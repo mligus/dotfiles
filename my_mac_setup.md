@@ -18,8 +18,14 @@ brew install python3
 brew install vim
 ```
 
-> Get `~/.vimrc` file from https://github.com/mligus/dotfiles/blob/master/vim/.vimrc
-> and install vim plugins with `:PlugInstall`
+### Vim setup
+
+```
+curl -o ~/.vimrc https://raw.githubusercontent.com/mligus/dotfiles/master/vim/.vimrc
+```
+
+> Allow access to clipboard in *iTerm2*  with `Application in terminal may access clipboard` 
+> under `General` settings
 
 ### Git setup
 
