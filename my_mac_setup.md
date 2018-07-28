@@ -21,4 +21,9 @@ brew install vim
 > Get `~/.vimrc` file from https://github.com/mligus/dotfiles/blob/master/vim/.vimrc
 > and install vim plugins with `:PlugInstall`
 
+### Git setup
 
+```
+git config --global user.name "Max Ligus"
+git config --global user.email "max.ligus@gmail.com"
+```
