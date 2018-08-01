@@ -33,6 +33,8 @@ brew install pyenv
 brew install pyenv-virtualenv
 brew install jrnl
 brew install the_silver_searcher
+brew install httpie
+brew install tmux
 ```
 
 
