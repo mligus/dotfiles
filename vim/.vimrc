@@ -16,6 +16,8 @@ Plug 'bling/vim-airline'
 Plug 'mhinz/vim-signify'
 Plug 'fholgado/minibufexpl.vim'
 Plug 'scrooloose/nerdtree'
+Plug 'junegunn/fzf.vim'
+Plug 'python-mode/python-mode', { 'branch': 'develop' }
 call plug#end()
 " }}}
 
@@ -50,16 +52,26 @@ set fileformat=unix             " set unix line endings
 set fileformats=unix,dos
 " }}}
 
-" Whitespaces & Indentation {{{
+" Whitespaces, indentation & syntax highlighting {{{
 set tabstop=4                   " set tab to 4 spaces
 set softtabstop=4               " number of spaces in tab when editing (insert & remove)
-set autoindent                  " indent next line while writing code
-set expandtab                   " expand tabs into spaces
 set shiftwidth=4                " >> or << shifts lines by 4 spaces
-autocmd FileType html setlocal shiftwidth=2 tabstop=2 softtabstop=2
-autocmd FileType javascript setlocal shiftwidth=2 tabstop=2 softtabstop=2
-autocmd FileType yaml setlocal shiftwidth=2 tabstop=2 softtabstop=2
-autocmd FileType css setlocal shiftwidth=2 tabstop=2 softtabstop=2
+set expandtab                   " expand tabs into spaces
+set shiftround                  " round indent to multiple of 'shiftwidth'
+set autoindent                  " indent next line while writing code
+au FileType html setlocal shiftwidth=2 tabstop=2 softtabstop=2
+au FileType javascript setlocal shiftwidth=2 tabstop=2 softtabstop=2
+au FileType yaml setlocal shiftwidth=2 tabstop=2 softtabstop=2
+au FileType css setlocal shiftwidth=2 tabstop=2 softtabstop=2
+" Automatic syntax highlighting for files
+au BufRead,BufNewFile *.sbt           set filetype=scala
+au BufRead,BufNewFile *.conf          set filetype=dosini
+au BufRead,BufNewFile *.bash*         set filetype=sh
+au BufRead,BufNewFile *.jsonnet*      set filetype=c
+au BufRead,BufNewFile *.libsonnet*    set filetype=c
+au BufRead,BufNewFile todo*           set filetype=todo
+au BufRead,BufNewFile *.txt           set filetype=todo
+au BufRead,BufNewFile *.py            set filetype=python
 " }}}
 
 " Navigation {{{
@@ -153,17 +165,22 @@ highlight SignifySignDelete cterm=bold ctermbg=237  ctermfg=167
 highlight SignifySignChange cterm=bold ctermbg=237  ctermfg=227
 " }}}
 
+" deoplete plugin {{{
+let g:deoplete#enable_at_startup = 1
+" }}}
+
 " Python-Mode plugin {{{
+let g:pymode_python = "python3"
 let g:pymode_rope = 1
 set completeopt=menu        " disable doc preview on 'dot' completion for Rope
 let g:pymode_doc = 1
 let g:pymode_doc_key = 'K'
 let g:pymode_lint = 1
-let g:pymode_lint_checker = "pyflakes,pep8"
+let g:pymode_lint_checker = ['pyflakes', 'pep8']
 " Auto check on save
 let g:pymode_lint_write = 1
 let g:pymode_virtualenv = 1
-let g:pymode_breakpoint = 1
+let g:pymode_breakpoint = 0
 let g:pymode_breakpoint_bind = '<leader>b'
 let g:pymode_syntax = 1
 let g:pymode_syntax_all = 1
