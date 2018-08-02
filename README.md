@@ -2,8 +2,8 @@
 
 * [iTerm2](https://iterm2.com/)
 * [Docker](https://www.docker.com/get-docker)
-* [NeoVim](https://neovim.io/) */experimental/*
-* [JDK version 1.8](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) */for Scala/*
+* [NeoVim](https://neovim.io/) /experimental/
+* [JDK version 1.8](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) /for Scala/
 * [JRNL](http://jrnl.sh/index.html)
 * [The Silver Searcher](https://github.com/ggreer/the_silver_searcher)
 
