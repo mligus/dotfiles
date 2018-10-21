@@ -8,10 +8,13 @@ Plug 'w0rp/ale'  " ALE (Asynchronous Lint Engine) is a plugin for providing lint
 Plug 'airblade/vim-gitgutter'
 Plug 'scrooloose/nerdcommenter'
 Plug 'fholgado/minibufexpl.vim'
-Plug 'romainl/Apprentice'  " color schema
-" Plug 'mhinz/vim-signify'  " replaced by 'airblade/vim-gitgutter' im my case
-" Plug 'tpope/vim-surround'
-" Plug 'neomake/neomake', { 'for': ['rust', 'haskell'] }
+" Plug 'romainl/Apprentice'  " color schema
+" Plug 'altercation/vim-colors-solarized'
+" Plug 'fxn/vim-monochrome'
+" Plug 'crusoexia/vim-monokai'
+Plug 'sickill/vim-monokai'
+Plug 'rhysd/vim-grammarous'
+Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
 
 " FZF / Ctrlp for file navigation
 if executable('fzf')
@@ -69,7 +72,11 @@ endif
 set t_Co=256
 set background=dark
 " preview color schemas at http://vimcolors.com/
-colorscheme apprentice
+" colorscheme apprentice
+" colorscheme solarized
+" let g:monochrome_italic_comments = 1
+" colorscheme monochrome
+colorscheme monokai
 " }}}
 
 " Python support {{{ 
@@ -185,6 +192,10 @@ set directory=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
 set writebackup
 " }}}
 
+" Auto-commands {{{
+" autocmd BufWritePost * :GrammarousCheck<CR>
+ " }}}
+
 " Airline plugin {{{
 set laststatus=2
 let g:airline_powerline_fonts = 1
@@ -237,6 +248,10 @@ let g:pymode_folding = 0
 let g:pymode_options_max_line_length = 120
 " }}}
 
+" Grammarous plugin {{{
+nmap <C-c>gg :GrammarousCheck<CR>
+let g:grammarous#enabled_rules = {'*' : ['PASSIVE_VOICE']}
+" }}}
 
 " Inspired by: https://github.com/seenaburns/dotfiles/blob/master/.config/nvim/init.vim
 " vim:foldmethod=marker:foldlevel=0

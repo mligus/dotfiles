@@ -72,6 +72,7 @@ plugins=(
   sbt
   scala
   tmux
+  web-search
 )
 
 source $ZSH/oh-my-zsh.sh
