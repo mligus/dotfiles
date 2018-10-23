@@ -11,66 +11,67 @@ Default configuration files can be found in ``/usr/share/tmux/``.
 
 ## Bindings
 
-Prefix key is `Ctrl + a` (default ,`Ctrl + b`)
+Prefix key is `Ctrl + a` (default ,`Ctrl + b`).
+
+> (*) custom binding set in `~/.tmux.conf`
 
 
 ### Shortcuts
 
-`?` - get help
+  * `?` - get help
 
 
 ### Sessions
 
-`s`  - show sessions (or `$ tmux ls`)
-`$` - rename current session
-`d`  - detach from current session (or `$ tmux detach`)
-`)` - next session
-`(` - previous session
-`L` - switch back to last session
-`$ tmux new -s <session name>` - create new session
-`$ tmux a -t <session name>` - attach to session (or `$ tmux a` for first session)
-`$ tmux kill-session -t <session name>`
+  * `s`  - show sessions (or `$ tmux ls`)
+  * `$` - rename current session
+  * `d`  - detach from current session (or `$ tmux detach`)
+  * `)` - next session
+  * `(` - previous session
+  * `L` - switch back to last session
+  * `$ tmux new -s <session name>` - create new session
+  * `$ tmux a -t <session name>` - attach to session (or `$ tmux a` for first session)
+  * `$ tmux kill-session -t <session name>`
 
 
 ### Windows
 
-`c` - create new window
-`C` - create new window with prompt for name *
-`,` - rename current window
-`w` - list windows
-`%` - split vertically
-`"` - split horizontally
-`n` - change to the next window
-`p` - change to the previous window
-`0 to 9` - select windows 0 through 9
+  * `c` - create new window
+  * `C` - create new window with prompt for name *
+  * `,` - rename current window
+  * `w` - list windows
+  * `%` - split vertically
+  * `"` - split horizontally
+  * `n` - change to the next window
+  * `p` - change to the previous window
+  * `0 to 9` - select windows 0 through 9
 
 
 ### Panes
 
-`%` - create a vertical pane
-`"` - create a horizontal pane
-`h` - move to the left pane *
-`j` -  move to the pane below *
-`l` -  move to the right pane *
-`k` - move to the pane above *
-`q` - show pane numbers (quickly click `0 to 9` to switch to respective pane)
-`o` - toggle between panes
-`}` - swap with next pane
-`{` - swap with previous pane
-`!` - break the pane out of the window
-`x` - kill the current pane
-`z` - maximize current pane
-`<space>` - rearrange panes (switch between automatic layouts)
+  * `%` - create a vertical pane
+  * `"` - create a horizontal pane
+  * `h` - move to the left pane *
+  * `j` -  move to the pane below *
+  * `l` -  move to the right pane *
+  * `k` - move to the pane above *
+  * `q` - show pane numbers (quickly click `0 to 9` to switch to respective pane)
+  * `o` - toggle between panes
+  * `}` - swap with next pane
+  * `{` - swap with previous pane
+  * `!` - break the pane out of the window
+  * `x` - kill the current pane
+  * `z` - maximize current pane
+  * `<space>` - rearrange panes (switch between automatic layouts)
 
 
 ### Miscellaneous
 
-`r` - reload `~/.tmux.conf` *
-`t` - show time in current pane
-`:` - to enter Tmux command
+  * `r` - reload `~/.tmux.conf` *
+  * `t` - show time in current pane
+  * `:` - to enter Tmux command
 
 
-> (*) custom binding set in `~/.tmux.conf`
 
 
 ## Auxiliary software
