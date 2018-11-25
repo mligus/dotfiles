@@ -104,6 +104,10 @@ export LANG=en_US.UTF-8
 alias vi="nvim"
 alias vim="nvim"
 alias ll="ls -All"
+alias gip="curl ipinfo.io/ip && curl ipinfo.io/org"
+alias f="find . -name"
+alias s="du -hs * | sort -rh | head -5"
+alias hs="history | grep --color=auto"
 
 # FZF setup
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
