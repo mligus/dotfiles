@@ -13,8 +13,9 @@ Plug 'fholgado/minibufexpl.vim'
 " Plug 'fxn/vim-monochrome'
 " Plug 'crusoexia/vim-monokai'
 Plug 'sickill/vim-monokai'
-Plug 'rhysd/vim-grammarous'
+" Plug 'rhysd/vim-grammarous'
 Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
+Plug 'python-mode/python-mode', {'branch': 'develop'}
 
 " FZF / Ctrlp for file navigation
 if executable('fzf')
@@ -29,25 +30,6 @@ if executable('fzf')
 else
   Plug 'ctrlpvim/ctrlp.vim'
 endif
-
-" Language plugins
-" Scala plugins
-if executable('scalac')
-  Plug 'derekwyatt/vim-scala', { 'for': 'scala' }
-endif
-" Python plugins
-Plug 'python-mode/python-mode', {'branch': 'develop'}
-" Haskell Plugins
-" if executable('ghc')
-"   Plug 'neovimhaskell/haskell-vim', { 'for': 'haskell' }
-"   Plug 'owickstrom/neovim-ghci', { 'for': 'haskell' }
-" endif
-" Rust Plugins
-" if executable('rustc')
-"  Plug 'rust-lang/rust.vim', { 'for': 'rust' }
-"  Plug 'racer-rust/vim-racer', { 'for': 'rust' }
-" endif
-
 
 call plug#end()
 " }}}
@@ -108,6 +90,7 @@ au FileType html setlocal shiftwidth=2 tabstop=2 softtabstop=2
 au FileType javascript setlocal shiftwidth=2 tabstop=2 softtabstop=2
 au FileType yaml setlocal shiftwidth=2 tabstop=2 softtabstop=2
 au FileType css setlocal shiftwidth=2 tabstop=2 softtabstop=2
+au FileType json setlocal shiftwidth=2 tabstop=2 softtabstop=2
 " Automatic syntax highlighting for files
 au BufRead,BufNewFile *.sbt           set filetype=scala
 au BufRead,BufNewFile *.conf          set filetype=dosini
@@ -117,6 +100,7 @@ au BufRead,BufNewFile *.libsonnet*    set filetype=c
 au BufRead,BufNewFile todo*           set filetype=todo
 au BufRead,BufNewFile *.txt           set filetype=todo
 au BufRead,BufNewFile *.py            set filetype=python
+au BufRead,BufNewFile *.json          set filetype=json
 " }}}
 
 " Bindings {{{
@@ -139,9 +123,9 @@ map <C-x> :bd<CR>
 vnoremap < <gv
 vnoremap > >gv
 " shortcut to save
-nmap <leader>, :w<cr>
+nmap <leader>, :w<CR>
 " show whitespaces
-nmap <leader>l :set list!<cr>
+nmap <leader>l :set list!<CR>
 " }}}
 
 " Navigation {{{
@@ -227,8 +211,9 @@ highlight SignifySignChange cterm=bold ctermbg=237  ctermfg=227
 " }}}
 
 " Python-Mode plugin {{{
-let g:pymode_python = 'python3'
+let g:pymode_python = 'python3'  " enable python 3 syntax checking
 let g:pymode_rope = 1
+let g:pymode_rope_completion = 1
 set completeopt=menu        " disable doc preview on 'dot' completion for Rope
 let g:pymode_doc = 1
 let g:pymode_doc_key = 'K'
@@ -243,14 +228,9 @@ let g:pymode_syntax = 1
 let g:pymode_syntax_all = 1
 let g:pymode_syntax_indent_errors = g:pymode_syntax_all
 let g:pymode_syntax_space_errors = g:pymode_syntax_all
-let g:pymode_trim_whitespaces = 1
+let g:pymode_trim_whitespaces = 1  " trim unused white spaces on save
 let g:pymode_folding = 0
 let g:pymode_options_max_line_length = 120
-" }}}
-
-" Grammarous plugin {{{
-nmap <C-c>gg :GrammarousCheck<CR>
-let g:grammarous#enabled_rules = {'*' : ['PASSIVE_VOICE']}
 " }}}
 
 " Inspired by: https://github.com/seenaburns/dotfiles/blob/master/.config/nvim/init.vim
