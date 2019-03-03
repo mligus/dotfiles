@@ -1,36 +1,19 @@
 " Plugins {{{
 call plug#begin('~/.config/nvim/plugged')
-
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }  " dark powered neo-completion
 Plug 'scrooloose/nerdtree'
+Plug '/usr/local/opt/fzf'
 Plug 'bling/vim-airline'
-Plug 'w0rp/ale'  " ALE (Asynchronous Lint Engine) is a plugin for providing linting
-Plug 'airblade/vim-gitgutter'
-Plug 'scrooloose/nerdcommenter'
-Plug 'fholgado/minibufexpl.vim'
-" Plug 'romainl/Apprentice'  " color schema
-" Plug 'altercation/vim-colors-solarized'
-" Plug 'fxn/vim-monochrome'
-" Plug 'crusoexia/vim-monokai'
-Plug 'sickill/vim-monokai'
-" Plug 'rhysd/vim-grammarous'
-Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }  " dark powered neo-completion
+Plug 'deoplete-plugins/deoplete-jedi'
 Plug 'python-mode/python-mode', {'branch': 'develop'}
-
-" FZF / Ctrlp for file navigation
-if executable('fzf')
-  " OSX vs Linux loading (depending on where fzf is)
-  let s:uname = system("echo -n \"$(uname)\"")
-  if !v:shell_error && s:uname == "Darwin"
-    Plug '/usr/local/opt/fzf'
-  else
-    Plug 'junegunn/fzf', {'dir': '~/.local/src/fzf', 'do': './install --all' }
-  endif
-  Plug 'junegunn/fzf.vim'
-else
-  Plug 'ctrlpvim/ctrlp.vim'
-endif
-
+Plug 'ervandew/supertab'  " use <Tab> for all your insert completion needs
+Plug 'w0rp/ale'  " ALE (Asynchronous Lint Engine) is a plugin for providing linting
+Plug 'mhinz/vim-signify'
+Plug 'scrooloose/nerdcommenter'
+Plug 'rhysd/vim-grammarous'
+Plug 'godlygeek/tabular'
+Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
+Plug 'morhetz/gruvbox'
 call plug#end()
 " }}}
 
@@ -52,13 +35,9 @@ if has('mouse')
 	set mouse=a
 endif
 set t_Co=256
+" theme
 set background=dark
-" preview color schemas at http://vimcolors.com/
-" colorscheme apprentice
-" colorscheme solarized
-" let g:monochrome_italic_comments = 1
-" colorscheme monochrome
-colorscheme monokai
+colorscheme gruvbox
 " }}}
 
 " Python support {{{ 
@@ -80,12 +59,9 @@ set fileformats=unix,dos
 
 " Whitespaces, indentation & syntax highlighting {{{
 filetype plugin on
-set tabstop=4                   " set tab to 4 spaces
-set softtabstop=4               " number of spaces in tab when editing (insert & remove)
-set shiftwidth=4                " >> or << shifts lines by 4 spaces
-set expandtab                   " expand tabs into spaces
-set shiftround                  " round indent to multiple of 'shiftwidth'
-set autoindent                  " indent next line while writing code
+set tabstop=8 softtabstop=0 expandtab shiftwidth=4 smarttab
+set shiftround
+set autoindent
 au FileType html setlocal shiftwidth=2 tabstop=2 softtabstop=2
 au FileType javascript setlocal shiftwidth=2 tabstop=2 softtabstop=2
 au FileType yaml setlocal shiftwidth=2 tabstop=2 softtabstop=2
@@ -109,7 +85,6 @@ nnoremap <leader><space> :noh<CR>
 " space open / closes folds
 nnoremap <space> za
 " move vertically by display line, not physical
-" (useful for long wrapped lines)
 nnoremap j gj
 nnoremap k gk
 " toggle NERDTree
@@ -176,15 +151,30 @@ set directory=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
 set writebackup
 " }}}
 
-" Auto-commands {{{
-" autocmd BufWritePost * :GrammarousCheck<CR>
- " }}}
-
 " Airline plugin {{{
 set laststatus=2
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tagbar#enabled = 1
+let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#virtualenv#enabled = 1
+let g:airline#extensions#ale#enabled = 1
+let airline#extensions#ale#error_symbol = '💣:'
+let airline#extensions#ale#warning_symbol = '🚩:'
+" }}}
+
+" Deoplete plugin {{{
+let g:deoplete#enable_at_startup = 1
+" }}}
+
+" Python-Mode plugin {{{
+let g:pymode = 1
+let g:pymode_python = 'python3'
+let g:pymode_options_max_line_length = 119
+let g:pymode_doc = 0
+let g:pymode_lint = 0
+let g:pymode_lint_cwindow = 0  " do not auto-open cwindow (quickfix) if any errors have been found
+let g:pymode_rope = 0
+let g:pymode_trim_whitespaces = 1  " trim unused white spaces on save
 " }}}
 
 " NERDCommenter plugin {{{
@@ -193,10 +183,6 @@ let g:NERDCompactSexyComs = 1  " Use compact syntax for prettified multi-line co
 let g:NERDCommentEmptyLines = 1  " Allow commenting and inverting empty lines (useful when commenting a region)
 let g:NERDTrimTrailingWhitespace = 1  " Enable trimming of trailing whitespace when uncommenting
 let g:NERDToggleCheckAllLines = 1  " Enable NERDCommenterToggle to check all selected lines is commented or not 
-" }}}
-
-" Deoplete plugin {{{
-let g:deoplete#enable_at_startup = 1
 " }}}
 
 " Signify plugin {{{
@@ -210,28 +196,23 @@ highlight SignifySignDelete cterm=bold ctermbg=237  ctermfg=167
 highlight SignifySignChange cterm=bold ctermbg=237  ctermfg=227
 " }}}
 
-" Python-Mode plugin {{{
-let g:pymode_python = 'python3'  " enable python 3 syntax checking
-let g:pymode_rope = 1
-let g:pymode_rope_completion = 1
-set completeopt=menu        " disable doc preview on 'dot' completion for Rope
-let g:pymode_doc = 1
-let g:pymode_doc_key = 'K'
-let g:pymode_lint = 1
-let g:pymode_lint_checker = ['pyflakes', 'pylint', 'pep8', 'mccabe']
-let g:pymode_lint_message = 1
-let g:pymode_lint_write = 1
-let g:pymode_virtualenv = 1
-let g:pymode_breakpoint = 0
-let g:pymode_breakpoint_bind = '<leader>b'
-let g:pymode_syntax = 1
-let g:pymode_syntax_all = 1
-let g:pymode_syntax_indent_errors = g:pymode_syntax_all
-let g:pymode_syntax_space_errors = g:pymode_syntax_all
-let g:pymode_trim_whitespaces = 1  " trim unused white spaces on save
-let g:pymode_folding = 0
-let g:pymode_options_max_line_length = 120
+" ALE plugin {{{
+map <leader>at :ALEToggle<CR>
+map <leader>al :ALELint<CR>
+let g:ale_lint_on_save = 1
+let g:ale_completion_enabled = 0
+highlight clear ALEErrorSign
+highlight clear ALEWarningSign
+let g:ale_sign_error = '💣'
+let g:ale_sign_warning = '🚩'
 " }}}
 
-" Inspired by: https://github.com/seenaburns/dotfiles/blob/master/.config/nvim/init.vim
+" Grammarous plugin {{{
+" autocmd BufWritePost * :GrammarousCheck<CR>
+map <leader>gc :GrammarousCheck<CR>
+let g:grammarous#default_comments_only_filetypes = {
+            \ '*' : 1, 'help' : 0, 'markdown' : 0, 'vim': 0
+            \ }
+ " }}}
+
 " vim:foldmethod=marker:foldlevel=0
