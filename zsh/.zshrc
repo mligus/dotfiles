@@ -1,5 +1,5 @@
 # If you come from bash you might have to change your $PATH.
-# export PATH=$HOME/bin:/usr/local/bin:$PATH
+export PATH=$HOME/.local/bin:$PATH:$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
 export ZSH="/Users/mligus/.oh-my-zsh"
@@ -8,7 +8,7 @@ export ZSH="/Users/mligus/.oh-my-zsh"
 ZSH_THEME="spaceship"
 SPACESHIP_PROMPT_ADD_NEWLINE='true'
 SPACESHIP_CHAR_SYMBOL='➜'
-SPACESHIP_CHAR_PREFIX='🤷🏼‍♂️ '
+# SPACESHIP_CHAR_PREFIX='🤷🏼‍♂️ '
 SPACESHIP_CHAR_SUFFIX=' '
 SPACESHIP_CHAR_COLOR_SUCCESS='yellow'
 SPACESHIP_PROMPT_FIRST_PREFIX_SHOW='true'
@@ -40,6 +40,8 @@ source $ZSH/oh-my-zsh.sh
 
 # You may need to manually set your language environment
 export LANG=en_US.UTF-8
+export LC_ALL=en_US.UTF-8
+export LC_CTYPE=en_US.UTF-8
 
 # Init pyenv
 eval "$(pyenv init -)"
@@ -66,3 +68,9 @@ alias ll="exa -al --group-directories-first --git"
 alias cat="bat"
 alias vimconfig="nvim ~/.config/nvim/init.vim"
 alias zshconfig="nvim ~/.zshrc"
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/mligus/bin/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/mligus/bin/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/mligus/bin/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/mligus/bin/google-cloud-sdk/completion.zsh.inc'; fi
