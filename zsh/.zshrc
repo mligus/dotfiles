@@ -2,7 +2,7 @@
 export PATH=$HOME/.local/bin:$PATH:$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH="/Users/mligus/.oh-my-zsh"
+export ZSH=$HOME/.oh-my-zsh
 
 # Zsh theme config
 ZSH_THEME="spaceship"
@@ -27,8 +27,6 @@ DISABLE_AUTO_TITLE="true"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
 git 
-osx
-sublime
 extract
 copyfile
 pyenv
@@ -60,8 +58,6 @@ if which pyenv-virtualenv-init > /dev/null; then eval "$(pyenv virtualenv-init -
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-alias sleep="pmset sleepnow"
-alias music="open -a plug"
 alias vi="nvim"
 alias vim="nvim"
 alias ll="exa -al --group-directories-first --git"
@@ -70,7 +66,7 @@ alias vimconfig="nvim ~/.config/nvim/init.vim"
 alias zshconfig="nvim ~/.zshrc"
 
 # The next line updates PATH for the Google Cloud SDK.
-if [ -f '/Users/mligus/bin/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/mligus/bin/google-cloud-sdk/path.zsh.inc'; fi
+if [ -f '$HOME/bin/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/mligus/bin/google-cloud-sdk/path.zsh.inc'; fi
 
 # The next line enables shell command completion for gcloud.
-if [ -f '/Users/mligus/bin/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/mligus/bin/google-cloud-sdk/completion.zsh.inc'; fi
+if [ -f '$HOME/bin/google-cloud-sdk/completion.zsh.inc' ]; then . '~/bin/google-cloud-sdk/completion.zsh.inc'; fi
