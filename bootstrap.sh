@@ -91,12 +91,13 @@ echo ">>> DONE <<<\n"
 
 echo ">>> Set up Zsh and Oh-My-Zsh <<<"
 sudo apt install -y zsh powerline fonts-powerline
-chsh -s $(which zsh)
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)" "" --unattended
 # Spaceship Prompt
 ZSH_CUSTOM=$HOME/.oh-my-zsh/custom
 git clone https://github.com/denysdovhan/spaceship-prompt.git "$ZSH_CUSTOM/themes/spaceship-prompt"
 ln -s "$ZSH_CUSTOM/themes/spaceship-prompt/spaceship.zsh-theme" "$ZSH_CUSTOM/themes/spaceship.zsh-theme"
 # Download ZSH config
 curl -fsSL https://raw.githubusercontent.com/mligus/dotfiles/master/zsh/.zshrc -o $HOME/.zshrc
+# Change default shell to Zsh
+chsh -s $(which zsh)
 echo ">>> DONE <<<\n"
