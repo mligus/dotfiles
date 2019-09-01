@@ -1,67 +1,53 @@
-# Development Environment setup (using macOS for now)
-
-* [iTerm2](https://iterm2.com/)
-* [Docker](https://www.docker.com/get-docker)
-* [NeoVim](https://neovim.io/) /experimental/
-* [JDK version 1.8](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) /for Scala/
-* [JRNL](http://jrnl.sh/index.html)
-* [The Silver Searcher](https://github.com/ggreer/the_silver_searcher)
+# Dotfiles aka Work Environment Setups
 
 
-### Setup iTerm2
+## Ubuntu
 
-<TBD>
+Bootstrap clean Ubuntu Server as a development station:
+
+```
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/mligus/dotfiles/master/bootstrap.sh)"
+```
+
+Tested on:
+
+  * Ubuntu Server 18.04.3
 
 
-## Install brew and packages
+### Know peculiarities and issues
 
-Go to https://brew.sh/ and get latest install command, e.g.:
+1. After installation of `oh-my-zsh` you will be dropped to `zsh` shell. Type `exit` and hit enter to continue setup.
+2. From time to time you will be asked for your password, since script use `sudo` internally.
+3. On Neovim set up setup have to click *Enter* once since it complains about missing theme.
+
+
+## macOS
+
+
+### Install Homebrew and packages
+
+Go to [Homebrew](https://brew.sh/) website and get latest install command, e.g.:
 
 ```
 /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 ```
 
-Install Git, Python, Pyenv, FuzzyFinder, Jrnl, etc.
+Install few packages right away:
 
 ```
 brew update
 brew install git
 brew install python3
-brew install vim
 brew install fzf
-brew install pyenv
-brew install pyenv-virtualenv
-brew install jrnl
 brew install the_silver_searcher
-brew install httpie
 brew install tmux
 ```
 
-
-### Vim setup
-
-```
-curl -o ~/.vimrc https://raw.githubusercontent.com/mligus/dotfiles/master/vim/.vimrc
-```
-
-> Allow access to clipboard in *iTerm2*  with `Application in terminal may access clipboard`
-> under `General` settings
-
-
-### FZF setup
-
-To install useful keybindings and fuzzy completion:
+To install useful `fzf` keybindings and fuzzy completion use:
 
 ```
 /usr/local/opt/fzf/install
 ```
-
-To use fzf in Vim, add the following line to your .vimrc:
-
-```
-set rtp+=/usr/local/opt/fzf
-```
-
 
 ### Git setup
 
@@ -71,7 +57,12 @@ git config --global user.email "max.ligus@gmail.com"
 ```
 
 
-## Pyenv setup
+### Install and configure Pyenv
+
+```
+brew install pyenv
+brew install pyenv-virtualenv
+```
 
 ```
 pyenv install 2.7.12
@@ -113,26 +104,3 @@ Install `vim-plug`:
 curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 ```
-
-
-## Install Scala & SBT
-
-```
-brew update
-brew install scala
-brew install sbt
-```
-
-Caveats for `scala` and `sbt`:
-
-```
-To use with IntelliJ, set the Scala home to:
-  /usr/local/opt/scala/idea
-
-Bash completion has been installed to:
-  /usr/local/etc/bash_completion.d
-```
-
-> You can use `$SBT_OPTS` to pass additional JVM options to SBT.
-> Project specific options should be placed in .sbtopts in the root of your project.
-> Global settings should be placed in /usr/local/etc/sbtopts
