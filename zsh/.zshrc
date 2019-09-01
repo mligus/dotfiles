@@ -40,7 +40,6 @@ export LC_CTYPE=en_US.UTF-8
 
 # Init pyenv
 eval "$(pyenv init -)"
-eval "$(pyenv virtualenv-init -)"
 
 # Enable auto-activation of virtualenv in pyenv
 if which pyenv-virtualenv-init > /dev/null; then eval "$(pyenv virtualenv-init -)"; fi
