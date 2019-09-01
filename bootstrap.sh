@@ -82,7 +82,11 @@ $PYENV_BIN virtualenv -f $PYTHON_2_VERSION neovim2
 $PYENV_BIN virtualenv -f $PYTHON_3_VERSION neovim3
 $PYENV_VERSIONS/neovim2/bin/pip install neovim
 $PYENV_VERSIONS/neovim3/bin/pip install neovim
+# Hack: comment colorscheme setting until scheme is installed
+sed -i 's/^colorscheme/" colorscheme/g' $NVIM_CONFIG/init.vim
 vim +PlugInstall +qa
+# ^^^ Hack removal
+sed -i 's/^" colorscheme/colorscheme/g' $NVIM_CONFIG/init.vim
 echo ">>> DONE <<<\n"
 
 echo ">>> Cleanup <<<"
@@ -99,6 +103,6 @@ ln -s "$ZSH_CUSTOM/themes/spaceship-prompt/spaceship.zsh-theme" "$ZSH_CUSTOM/the
 # Download ZSH config
 curl -fsSL https://raw.githubusercontent.com/mligus/dotfiles/master/zsh/.zshrc -o $HOME/.zshrc
 # Change default shell to Zsh
-echo "Setting Zsh as default shell ..."
+echo "Setting Zsh as a default shell ..."
 chsh -s $(which zsh)
 echo ">>> DONE <<<\n"
