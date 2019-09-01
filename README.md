@@ -16,9 +16,7 @@ Tested on:
 
 ### Know peculiarities and issues
 
-1. After installation of `oh-my-zsh` you will be dropped to `zsh` shell. Type `exit` and hit enter to continue setup.
-2. From time to time you will be asked for your password, since script use `sudo` internally.
-3. On Neovim set up setup have to click *Enter* once since it complains about missing theme.
+  * From time to time you will be asked for your password, since script use `sudo` internally.
 
 
 ## macOS
