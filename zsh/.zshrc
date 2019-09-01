@@ -14,9 +14,6 @@ SPACESHIP_CHAR_COLOR_SUCCESS='yellow'
 SPACESHIP_PROMPT_FIRST_PREFIX_SHOW='true'
 SPACESHIP_USER_SHOW='true'
 
-# command auto-correction
-ENABLE_CORRECTION="true"
-
 # Uncomment the following line to disable auto-setting terminal title.
 DISABLE_AUTO_TITLE="true"
 
