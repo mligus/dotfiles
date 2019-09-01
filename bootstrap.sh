@@ -63,7 +63,7 @@ cargo install bat
 cargo install ripgrep
 echo ">>> DONE <<<\n"
 
-echo ">>> Installand set up Python enviroment <<<"
+echo ">>> Install and set up Python enviroment <<<"
 # Pyenv
 curl -fsSL https://github.com/pyenv/pyenv-installer/raw/master/bin/pyenv-installer | bash
 echo ">>> DONE <<<\n"
@@ -99,5 +99,6 @@ ln -s "$ZSH_CUSTOM/themes/spaceship-prompt/spaceship.zsh-theme" "$ZSH_CUSTOM/the
 # Download ZSH config
 curl -fsSL https://raw.githubusercontent.com/mligus/dotfiles/master/zsh/.zshrc -o $HOME/.zshrc
 # Change default shell to Zsh
+echo "Setting Zsh as default shell ..."
 chsh -s $(which zsh)
 echo ">>> DONE <<<\n"
