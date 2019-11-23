@@ -106,3 +106,8 @@ curl -fsSL https://raw.githubusercontent.com/mligus/dotfiles/master/zsh/.zshrc -
 echo "Setting Zsh as a default shell ..."
 chsh -s $(which zsh)
 echo ">>> DONE <<<\n"
+# Generate SSH key
+echo "Generating SSH key ,,,\n"
+ssh-keygen -t rsa -b 4096 -o -a 100
+echo "Copy and add public key to GitHub and other places:\n"
+cat ~/.ssh/id_rsa.pub -p
