@@ -102,4 +102,12 @@ The server holds *sessions* and the *windows* and *panes* within them.
   1. [A tmux Primer (2014)](https://danielmiessler.com/study/tmux/)
   2. [The Tao of tmux (online book)](https://leanpub.com/the-tao-of-tmux/read)
   3. [Everything you need to know about Tmux copy paste (2016)](http://www.rushiagr.com/blog/2016/06/16/everything-you-need-to-know-about-tmux-copy-pasting/)
+  4. [Customizing Tmux](https://hackernoon.com/customizing-tmux-b3d2a5050207)
+  5. [tmux(1) - Linux man page](https://linux.die.net/man/1/tmux)
 
+
+### Example Tmux configs
+
+  * [tmux.conf by geohot](https://github.com/geohot/configuration/blob/master/.tmux.conf)
+  * [tmux.conf by sbernheim4](https://github.com/sbernheim4/dotfiles/blob/master/.tmux.conf)
+  
