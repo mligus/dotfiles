@@ -67,3 +67,8 @@ if [ -f '$HOME/bin/google-cloud-sdk/path.zsh.inc' ]; then . '$HOME/bin/google-cl
 
 # The next line enables shell command completion for gcloud.
 if [ -f '$HOME/bin/google-cloud-sdk/completion.zsh.inc' ]; then . '$HOME/bin/google-cloud-sdk/completion.zsh.inc'; fi
+
+# FZF keybindings
+# Uncomment 2 lines below for Manjaro Linux (ArchLinux)
+# source /usr/share/fzf/key-bindings.zsh
+# source /usr/share/fzf/completion.zsh
