@@ -63,7 +63,7 @@ export PATH="$HOME/.cargo/bin:$PATH"
 > automatically.
 > To configure your current shell run `source $HOME/.cargo/env`
 
-5. Install LLVM:
+5. Install LLVM and Clang:
 
 ```
 sudo pacman -S llvm clang
@@ -71,6 +71,19 @@ sudo pacman -S llvm clang
 
 > There ws an issue with `cargo install bat`
 
+6. [Powerline fonts](https://github.com/powerline/fonts):
+
+```
+cd /tmp
+# clone
+git clone https://github.com/powerline/fonts.git --depth=1
+# install
+cd fonts
+./install.sh
+# clean-up a bit
+cd ..
+rm -rf fonts
+````
 
 ## Install tools
 
@@ -92,6 +105,34 @@ curl -fsSL https://raw.githubusercontent.com/mligus/dotfiles/master/tmux/.tmux.c
 ```
 sudo pacman -S neovim python-pynvim
 yay -S neovim-symlinks neovim-drop-in
+```
+
+Configure Neovim:
+
+```
+NVIM_CONFIG=$HOME/.config/nvim/
+mkdir -p $NVIM_CONFIG
+curl -fsSL https://raw.githubusercontent.com/mligus/dotfiles/master/nvim/init.vim -o $NVIM_CONFIG/init.vim
+curl -fsSLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
+            https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+```
+
+```
+pyenv install 3.8.2
+pyenv install 2.7.17
+
+pyenv virtualenv 3.8.2 neovim3
+pyenv virtualenv 2.7.17 neovim2
+
+pyenv activate neovim3
+pip install --upgrade pip
+pip install pynvim
+pyenv deactivate
+
+pyenv activate neovim2
+pip install --upgrade pip
+pip install pynvim
+pyenv deactivate
 ```
 
 Resources:
@@ -118,7 +159,7 @@ cargo install bat
 cargo install ripgrep
 ```
 
-## Shell - ZSH + Oh My ZSH!
+## Shell - ZSH + Oh My ZSH! + Spaceship Prompt
 
 ```
 sudo pacman -S zsh
@@ -127,3 +168,28 @@ chsh -s /usr/bin/zsh
 
 sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 ```
+
+**NOTE:** Log out and log back in after installing to see ZSH applied as default shell
+
+Install [Spaceship Prompt](https://github.com/denysdovhan/spaceship-prompt/blob/master/docs/Troubleshooting.md):
+
+```
+ZSH_CUSTOM=$HOME/.oh-my-zsh/custom
+git clone https://github.com/denysdovhan/spaceship-prompt.git "$ZSH_CUSTOM/themes/spaceship-prompt"
+ln -s "$ZSH_CUSTOM/themes/spaceship-prompt/spaceship.zsh-theme" "$ZSH_CUSTOM/themes/spaceship.zsh-theme"
+```
+
+Download personal pre-populated ZSH config:
+
+```
+curl -fsSL https://raw.githubusercontent.com/mligus/dotfiles/master/zsh/.zshrc -o $HOME/.zshrc
+```
+
+## Python
+
+Install [pyenv](https://github.com/pyenv/pyenv):
+
+```
+curl -fsSL https://github.com/pyenv/pyenv-installer/raw/master/bin/pyenv-installer | bash
+```
+
