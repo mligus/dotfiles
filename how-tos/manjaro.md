@@ -1,22 +1,26 @@
 # Manjaro Linux as Development Workstation
 
 
-## Generate secure SSH key
+## Preparations
 
+Generate a [secure Ed25519 SSH key](https://medium.com/risan/upgrade-your-ssh-key-to-ed25519-c6e8d60d3c54) SSH key:
 
 ```
 ssh-keygen -o -a 100 -t ed25519 -f ~/.ssh/id_ed25519 -C "<comment>"
 ```
 
-> Source: [Upgrade Your SSH Key to Ed25519](https://medium.com/risan/upgrade-your-ssh-key-to-ed25519-c6e8d60d3c54)
-
-
-## Preparations
-
-Update all the system's packages:
+Update all the system and packages to latest version:
 
 ```
 sudo pacman -Syu
+```
+
+[HiDPI support](https://wiki.archlinux.org/index.php/HiDPI) for Xfce (*and others*):
+
+```
+xfconf-query -c xsettings -p /Gdk/WindowScalingFactor -s 2
+xfconf-query -c xfwm4 -p /general/theme -s Default-xhdpi
+reboot
 ```
 
 Set up NTP and Timezone ([source](https://www.linuxsecrets.com/manjaro-wiki/index.php%3Ftitle=System_Time_Setting.html)):
@@ -28,9 +32,8 @@ sudo pacman -S ntp
 sudo timedatectl set-ntp true
 
 timedatectl status
-
-timedatectl list-timezones
 ```
+> You can list available timezones with `timedatectl list-timezones`
 
 Reduce swappiness ([source](https://averagelinuxuser.com/10-things-to-do-after-installing-manjaro/)):
 
@@ -38,7 +41,7 @@ Reduce swappiness ([source](https://averagelinuxuser.com/10-things-to-do-after-i
 sudo nano /etc/sysctl.d/100-manjaro.conf
 ```
 
-Add following content:
+Add following content to that file:
 
 ```
 vm.swappiness=10
@@ -95,14 +98,9 @@ export PATH="$HOME/.cargo/bin:$PATH"
 
 ```
 cd /tmp
-# clone
 git clone https://github.com/powerline/fonts.git --depth=1
-# install
 cd fonts
 ./install.sh
-# clean-up a bit
-cd ..
-rm -rf fonts
 ````
 
 ## Install tools
