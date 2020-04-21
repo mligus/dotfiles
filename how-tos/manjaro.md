@@ -13,7 +13,13 @@ ssh-keygen -o -a 100 -t ed25519 -f ~/.ssh/id_ed25519 -C "<comment>"
 
 ## Preparations
 
-1. Set up NTP and Timezone ([source](https://www.linuxsecrets.com/manjaro-wiki/index.php%3Ftitle=System_Time_Setting.html)):
+Update all the system's packages:
+
+```
+sudo pacman -Syu
+```
+
+Set up NTP and Timezone ([source](https://www.linuxsecrets.com/manjaro-wiki/index.php%3Ftitle=System_Time_Setting.html)):
 
 ```
 timedatectl status
@@ -26,31 +32,52 @@ timedatectl status
 timedatectl list-timezones
 ```
 
-2. Update all the system's packages:
+Reduce swappiness ([source](https://averagelinuxuser.com/10-things-to-do-after-installing-manjaro/)):
 
 ```
-sudo pacman -Syu
+sudo nano /etc/sysctl.d/100-manjaro.conf
 ```
 
-3. Configure [AUR (ArchLinux User Repository)](https://wiki.archlinux.org/index.php/Arch_User_Repository):
+Add following content:
 
 ```
-sudo pacman -S --needed base-devel
-sudo nvim /etc/makepkg.conf
+vm.swappiness=10
 ```
 
-Install helpers:
+Reboot and check:
 
 ```
+reboot
+cat /proc/sys/vm/swappiness
+```
+
+Configure [AUR (ArchLinux User Repository)](https://wiki.archlinux.org/index.php/Arch_User_Repository):
+
+```
+sudo pacman -S --needed base-devel 
+```
+
+Update `MAKEFLAGS` and `CFLAGS` in `/etc/makepkg.conf` if needed (not in my case, default is good).
+
+Install AUR helpers, such as YAY:
+
+```
+cd /tmp
 git clone https://aur.archlinux.org/yay.git
 cd yay/
 makepkg -sri
 ```
 > `yay` shouldn’t be run with `sudo` privilege.
 
-Great article on AUR - https://linuxhint.com/aur_arch_linux/
+> Great article on AUR - https://linuxhint.com/aur_arch_linux/
 
-4. [Rust](https://www.rust-lang.org/):
+Install LLVM and Clang:
+
+```
+sudo pacman -S llvm clang
+```
+
+Install [Rust](https://www.rust-lang.org/):
 
 ```
 curl https://sh.rustup.rs -sSf | sh -s -- -y
@@ -63,15 +90,8 @@ export PATH="$HOME/.cargo/bin:$PATH"
 > automatically.
 > To configure your current shell run `source $HOME/.cargo/env`
 
-5. Install LLVM and Clang:
 
-```
-sudo pacman -S llvm clang
-```
-
-> There ws an issue with `cargo install bat`
-
-6. [Powerline fonts](https://github.com/powerline/fonts):
+[Powerline fonts](https://github.com/powerline/fonts):
 
 ```
 cd /tmp
