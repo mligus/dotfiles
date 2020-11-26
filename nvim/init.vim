@@ -1,19 +1,12 @@
 " Plugins {{{
 call plug#begin('~/.config/nvim/plugged')
 Plug 'scrooloose/nerdtree'
-Plug '/usr/local/opt/fzf'
-Plug 'bling/vim-airline'
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }  " dark powered neo-completion
-Plug 'deoplete-plugins/deoplete-jedi'
-Plug 'python-mode/python-mode', {'branch': 'develop'}
-Plug 'ervandew/supertab'  " use <Tab> for all your insert completion needs
-Plug 'w0rp/ale'  " ALE (Asynchronous Lint Engine) is a plugin for providing linting
-Plug 'mhinz/vim-signify'
 Plug 'scrooloose/nerdcommenter'
-Plug 'rhysd/vim-grammarous'
-Plug 'godlygeek/tabular'
-Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
 Plug 'morhetz/gruvbox'
+Plug 'vim-airline/vim-airline'
+Plug 'bling/vim-bufferline'
+Plug 'python-mode/python-mode', { 'for': 'python', 'branch': 'develop' }
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 call plug#end()
 " }}}
 
@@ -32,17 +25,22 @@ filetype indent on              " load filetype-specific indent files
 let mapleader=','
 set pastetoggle=<leader>v
 if has('mouse')
-	set mouse=a
+  set mouse=a
 endif
 set t_Co=256
-" theme
-set background=dark
-colorscheme gruvbox
+set relativenumber
 " }}}
 
+" Theme {{{
+set background=dark
+colorscheme gruvbox
+let g:gruvbox_contrast_dark="hard"
+" }}}
+
+
 " Python support {{{ 
-let g:python_host_prog = $HOME."/.pyenv/versions/neovim2/bin/python"
-let g:python3_host_prog = $HOME."/.pyenv/versions/neovim3/bin/python"
+let g:python_host_prog = $HOME."/.pyenv/versions/nvim2/bin/python"
+let g:python3_host_prog = $HOME."/.pyenv/versions/nvim3/bin/python"
 " }}}
 
 " Searching {{{
@@ -143,7 +141,7 @@ set foldnestmax=10              " 10 nested fold max
 set foldmethod=indent           " fold based on indent level
 " }}}
 
-" Vim file backup {{{
+" Backup {{{
 set backup
 set backupdir=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
 set backupskip=/tmp/*,/private/tmp/*
@@ -151,7 +149,15 @@ set directory=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
 set writebackup
 " }}}
 
-" Airline plugin {{{
+" NERDCommenter config {{{
+let g:NERDSpaceDelims = 1  " Add spaces after comment delimiters by default
+let g:NERDCompactSexyComs = 1  " Use compact syntax for prettified multi-line comments
+let g:NERDCommentEmptyLines = 1  " Allow commenting and inverting empty lines (useful when commenting a region)
+let g:NERDTrimTrailingWhitespace = 1  " Enable trimming of trailing whitespace when uncommenting
+let g:NERDToggleCheckAllLines = 1  " Enable NERDCommenterToggle to check all selected lines is commented or not 
+" }}}
+
+" Airline config {{{
 set laststatus=2
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tagbar#enabled = 1
@@ -162,57 +168,10 @@ let airline#extensions#ale#error_symbol = '💣:'
 let airline#extensions#ale#warning_symbol = '🚩:'
 " }}}
 
-" Deoplete plugin {{{
-let g:deoplete#enable_at_startup = 1
+" Bufferline config {{{
+let g:bufferline_echo = 0
 " }}}
 
-" Python-Mode plugin {{{
-let g:pymode = 1
-let g:pymode_python = 'python3'
-let g:pymode_options_max_line_length = 119
-let g:pymode_doc = 0
-let g:pymode_lint = 0
-let g:pymode_lint_cwindow = 0  " do not auto-open cwindow (quickfix) if any errors have been found
-let g:pymode_rope = 0
-let g:pymode_trim_whitespaces = 1  " trim unused white spaces on save
+" Python-mode config {{{
+let g:pymode_options_max_line_length = 120
 " }}}
-
-" NERDCommenter plugin {{{
-let g:NERDSpaceDelims = 1  " Add spaces after comment delimiters by default
-let g:NERDCompactSexyComs = 1  " Use compact syntax for prettified multi-line comments
-let g:NERDCommentEmptyLines = 1  " Allow commenting and inverting empty lines (useful when commenting a region)
-let g:NERDTrimTrailingWhitespace = 1  " Enable trimming of trailing whitespace when uncommenting
-let g:NERDToggleCheckAllLines = 1  " Enable NERDCommenterToggle to check all selected lines is commented or not 
-" }}}
-
-" Signify plugin {{{
-let g:signify_vcs_list = [ 'git', 'hg' ]
-" nicer colors
-highlight DiffAdd           cterm=bold ctermbg=none ctermfg=119
-highlight DiffDelete        cterm=bold ctermbg=none ctermfg=167
-highlight DiffChange        cterm=bold ctermbg=none ctermfg=227
-highlight SignifySignAdd    cterm=bold ctermbg=237  ctermfg=119
-highlight SignifySignDelete cterm=bold ctermbg=237  ctermfg=167
-highlight SignifySignChange cterm=bold ctermbg=237  ctermfg=227
-" }}}
-
-" ALE plugin {{{
-map <leader>at :ALEToggle<CR>
-map <leader>al :ALELint<CR>
-let g:ale_lint_on_save = 1
-let g:ale_completion_enabled = 0
-highlight clear ALEErrorSign
-highlight clear ALEWarningSign
-let g:ale_sign_error = '💣'
-let g:ale_sign_warning = '🚩'
-" }}}
-
-" Grammarous plugin {{{
-" autocmd BufWritePost * :GrammarousCheck<CR>
-map <leader>gc :GrammarousCheck<CR>
-let g:grammarous#default_comments_only_filetypes = {
-            \ '*' : 1, 'help' : 0, 'markdown' : 0, 'vim': 0
-            \ }
- " }}}
-
-" vim:foldmethod=marker:foldlevel=0
