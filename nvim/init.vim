@@ -7,6 +7,12 @@ Plug 'vim-airline/vim-airline'
 Plug 'bling/vim-bufferline'
 Plug 'python-mode/python-mode', { 'for': 'python', 'branch': 'develop' }
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'preservim/tagbar'        " install ctags: brew install ctags
+Plug 'valloric/youcompleteme'  " https://github.com/ycm-core/YouCompleteMe
+Plug 'ervandew/supertab'       " https://github.com/ervandew/supertab
+Plug 'ctrlpvim/ctrlp.vim'      " https://github.com/ctrlpvim/ctrlp.vim
+Plug 'mileszs/ack.vim'         " https://github.com/mileszs/ack.vim
+Plug 'mhinz/vim-signify'       " https://github.com/mhinz/vim-signify
 call plug#end()
 " }}}
 
@@ -87,6 +93,8 @@ nnoremap j gj
 nnoremap k gk
 " toggle NERDTree
 nnoremap <leader>t :NERDTreeToggle<CR>
+" toggle Tagbar
+nnoremap <leader>tb :TagbarToggle<CR>
 " previous/next buffer
 noremap <leader>q :bp<CR>
 noremap <leader>w :bn<CR>
@@ -174,4 +182,34 @@ let g:bufferline_echo = 0
 
 " Python-mode config {{{
 let g:pymode_options_max_line_length = 120
+" let g:pymode_rope = 1
 " }}}
+
+" Deoplete config {{{
+" let g:deoplete#enable_at_startup = 1
+" let g:deoplete#sources#jedi#show_docstring = 1
+" }}}
+
+" Jedi-vim config {{{
+autocmd FileType python setlocal completeopt-=preview  " don't show the docstring window to popup during completion
+" }}}
+
+" CtrlP config {{{
+let g:ctrlp_map = '<c-p>'
+let g:ctrlp_cmd = 'CtrlP'
+let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
+" }}}
+
+" Ack.vim config {{{
+if executable('ag')
+  let g:ackprg = 'ag --vimgrep'
+endif
+cnoreabbrev Ack Ack!
+nnoremap <Leader>a :Ack!<Space>
+nnoremap <c-f> :Ack!  %<Left><Left>
+nnoremap <c-f>p :Ack! -S --python
+" }}}
+
+" Extras {{{
+" }}}
+
