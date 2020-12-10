@@ -2,7 +2,6 @@
 call plug#begin('~/.config/nvim/plugged')
 Plug 'scrooloose/nerdtree'
 Plug 'scrooloose/nerdcommenter'
-Plug 'morhetz/gruvbox'
 Plug 'vim-airline/vim-airline'
 Plug 'bling/vim-bufferline'
 Plug 'python-mode/python-mode', { 'for': 'python', 'branch': 'develop' }
@@ -13,6 +12,9 @@ Plug 'ervandew/supertab'       " https://github.com/ervandew/supertab
 Plug 'ctrlpvim/ctrlp.vim'      " https://github.com/ctrlpvim/ctrlp.vim
 Plug 'mileszs/ack.vim'         " https://github.com/mileszs/ack.vim
 Plug 'mhinz/vim-signify'       " https://github.com/mhinz/vim-signify
+" Look for Vim color schemes here: https://vimcolorschemes.com/top
+Plug 'morhetz/gruvbox'
+Plug 'nanotech/jellybeans.vim'
 call plug#end()
 " }}}
 
@@ -39,8 +41,9 @@ set relativenumber
 
 " Theme {{{
 set background=dark
-colorscheme gruvbox
-let g:gruvbox_contrast_dark="hard"
+" colorscheme gruvbox
+" let g:gruvbox_contrast_dark="hard"
+colorscheme jellybeans
 " }}}
 
 
