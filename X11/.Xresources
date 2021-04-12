@@ -1,0 +1,58 @@
+! ------------------------------------------------------------
+! XFT
+! ------------------------------------------------------------
+
+Xft.dpi       : 96
+Xft.antialias : true
+Xft.hinting   : true
+Xft.rgba      : rgb
+Xft.autohint  : false
+Xft.hintstyle : hintfull
+Xft.lcdfilter : lcddefault
+
+! ------------------------------------------------------------
+! Variables
+! ------------------------------------------------------------
+
+#define base1 #141A1F
+#define acr50 #EC5252
+#define acg50 #5DA713
+#define aco50 #C97016
+#define acb50 #3890E9
+#define acv50 #A359ED
+#define acc50 #13AFAF
+#define base3 #6B859E
+#define base2 #1A2128
+#define acr70 #FF9191
+#define acg70 #9ACD68
+#define aco70 #EDA55D
+#define acb70 #7DBEFF
+#define acv70 #CB96FF
+#define acc70 #6ECFCF
+#define base4 #A6B5C5
+
+*.foreground  : base4
+*.background  : base1
+*.cursorColor : base4
+
+*.color0  : base1
+*.color1  : acr50
+*.color2  : acg50
+*.color3  : aco50
+*.color4  : acb50
+*.color5  : acv50
+*.color6  : acc50
+*.color7  : base3
+*.color8  : base2
+*.color9  : acr70
+*.color10 : acg70
+*.color11 : aco70
+*.color12 : acb70
+*.color13 : acv70
+*.color14 : acc70
+*.color15 : base4
+
+! Manpage colors
+*.colorIT : acr70
+*.colorBD : acc70
+*.colorUL : acb70
