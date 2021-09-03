@@ -58,6 +58,7 @@ if which pyenv-virtualenv-init > /dev/null; then eval "$(pyenv virtualenv-init -
 alias vi="nvim"
 alias vim="nvim"
 alias ll="exa -al --group-directories-first --git"
+alias cat="bat"
 alias vimconfig="nvim ~/.config/nvim/init.vim"
 alias zshconfig="nvim ~/.zshrc"
 

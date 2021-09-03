@@ -41,14 +41,13 @@ set relativenumber
 
 " Theme {{{
 set background=dark
-" colorscheme gruvbox
+colorscheme gruvbox
 " let g:gruvbox_contrast_dark="hard"
-colorscheme jellybeans
+" colorscheme jellybeans
 " }}}
 
 
 " Python support {{{ 
-let g:python_host_prog = $HOME."/.pyenv/versions/nvim2/bin/python"
 let g:python3_host_prog = $HOME."/.pyenv/versions/nvim3/bin/python"
 " }}}
 
