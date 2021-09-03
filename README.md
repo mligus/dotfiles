@@ -130,3 +130,12 @@ python3 install.py --clangd-completer --rust-completer
 Links:
   * https://github.com/ycm-core/YouCompleteMe
   * https://github.com/ycm-core/YouCompleteMe#linux-64-bit
+
+
+7. Tmux config:
+
+```bash
+sudo apt install tmux
+
+curl -fsSL https://raw.githubusercontent.com/mligus/dotfiles/main/tmux/.tmux.conf -o $HOME/.tmux.conf
+```

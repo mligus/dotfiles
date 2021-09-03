@@ -27,6 +27,7 @@ git
 extract
 copyfile
 pyenv
+fzf
 )
 
 source $ZSH/oh-my-zsh.sh
