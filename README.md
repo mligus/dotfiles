@@ -152,3 +152,15 @@ curl -fsSL https://raw.githubusercontent.com/mligus/dotfiles/main/tmux/.tmux.con
 ```
 
 8. Install Sublime Text - https://www.sublimetext.com/docs/linux_repositories.html
+
+9. AppImage support
+
+```bash
+sudo add-apt-repository ppa:appimagelauncher-team/stable
+sudo apt update
+sudo apt install appimagelauncher
+```
+
+Links:
+* https://github.com/TheAssassin/AppImageLauncher/wiki/Install-on-Ubuntu-or-Debian
+* https://github.com/TheAssassin/AppImageLauncher/releases/
