@@ -18,35 +18,79 @@ Links:
   * https://medium.com/risan/upgrade-your-ssh-key-to-ed25519-c6e8d60d3c54
 
 
-2. Install software:
+2. Install packages:
 
 ```bash
 sudo apt update
 
-sudo apt install neovim python3-neovim
+sudo apt install -y neovim python3-neovim \
+                    zsh powerline fonts-powerline fzf
+
+sudo apt install gnome-tweaks
+```
+
+3. Global Git config:
+
+```bash
+git config --global user.name "Max Ligus"
+git config --global user.email "max.ligus@gmail.com"
+git config --global core.editor /usr/bin/nvim
+
+curl -fsSL https://raw.githubusercontent.com/mligus/dotfiles/master/git/.gitignore_global -o $HOME/.gitignore_global
+```
 
 
-sudo apt install zsh
+4. Update alternative editors:
+
+```bash
+sudo update-alternatives --install /usr/bin/vi vi /usr/bin/nvim 60
+sudo update-alternatives --skip-auto --config vi
+sudo update-alternatives --install /usr/bin/vim vim /usr/bin/nvim 60
+sudo update-alternatives --skip-auto --config vim
+sudo update-alternatives --install /usr/bin/editor editor /usr/bin/nvim 60
+sudo update-alternatives --skip-auto --config editor
+```
+
+
+3. Install [Oh-My-Zsh](https://ohmyz.sh/#install):
+
+```bash
 sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
 git clone https://github.com/spaceship-prompt/spaceship-prompt.git "$ZSH_CUSTOM/themes/spaceship-prompt" --depth=1
 ln -s "$ZSH_CUSTOM/themes/spaceship-prompt/spaceship.zsh-theme" "$ZSH_CUSTOM/themes/spaceship.zsh-theme"
 
-sudo apt install powerline fonts-powerline
-# -> set font to Meslo in for Terminal app annd Sublime Text editor
+curl -fsSL https://raw.githubusercontent.com/mligus/dotfiles/main/zsh/.zshrc -o $HOME/.zshrc
 
+curl -fsSL https://raw.githubusercontent.com/mligus/dotfiles/main/other/.profile -o $HOME/.profile
+```
+
+Add a new Profile to the Terminal app and set font to [Meslo](https://github.com/powerline/fonts/blob/master/Meslo%20Dotted/Meslo%20LG%20M%20DZ%20Regular%20for%20Powerline.ttf). Do the same for Sublime Text editor.
+
+
+4. Install Rust and few more tools:
+
+```bash
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 source $HOME/.cargo/env
 
 cargo install exa
 cargo install bat
 cargo install ripgrep
+```
 
-sudo apt install fzf
 
-curl -fsSL https://raw.githubusercontent.com/mligus/dotfiles/main/zsh/.zshrc -o $HOME/.zshrc
+5.  Install Python, pyenv and other related stuff:
 
+```bash
+sudo apt install make build-essential libssl-dev zlib1g-dev \
+         libbz2-dev libreadline-dev libsqlite3-dev wget curl llvm \
+         libncursesw5-dev xz-utils tk-dev libxml2-dev libxmlsec1-dev libffi-dev liblzma-dev
+```
+
+```bash
 curl https://pyenv.run | bash
+pyenv install 3.9.7
 ```
 
 Links:
@@ -64,46 +108,11 @@ Links:
   * https://github.com/pyenv/pyenv-installer
 
 
-3. Global Git config:
-
-```bash
-git config --global user.name "Max Ligus"
-git config --global user.email "max.ligus@gmail.com"
-git config --global core.editor /usr/bin/nvim
-
-curl -fsSL https://raw.githubusercontent.com/mligus/dotfiles/master/git/.gitignore_global -o $HOME/.gitignore_global
-```
-
-4. Update alternative editors:
-
-```bash
-sudo update-alternatives --install /usr/bin/vi vi /usr/bin/nvim 60
-sudo update-alternatives --skip-auto --config vi
-sudo update-alternatives --install /usr/bin/vim vim /usr/bin/nvim 60
-sudo update-alternatives --skip-auto --config vim
-sudo update-alternatives --install /usr/bin/editor editor /usr/bin/nvim 60
-sudo update-alternatives --skip-auto --config editor
-```
-
-5. Install Python(s):
-
-Prerequisites:
-
-```bash
-sudo apt update
-sudo apt install make build-essential libssl-dev zlib1g-dev \
-         libbz2-dev libreadline-dev libsqlite3-dev wget curl llvm \
-         libncursesw5-dev xz-utils tk-dev libxml2-dev libxmlsec1-dev libffi-dev liblzma-dev
-```
-
-```bash
-pyenv install 3.9.7
-```
-
 6. NeoVim config:
 
-
 ```bash
+sudo apt install build-essential cmake python3-dev
+
 mkdir -p $HOME/.config/nvim/
 curl -fsSL https://raw.githubusercontent.com/mligus/dotfiles/master/nvim/init.vim -o $HOME/.config/nvim/init.vim
 
@@ -119,10 +128,12 @@ pyenv virtualenv 3.9.7 nvim3
 pyenv activate nvim3
 pip install --upgrade pip
 pip install neovim
+pyenv deactivate
 
 
-sudo apt install build-essential cmake python3-dev
+Install (build) YouCompleteMe:
 
+```bash
 cd .config/nvim/plugged/youcompleteme
 python3 install.py --clangd-completer --rust-completer
 ```
@@ -139,3 +150,5 @@ sudo apt install tmux
 
 curl -fsSL https://raw.githubusercontent.com/mligus/dotfiles/main/tmux/.tmux.conf -o $HOME/.tmux.conf
 ```
+
+8. Install Sublime Text - https://www.sublimetext.com/docs/linux_repositories.html

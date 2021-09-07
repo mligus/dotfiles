@@ -21,7 +21,8 @@ call plug#end()
 " Common {{{
 syntax enable                   " enable syntax highlighting
 set backspace=indent,eol,start  " backspace over indent, end of line and start of insertion
-set clipboard=unnamed           " allow normal work with system buffer
+set clipboard=unnamedplus       " allow normal work with system buffer
+set paste                       " 
 set ttyfast                     " fast redraw
 set number                      " show line numbers
 set showcmd                     " show command in bottom bar (used with powerline)
@@ -43,7 +44,7 @@ set relativenumber
 set background=dark
 colorscheme gruvbox
 " let g:gruvbox_contrast_dark="hard"
-" colorscheme jellybeans
+colorscheme jellybeans
 " }}}
 
 
