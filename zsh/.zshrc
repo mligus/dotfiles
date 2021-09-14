@@ -35,9 +35,9 @@ source $ZSH/oh-my-zsh.sh
 # User configuration
 
 # You may need to manually set your language environment
-export LANG=en_CA.UTF-8
-export LC_ALL=en_CA.UTF-8
-export LC_CTYPE=en_CA.UTF-8
+export LANG=en_US.UTF-8
+export LC_ALL=en_US.UTF-8
+export LC_CTYPE=en_US.UTF-8
 
 # Init pyenv
 eval "$(pyenv init -)"

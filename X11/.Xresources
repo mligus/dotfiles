@@ -2,7 +2,7 @@
 ! XFT
 ! ------------------------------------------------------------
 
-Xft.dpi       : 120
+Xft.dpi       : 100
 Xft.antialias : true
 Xft.hinting   : true
 Xft.rgba      : rgb
@@ -59,9 +59,7 @@ Xft.lcdfilter : lcddefault
 
 !! URxvt Appearance
 URxvt.iso14755: false
-!URxvt*font: xft:Fira Mono for Powerline:size=12
-!URxvt*font: xft:Meslo LG M for Powerline:size=12
-URxvt*font: xft:DejaVu Sans Mono for Powerline:size=12:antialias=true:hinting=true
+URxvt*font: xft:DejaVu Sans Mono for Powerline:size=14:antialias=true:hinting=true
 URxvt.letterSpace: -1
 URxvt.lineSpace: 0
 URxvt.depth: 32
@@ -73,8 +71,8 @@ URxvt.scrollBar: false
 URxvt.scrollBar_right: false
 URxvt.urgentOnBell: true
 !! Copy & Paste, etc.
-URxvt.copyCommand: xclip -i -selection clipboard
-URxvt.pasteCommand: xclip -o -selection clipboard
+!URxvt.copyCommand: xclip -i -selection clipboard
+!URxvt.pasteCommand: xclip -o -selection clipboard
 URxvt.keysym.M-c: perl:clipboard:copy
 URxvt.keysym.M-v: perl:clipboard:paste
 URxvt.urlLauncher: firefox
