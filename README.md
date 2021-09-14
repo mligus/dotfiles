@@ -129,7 +129,7 @@ pyenv activate nvim3
 pip install --upgrade pip
 pip install neovim
 pyenv deactivate
-
+```
 
 Install (build) YouCompleteMe:
 
