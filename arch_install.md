@@ -570,12 +570,15 @@ cargo install ripgrep
 curl https://pyenv.run | bash
 ```
 
+```bash
+pyenv install 3.9.7
+```
 
 ### NeoVim config
 
 ```bash
 mkdir -p $HOME/.config/nvim/
-curl -fsSL https://raw.githubusercontent.com/mligus/dotfiles/master/nvim/init.vim -o $HOME/.config/nvim/init.vim
+curl -fsSL https://raw.githubusercontent.com/mligus/dotfiles/main/nvim/init.vim -o $HOME/.config/nvim/init.vim
 
 curl -fsSLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
             https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
@@ -601,6 +604,76 @@ python3 install.py --clangd-completer --rust-completer
 ```
 
 
+### Sublime text, Nextcloud, etc.
+
+Install Sublime Text 4:
+
 ```bash
-pyenv install 3.9.7
+curl -O https://download.sublimetext.com/sublimehq-pub.gpg && sudo pacman-key --add sublimehq-pub.gpg && sudo pacman-key --lsign-key 8A8F901A && rm sublimehq-pub.gpg
+echo -e "\n[sublime-text]\nServer = https://download.sublimetext.com/arch/stable/x86_64" | sudo tee -a /etc/pacman.conf
+
+sudo pacman -Syu sublime-text
+```
+
+Install NextCloud client:
+
+```bash
+sudo pacman -S nextcloud-client
+```
+
+Extra config for Firefox:
+
+  * open `about:config`, set `layout.css.devPixelsPerPx` to `1.3` (works good for Framework's laptop screen)
+
+
+Install Tmux and download config:
+
+```bash
+sudo pacman -S tmux
+
+curl -fsSL https://raw.githubusercontent.com/mligus/dotfiles/main/tmux/.tmux.conf -o $HOME/.tmux.conf
+```
+
+## Arch Linux with Framework Laptop
+
+Sources: 
+  * [Framework Laptop](https://wiki.archlinux.org/title/Framework_Laptop)
+  * [Arch Linux on the Framework Laptop](https://community.frame.work/t/arch-linux-on-the-framework-laptop/3843/3)
+
+The inefficient `s2idle` suspend variant is pre-selected as default. You should select the much more efficient `deep` variant:
+
+```bash
+cat /sys/power/mem_sleep 
+[s2idle] deep
+```
+
+Change to `deep`:
+
+```bash
+sudo echo deep | sudo tee /sys/power/mem_sleep
+cat /sys/power/mem_sleep 
+s2idle [deep]
+```
+
+To make this permanent, add `mem_sleep_default=deep` to your [kernel parameters](https://wiki.archlinux.org/title/Kernel_parameters).
+
+
+### Update to Kernel Parameters
+
+Edit `/etc/default/grub` and append your kernel options between the quotes in the `GRUB_CMDLINE_LINUX_DEFAULT` line:
+
+```bash
+sudo vim /etc/default/grub
+```
+
+Content:
+
+```
+GRUB_CMDLINE_LINUX_DEFAULT="loglevel=3 quiet mem_sleep_default=deep"
+```
+
+And then automatically re-generate the `grub.cfg` file with:
+
+```bash
+sudo grub-mkconfig -o /boot/grub/grub.cfg
 ```

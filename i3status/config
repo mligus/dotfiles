@@ -8,8 +8,11 @@
 
 general {
         # output_format = "dzen2"
+        output_format = "i3bar"
         colors = true
         interval = 5
+        color_good = "#3e7c3e"
+        color_bad = "#a03333"
 }
 
 # order += "ipv6"
@@ -17,54 +20,64 @@ order += "wireless _first_"
 order += "ethernet _first_"
 order += "battery all"
 order += "cpu_temperature 0"
-order += "disk /"
 order += "load"
 order += "memory"
+order += "disk /"
+order += "volume master"
 order += "tztime local"
 
 wireless _first_ {
-        format_up = "W: (%quality at %essid) %ip"
-        format_down = "W: down"
+        format_up = "[WiFi:%quality]"
+        format_down = "[W: down]"
 }
 
 ethernet _first_ {
-        format_up = "E: %ip (%speed)"
-        format_down = "E: down"
+        format_up = "[Eth: %speed"
+        format_down = "[Eth: X]"
 }
 
 battery all {
         # format = "%status %percentage %remaining %emptytime"
-        format = "%status %percentage %remaining"
+        format = "[%status: %percentage (%remaining)]"
         format_down = "No battery"
-        status_chr = "⚡ CHR"
+        status_chr = "Charge"
         # status_bat = "🔋 BAT"
-        status_bat = "BAT"
-        status_unk = "? UNK"
-        status_full = "☻ FULL"
+        status_bat = "Bat"
+        status_unk = "Uknown"
+        status_full = "Full"
         path = "/sys/class/power_supply/BAT%d/uevent"
         low_threshold = 10
+        integer_battery_capacity = true
 }
 
 
 cpu_temperature 0 {
-        format = "T: %degrees °C"
+        format = "[Temp: %degrees°C]"
         path = "/sys/devices/platform/coretemp.0/hwmon/hwmon5/temp1_input"
 }
 
 disk "/" {
-        format = "%avail"
+        format = "[Disk: %avail]"
 }
 
 load {
-        format = "%1min"
+        format = "[Cpu: %1min]"
 }
 
 memory {
-        format = "%used | %available"
+        format = "[RAM:%used / %available]"
         threshold_degraded = "1G"
         format_degraded = "MEMORY < %available"
 }
 
 tztime local {
-        format = "%Y-%m-%d %H:%M:%S"
+        format = "[%Y-%m-%d %H:%M:%S]"
+}
+
+volume master {
+        format = "[♪: %volume]"
+        format_muted = "[♪: muted (%volume)]"
+        device = "default"
+        mixer = "Master"
+        mixer_idx = 0
 }

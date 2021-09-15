@@ -2,7 +2,7 @@
 ! XFT
 ! ------------------------------------------------------------
 
-Xft.dpi       : 100
+Xft.dpi       : 120
 Xft.antialias : true
 Xft.hinting   : true
 Xft.rgba      : rgb
@@ -31,31 +31,68 @@ Xft.lcdfilter : lcddefault
 #define acc70 #6ECFCF
 #define base4 #A6B5C5
 
-*.foreground  : base4
-*.background  : base1
-*.cursorColor : base4
+! special
+*.foreground:   #c5c8c6
+*.background:   #1d1f21
+*.cursorColor:  #c5c8c6
 
-*.color0  : base1
-*.color1  : acr50
-*.color2  : acg50
-*.color3  : aco50
-*.color4  : acb50
-*.color5  : acv50
-*.color6  : acc50
-*.color7  : base3
-*.color8  : base2
-*.color9  : acr70
-*.color10 : acg70
-*.color11 : aco70
-*.color12 : acb70
-*.color13 : acv70
-*.color14 : acc70
-*.color15 : base4
+! black
+*.color0:       #282a2e
+*.color8:       #373b41
 
-! Manpage colors
-*.colorIT : acr70
-*.colorBD : acc70
-*.colorUL : acb70
+! red
+*.color1:       #a54242
+*.color9:       #cc6666
+
+! green
+*.color2:       #8c9440
+*.color10:      #b5bd68
+
+! yellow
+*.color3:       #de935f
+*.color11:      #f0c674
+
+! blue
+*.color4:       #5f819d
+*.color12:      #81a2be
+
+! magenta
+*.color5:       #85678f
+*.color13:      #b294bb
+
+! cyan
+*.color6:       #5e8d87
+*.color14:      #8abeb7
+
+! white
+*.color7:       #707880
+*.color15:      #c5c8c6
+
+! *.foreground  : base4
+! *.background  : base1
+! *.cursorColor : base4
+!
+! *.color0  : base1
+! *.color1  : acr50
+! *.color2  : acg50
+! *.color3  : aco50
+! *.color4  : acb50
+! *.color5  : acv50
+! *.color6  : acc50
+! *.color7  : base3
+! *.color8  : base2
+! *.color9  : acr70
+! *.color10 : acg70
+! *.color11 : aco70
+! *.color12 : acb70
+! *.color13 : acv70
+! *.color14 : acc70
+! *.color15 : base4
+!
+! ! Manpage colors
+! *.colorIT : acr70
+! *.colorBD : acc70
+! *.colorUL : acb70
 
 !! URxvt Appearance
 URxvt.iso14755: false
