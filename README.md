@@ -3,7 +3,26 @@
 This repository is a collection of configs and scripts I use (or used) to run my development environments.
 
 
-## First Steps
+## Links
+
+  * https://medium.com/risan/upgrade-your-ssh-key-to-ed25519-c6e8d60d3c54
+  * https://github.com/ycm-core/YouCompleteMe
+  * https://github.com/ycm-core/YouCompleteMe#linux-64-bit
+  * https://github.com/neovim/neovim/wiki/Installing-Neovim
+  * https://ohmyz.sh/#install
+  * https://github.com/spaceship-prompt/spaceship-prompt
+  * https://github.com/spaceship-prompt/spaceship-prompt#oh-my-zsh
+  * https://github.com/powerline/fonts
+  * https://github.com/powerline/fonts/blob/master/Meslo%20Dotted/Meslo%20LG%20M%20DZ%20Regular%20for%20Powerline.ttf
+  * https://www.rust-lang.org/learn/get-started
+  * https://github.com/junegunn/fzf#installation
+  * https://github.com/sharkdp/bat
+  * https://github.com/BurntSushi/ripgrep
+  * https://the.exa.website/
+  * https://github.com/pyenv/pyenv-installer
+
+
+## Post-Installation Steps
 
 > Following steps were last ran on PopOS! 21.04
 
@@ -13,9 +32,6 @@ This repository is a collection of configs and scripts I use (or used) to run my
 ```bash
 ssh-keygen -o -a 100 -t ed25519 -f ~/.ssh/id_ed25519 -C "<login>@<hostname>"
 ```
-
-Links:
-  * https://medium.com/risan/upgrade-your-ssh-key-to-ed25519-c6e8d60d3c54
 
 
 2. Udate system and install required packages:
@@ -62,13 +78,10 @@ sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.
 
 git clone https://github.com/spaceship-prompt/spaceship-prompt.git "$ZSH_CUSTOM/themes/spaceship-prompt" --depth=1
 ln -s "$ZSH_CUSTOM/themes/spaceship-prompt/spaceship.zsh-theme" "$ZSH_CUSTOM/themes/spaceship.zsh-theme"
-
-curl -fsSL https://raw.githubusercontent.com/mligus/dotfiles/main/zsh/.zshrc -o $HOME/.zshrc
-
-curl -fsSL https://raw.githubusercontent.com/mligus/dotfiles/main/other/.profile -o $HOME/.profile
 ```
 
-Add a new Profile to the Terminal app and set font to [Meslo](https://github.com/powerline/fonts/blob/master/Meslo%20Dotted/Meslo%20LG%20M%20DZ%20Regular%20for%20Powerline.ttf). Do the same for Sublime Text editor.
+> Add a new Profile to the Terminal app and set font to [Meslo](https://github.com/powerline/fonts/blob/master/Meslo%20Dotted/Meslo%20LG%20M%20DZ%20Regular%20for%20Powerline.ttf). 
+> Do the same for Sublime Text editor.
 
 
 4. Install Rust and few more tools:
@@ -90,19 +103,14 @@ curl https://pyenv.run | bash
 pyenv install 3.9.7
 ```
 
-Links:
-  * https://github.com/neovim/neovim/wiki/Installing-Neovim
-  * https://ohmyz.sh/#install
-  * https://github.com/spaceship-prompt/spaceship-prompt
-  * https://github.com/spaceship-prompt/spaceship-prompt#oh-my-zsh
-  * https://github.com/powerline/fonts
-  * https://github.com/powerline/fonts/blob/master/Meslo%20Dotted/Meslo%20LG%20M%20DZ%20Regular%20for%20Powerline.ttf
-  * https://www.rust-lang.org/learn/get-started
-  * https://github.com/junegunn/fzf#installation
-  * https://github.com/sharkdp/bat
-  * https://github.com/BurntSushi/ripgrep
-  * https://the.exa.website/
-  * https://github.com/pyenv/pyenv-installer
+6. Copy config from GitHub:
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/mligus/dotfiles/main/zsh/.zshrc -o $HOME/.zshrc
+
+curl -fsSL https://raw.githubusercontent.com/mligus/dotfiles/main/other/.profile -o $HOME/.profile
+cp $HOME/.profile $HOME/.zprofile
+```
 
 
 6. NeoVim config:
@@ -116,10 +124,7 @@ curl -fsSL https://raw.githubusercontent.com/mligus/dotfiles/master/nvim/init.vi
 curl -fsSLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
             https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
-sed -i 's/^colorscheme/" colorscheme/g' $HOME/.config/nvim/init.vim
 vim +PlugInstall +qa
-sed -i 's/^" colorscheme/colorscheme/g' $HOME/.config/nvim/init.vim
-
 
 pyenv virtualenv 3.9.7 nvim3
 pyenv activate nvim3
@@ -134,10 +139,6 @@ Install (build) YouCompleteMe:
 cd .config/nvim/plugged/youcompleteme
 python3 install.py --clangd-completer --rust-completer
 ```
-
-Links:
-  * https://github.com/ycm-core/YouCompleteMe
-  * https://github.com/ycm-core/YouCompleteMe#linux-64-bit
 
 
 7. Tmux config:
