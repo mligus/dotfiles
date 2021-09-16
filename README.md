@@ -20,6 +20,7 @@ This repository is a collection of configs and scripts I use (or used) to run my
   * https://github.com/BurntSushi/ripgrep
   * https://the.exa.website/
   * https://github.com/pyenv/pyenv-installer
+  * https://github.com/TheAssassin/AppImageLauncher/wiki/Install-on-Ubuntu-or-Debian
 
 
 ## Post-Installation Steps
@@ -27,14 +28,14 @@ This repository is a collection of configs and scripts I use (or used) to run my
 > Following steps were last ran on PopOS! 21.04
 
 
-1. Generate good SSH key:
+### Generate good SSH key:
 
 ```bash
 ssh-keygen -o -a 100 -t ed25519 -f ~/.ssh/id_ed25519 -C "<login>@<hostname>"
 ```
 
 
-2. Udate system and install required packages:
+### Udate system and install required packages:
 
 ```bash
 sudo apt update && sudo apt upgrade
@@ -48,7 +49,7 @@ sudo apt install -y neovim python3-neovim \
                     libncursesw5-dev xz-utils tk-dev libxml2-dev libxmlsec1-dev libffi-dev liblzma-dev 
 ```
 
-3. Global Git config:
+### Global Git config:
 
 ```bash
 git config --global user.name "Max Ligus"
@@ -59,7 +60,7 @@ curl -fsSL https://raw.githubusercontent.com/mligus/dotfiles/master/git/.gitigno
 ```
 
 
-4. Update alternative editors:
+### Update alternative editors:
 
 ```bash
 sudo update-alternatives --install /usr/bin/vi vi /usr/bin/nvim 60
@@ -71,7 +72,7 @@ sudo update-alternatives --skip-auto --config editor
 ```
 
 
-3. Install [Oh-My-Zsh](https://ohmyz.sh/#install):
+### Install [Oh-My-Zsh](https://ohmyz.sh/#install):
 
 ```bash
 sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
@@ -84,7 +85,7 @@ ln -s "$ZSH_CUSTOM/themes/spaceship-prompt/spaceship.zsh-theme" "$ZSH_CUSTOM/the
 > Do the same for Sublime Text editor.
 
 
-4. Install Rust and few more tools:
+### Install Rust and few more tools:
 
 ```bash
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
@@ -96,14 +97,14 @@ cargo install ripgrep
 ```
 
 
-5.  Install Python, pyenv and other related stuff:
+### Install Python, pyenv and other related stuff:
 
 ```bash
 curl https://pyenv.run | bash
 pyenv install 3.9.7
 ```
 
-6. Copy config from GitHub:
+### Copy config from GitHub:
 
 ```bash
 curl -fsSL https://raw.githubusercontent.com/mligus/dotfiles/main/zsh/.zshrc -o $HOME/.zshrc
@@ -113,7 +114,7 @@ cp $HOME/.profile $HOME/.zprofile
 ```
 
 
-6. NeoVim config:
+### NeoVim config
 
 ```bash
 sudo apt install build-essential cmake python3-dev
@@ -141,10 +142,24 @@ python3 install.py --clangd-completer --rust-completer
 ```
 
 
-7. Tmux config:
+### Tmux config
 
 ```bash
 curl -fsSL https://raw.githubusercontent.com/mligus/dotfiles/main/tmux/.tmux.conf -o $HOME/.tmux.conf
 ```
 
-8. Install Sublime Text - https://www.sublimetext.com/docs/linux_repositories.html
+### Install AppImageLauncher
+
+```bash
+sudo add-apt-repository ppa:appimagelauncher-team/stable
+sudo apt update
+sudo apt install appimagelauncher
+```
+
+
+## Extras
+
+  * Install Sublime Text - https://www.sublimetext.com/docs/linux_repositories.html
+  * Install Nextcloud Client - https://nextcloud.com/install/
+  * Install Todoist app - https://todoist.com/downloads
+  * Install Joplin - https://joplinapp.org/help/#desktop-applications
