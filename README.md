@@ -18,15 +18,18 @@ Links:
   * https://medium.com/risan/upgrade-your-ssh-key-to-ed25519-c6e8d60d3c54
 
 
-2. Install packages:
+2. Udate system and install required packages:
 
 ```bash
-sudo apt update
+sudo apt update && sudo apt upgrade
+```
 
+```bash
 sudo apt install -y neovim python3-neovim \
-                    zsh powerline fonts-powerline fzf
-
-sudo apt install gnome-tweaks
+                    zsh powerline fonts-powerline fzf tmux zsh \
+                    git curl make build-essential libssl-dev zlib1g-dev \
+                    libbz2-dev libreadline-dev libsqlite3-dev wget curl llvm \
+                    libncursesw5-dev xz-utils tk-dev libxml2-dev libxmlsec1-dev libffi-dev liblzma-dev 
 ```
 
 3. Global Git config:
@@ -81,12 +84,6 @@ cargo install ripgrep
 
 
 5.  Install Python, pyenv and other related stuff:
-
-```bash
-sudo apt install make build-essential libssl-dev zlib1g-dev \
-         libbz2-dev libreadline-dev libsqlite3-dev wget curl llvm \
-         libncursesw5-dev xz-utils tk-dev libxml2-dev libxmlsec1-dev libffi-dev liblzma-dev
-```
 
 ```bash
 curl https://pyenv.run | bash
@@ -146,21 +143,7 @@ Links:
 7. Tmux config:
 
 ```bash
-sudo apt install tmux
-
 curl -fsSL https://raw.githubusercontent.com/mligus/dotfiles/main/tmux/.tmux.conf -o $HOME/.tmux.conf
 ```
 
 8. Install Sublime Text - https://www.sublimetext.com/docs/linux_repositories.html
-
-9. AppImage support
-
-```bash
-sudo add-apt-repository ppa:appimagelauncher-team/stable
-sudo apt update
-sudo apt install appimagelauncher
-```
-
-Links:
-* https://github.com/TheAssassin/AppImageLauncher/wiki/Install-on-Ubuntu-or-Debian
-* https://github.com/TheAssassin/AppImageLauncher/releases/
