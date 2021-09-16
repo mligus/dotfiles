@@ -634,6 +634,26 @@ sudo pacman -S tmux
 curl -fsSL https://raw.githubusercontent.com/mligus/dotfiles/main/tmux/.tmux.conf -o $HOME/.tmux.conf
 ```
 
+Install Joplin CLI:
+
+```bash
+pacman -S nodejs npm
+```
+
+```bash
+NPM_CONFIG_PREFIX=~/.joplin-bin npm install -g joplin
+sudo ln -s ~/.joplin-bin/bin/joplin /usr/bin/joplin
+```
+
+Configure Nextcloud synchronisation for Joplin:
+
+```bash
+joplin
+```
+
+Follow instruction from here [Nextcloud synchronisation](https://joplinapp.org/terminal/#nextcloud-synchronisation)
+
+
 ## Arch Linux with Framework Laptop
 
 Sources: 
@@ -677,3 +697,71 @@ And then automatically re-generate the `grub.cfg` file with:
 ```bash
 sudo grub-mkconfig -o /boot/grub/grub.cfg
 ```
+
+
+## Multiple display set up
+
+Links:
+
+  * https://github.com/alex-courtis/xlayoutdisplay
+  * https://wiki.archlinux.org/title/Xrandr
+
+Install `xlayoutdisplay`:
+
+```bash
+yay -S xlayoutdisplay
+```
+
+List outputs:
+
+```bash
+xrandr -q
+```
+
+Copy config from GitHub:
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/mligus/dotfiles/main/X11/.xlayoutdisplay -o $HOME/.xlayoutdisplay
+```
+
+Run:
+
+```bash
+xlayoutdisplay
+```
+
+
+## Bluetooth
+
+Links:
+
+  * [Bluetooth](https://wiki.archlinux.org/title/Bluetooth)
+  * [Kernel module](https://wiki.archlinux.org/title/Kernel_module#Obtaining_information)
+  * [Blueman](https://wiki.archlinux.org/title/Blueman)
+
+Install required packages:
+
+```bash
+sudo pacman -S bluez bluez-utils blueman
+```
+
+Check if Bluetooth module is loaded:
+
+```bash
+lsmod
+modinfo btusb
+```
+
+Enable service:
+
+```bash
+sudo systemctl --now enable bluetooth.service
+```
+
+Autostart Blueman (should be present right after package installation):
+
+```bash
+ll /etc/xdg/autostart/blueman.desktop
+```
+
+

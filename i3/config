@@ -189,7 +189,7 @@ client.background       #FFFFFF
 bar {
   colors {
     background #000000
-    statusline #9F9F9F
+    statusline #6D6D6D
     separator  #3E3E3E
 
     focused_workspace  #B67B22 #684A1E #FFFFFF
@@ -212,3 +212,7 @@ bindsym $mod+d exec --no-startup-id dmenu_run -fn "DejaVu Sans Mono for Powerlin
 
 # Hiding borders adjacent to the screen edges
 hide_edge_borders both
+
+
+# Bind to run xlayoutdisply
+bindsym $mod+Shift+d exec --no-startup-id xlayoutdisplay -q
