@@ -163,3 +163,4 @@ sudo apt install appimagelauncher
   * Install Nextcloud Client - https://nextcloud.com/install/
   * Install Todoist app - https://todoist.com/downloads
   * Install Joplin - https://joplinapp.org/help/#desktop-applications
+  * Install Material Shell (tiling WM) - https://github.com/material-shell/material-shell
