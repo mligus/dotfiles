@@ -2,6 +2,11 @@
 # Start slstatus toll from suckless.org
 # slstatus &
 
+# Init Gnome Keyring
+eval $(/usr/bin/gnome-keyring-daemon --start --components=pkcs11,secrets,ssh) &
+# eval $(gnome-keyring-daemon --start) &
+export SSH_AUTH_SOCK &
+
 # Start xlayoutdisplay (display manager)
 # xlayoutdisplay -q &
 
@@ -19,7 +24,10 @@ unclutter -idle 3 &
 # exec dwm > ~/.dwm.log
 
 # Start bluetooth applet
-blueman-applet &
+# blueman-applet &
+
+# Nextcloud Client
+nextcloud &
 
 # Start i3
 exec i3

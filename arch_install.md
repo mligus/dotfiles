@@ -604,6 +604,26 @@ python3 install.py --clangd-completer --rust-completer
 ```
 
 
+### Keyring
+
+
+Install Gnome Keyring
+
+```bash
+sudo pacman -S gnome-keyring libgnome-keyring
+```
+
+According to [Gnome/Keyring](https://wiki.archlinux.org/title/GNOME/Keyring#PAM_method) update `/etc/pam.d/login` file:
+
+```
+...
+auth       optional     pam_gnome_keyring.so
+...
+session    optional     pam_gnome_keyring.so auto_start
+...
+```
+
+
 ### Sublime text, Nextcloud, etc.
 
 Install Sublime Text 4:
@@ -626,13 +646,23 @@ Extra config for Firefox:
   * open `about:config`, set `layout.css.devPixelsPerPx` to `1.3` (works good for Framework's laptop screen)
 
 
-Install Tmux and download config:
+Install Tmux, [tmuxp](https://github.com/tmux-python/tmuxp) and download config:
 
 ```bash
-sudo pacman -S tmux
+sudo pacman -S tmux tmuxp
 
 curl -fsSL https://raw.githubusercontent.com/mligus/dotfiles/main/tmux/.tmux.conf -o $HOME/.tmux.conf
 ```
+
+Tmuxp config files:
+
+```bash
+mkdir -p .config/tmuxp/
+
+
+curl -fsSL https://raw.githubusercontent.com/mligus/dotfiles/main/tmuxp/test.yaml -o $HOME/.config/tmuxp/test.yaml
+```
+
 
 Install Joplin CLI:
 
@@ -763,5 +793,3 @@ Autostart Blueman (should be present right after package installation):
 ```bash
 ll /etc/xdg/autostart/blueman.desktop
 ```
-
-
