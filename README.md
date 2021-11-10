@@ -37,6 +37,12 @@ ssh-keygen -o -a 100 -t ed25519 -f ~/.ssh/id_ed25519 -C "<login>@<hostname>"
 
 ### Udate system and install required packages:
 
+Add NeoVim PPA to install latest version:
+
+```bash
+sudo add-apt-repository ppa:neovim-ppa/stable
+```
+
 ```bash
 sudo apt update && sudo apt upgrade
 ```
@@ -55,7 +61,11 @@ sudo apt install -y neovim python3-neovim \
 git config --global user.name "Max Ligus"
 git config --global user.email "max.ligus@gmail.com"
 git config --global core.editor /usr/bin/nvim
+```
 
+Download `.gitignore` from GitHub repo:
+
+```bash
 curl -fsSL https://raw.githubusercontent.com/mligus/dotfiles/master/git/.gitignore_global -o $HOME/.gitignore_global
 ```
 
@@ -74,9 +84,15 @@ sudo update-alternatives --skip-auto --config editor
 
 ### Install [Oh-My-Zsh](https://ohmyz.sh/#install):
 
+Install OnMyZsh:
+
 ```bash
 sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+```
 
+And Spaceship theme:
+
+```bash
 git clone https://github.com/spaceship-prompt/spaceship-prompt.git "$ZSH_CUSTOM/themes/spaceship-prompt" --depth=1
 ln -s "$ZSH_CUSTOM/themes/spaceship-prompt/spaceship.zsh-theme" "$ZSH_CUSTOM/themes/spaceship.zsh-theme"
 ```
