@@ -52,7 +52,8 @@ sudo apt install -y neovim python3-neovim \
                     zsh powerline fonts-powerline fzf tmux zsh \
                     git curl make build-essential libssl-dev zlib1g-dev \
                     libbz2-dev libreadline-dev libsqlite3-dev wget curl llvm \
-                    libncursesw5-dev xz-utils tk-dev libxml2-dev libxmlsec1-dev libffi-dev liblzma-dev 
+                    libncursesw5-dev xz-utils tk-dev libxml2-dev libxmlsec1-dev libffi-dev liblzma-dev \
+		    cmake python3-dev
 ```
 
 ### Global Git config:
@@ -97,28 +98,40 @@ git clone https://github.com/spaceship-prompt/spaceship-prompt.git "$ZSH_CUSTOM/
 ln -s "$ZSH_CUSTOM/themes/spaceship-prompt/spaceship.zsh-theme" "$ZSH_CUSTOM/themes/spaceship.zsh-theme"
 ```
 
-> Add a new Profile to the Terminal app and set font to [Meslo](https://github.com/powerline/fonts/blob/master/Meslo%20Dotted/Meslo%20LG%20M%20DZ%20Regular%20for%20Powerline.ttf). 
-> Do the same for Sublime Text editor.
-
 Copy configuration files from GitHub:
 ```bash
 curl -fsSL https://raw.githubusercontent.com/mligus/dotfiles/main/zsh/.zshrc -o $HOME/.zshrc
 ```
 
+### Install Powerline fonts
+
+
+Download fonts from - https://github.com/powerline/fonts
+
+Last used fonts:
+
+  * [Meslo Dotted Regular](https://github.com/powerline/fonts/blob/master/Meslo%20Dotted/Meslo%20LG%20L%20DZ%20Regular%20for%20Powerline.ttf)
+
+
+Set up your editors, terminal apps, etc.
+
 
 ### Install Rust and few more tools:
 
 Install Rust:
+
 ```bash
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 ```
 
 To configure your current shell, run:
+
 ```bash
 source $HOME/.cargo/env
 ```
 
 Install tools:
+
 ```bash
 cargo install exa
 cargo install bat
@@ -129,41 +142,54 @@ cargo install ripgrep
 ### Install Python, pyenv and other related stuff:
 
 Install Pyenv:
+
 ```bash
 curl https://pyenv.run | bash
 ```
 
-Install specific Python version:
-```bash
-pyenv install 3.9.10
-```
-
-
 Copy configuration files from GitHub:
+
 ```bash
 curl -fsSL https://raw.githubusercontent.com/mligus/dotfiles/main/other/.profile -o $HOME/.profile
 ```
 
 Duplicate `.profile` to ZSH profile:
+
 ```bash
 cp $HOME/.profile $HOME/.zprofile
+```
+
+Restart your session.
+
+Install specific Python version:
+
+```bash
+pyenv install 3.10.0
 ```
 
 
 ### NeoVim config
 
-```bash
-sudo apt install build-essential cmake python3-dev
+Copy config and Plug manager:
 
+```bash
 mkdir -p $HOME/.config/nvim/
 curl -fsSL https://raw.githubusercontent.com/mligus/dotfiles/master/nvim/init.vim -o $HOME/.config/nvim/init.vim
 
 curl -fsSLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
             https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+```
 
+Install plugins:
+
+```bash
 vim +PlugInstall +qa
+```
 
-pyenv virtualenv 3.9.7 nvim3
+Install Python dependacies:
+
+```bash
+pyenv virtualenv 3.10.0 nvim3
 pyenv activate nvim3
 pip install --upgrade pip
 pip install neovim
@@ -173,8 +199,9 @@ pyenv deactivate
 Install (build) YouCompleteMe:
 
 ```bash
-cd .config/nvim/plugged/youcompleteme
+pushd ~/.config/nvim/plugged/youcompleteme
 python3 install.py --clangd-completer --rust-completer
+popd
 ```
 
 
@@ -183,6 +210,7 @@ python3 install.py --clangd-completer --rust-completer
 ```bash
 curl -fsSL https://raw.githubusercontent.com/mligus/dotfiles/main/tmux/.tmux.conf -o $HOME/.tmux.conf
 ```
+
 
 ### Install AppImageLauncher
 
