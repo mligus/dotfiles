@@ -100,6 +100,11 @@ ln -s "$ZSH_CUSTOM/themes/spaceship-prompt/spaceship.zsh-theme" "$ZSH_CUSTOM/the
 > Add a new Profile to the Terminal app and set font to [Meslo](https://github.com/powerline/fonts/blob/master/Meslo%20Dotted/Meslo%20LG%20M%20DZ%20Regular%20for%20Powerline.ttf). 
 > Do the same for Sublime Text editor.
 
+Copy configuration files from GitHub:
+```bash
+curl -fsSL https://raw.githubusercontent.com/mligus/dotfiles/main/zsh/.zshrc -o $HOME/.zshrc
+```
+
 
 ### Install Rust and few more tools:
 
@@ -134,12 +139,13 @@ pyenv install 3.9.10
 ```
 
 
-### Copy config from GitHub:
-
+Copy configuration files from GitHub:
 ```bash
-curl -fsSL https://raw.githubusercontent.com/mligus/dotfiles/main/zsh/.zshrc -o $HOME/.zshrc
-
 curl -fsSL https://raw.githubusercontent.com/mligus/dotfiles/main/other/.profile -o $HOME/.profile
+```
+
+Duplicate `.profile` to ZSH profile:
+```bash
 cp $HOME/.profile $HOME/.zprofile
 ```
 
