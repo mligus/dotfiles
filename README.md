@@ -103,10 +103,18 @@ ln -s "$ZSH_CUSTOM/themes/spaceship-prompt/spaceship.zsh-theme" "$ZSH_CUSTOM/the
 
 ### Install Rust and few more tools:
 
+Install Rust:
 ```bash
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
-source $HOME/.cargo/env
+```
 
+To configure your current shell, run:
+```bash
+source $HOME/.cargo/env
+```
+
+Install tools:
+```bash
 cargo install exa
 cargo install bat
 cargo install ripgrep
@@ -115,10 +123,16 @@ cargo install ripgrep
 
 ### Install Python, pyenv and other related stuff:
 
+Install Pyenv:
 ```bash
 curl https://pyenv.run | bash
-pyenv install 3.9.7
 ```
+
+Install specific Python version:
+```bash
+pyenv install 3.9.10
+```
+
 
 ### Copy config from GitHub:
 
