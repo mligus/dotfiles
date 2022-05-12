@@ -217,7 +217,7 @@ HandleLidSwitch=suspend-then-hibernate
 
 ```
 AllowSuspendThenHibernate=yes
-HibernateDelaySec=45min
+HibernateDelaySec=30min
 ```
 
 
