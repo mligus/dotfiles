@@ -111,12 +111,23 @@ Edit `/etc/tlp.conf` and add:
 
 ```
 PCIE_ASPM_ON_BAT=powersupersave
+
+START_CHARGE_THRESH_BAT1=75
+STOP_CHARGE_THRESH_BAT1=80
+
+START_CHARGE_THRESH_BAT0=75
+STOP_CHARGE_THRESH_BAT0=80
+
+RESTORE_THRESHOLDS_ON_BAT=1
 ```
 
 Install Powertop (no config since it clashes with TLP on Framework laptop):
 
 ```bash
 sudo dnf install powertop
+sudo dnf remove power-profiles-daemon
+sudo systemctl enable tlp.service
+sudo systemctl mask systemd-rfkill.service systemd-rfkill.socket
 ```
 
 Allow other than 100% and 200% scaling for Gnome:
