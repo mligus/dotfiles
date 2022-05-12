@@ -111,14 +111,6 @@ Edit `/etc/tlp.conf` and add:
 
 ```
 PCIE_ASPM_ON_BAT=powersupersave
-
-START_CHARGE_THRESH_BAT1=75
-STOP_CHARGE_THRESH_BAT1=80
-
-START_CHARGE_THRESH_BAT0=75
-STOP_CHARGE_THRESH_BAT0=80
-
-RESTORE_THRESHOLDS_ON_BAT=1
 ```
 
 Install Powertop (no config since it clashes with TLP on Framework laptop):
@@ -316,4 +308,14 @@ Install latest Python 3 version:
 
 ```bash
 pyenv install 3.10.4
+```
+
+
+### Extra tools
+
+[FZF](https://github.com/junegunn/fzf#installation):
+
+```bash
+git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
+~/.fzf/install
 ```
