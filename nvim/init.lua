@@ -11,10 +11,10 @@ vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 
 -- IMPORTS
+require('plugins')      -- Plugins
 require('variables')      -- Variables
 require('options')      -- Options
 require('keys')      -- Keymaps
-require('plugins')      -- Plugins
 
 -- PLUGINS: Add this section
 require('nvim-tree').setup{}
