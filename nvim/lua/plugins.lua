@@ -36,13 +36,15 @@ return require('packer').startup(function(use)
     -- Packer can manage itself
     use 'wbthomason/packer.nvim'
 
-    -- Dracula theme
+    -- Colorscheme
     -- use 'Mofiqul/dracula.nvim'
-
-    -- Monokai theme
     use 'tanvirtin/monokai.nvim'
 
-    -- Auto-completion
+    -- LSP manager
+    use { 'williamboman/mason.nvim' }
+    use { 'williamboman/mason-lspconfig.nvim'}
+
+    -- Auto-completion engine
     use { 'neovim/nvim-lspconfig' }
     use { 'hrsh7th/nvim-cmp', config = [[require('config.nvim-cmp')]] }    
     use { 'hrsh7th/cmp-nvim-lsp', after = 'nvim-cmp' } 
@@ -51,9 +53,7 @@ return require('packer').startup(function(use)
     use { 'hrsh7th/cmp-cmdline', after = 'nvim-cmp' }       -- cmdline auto-completion
     use 'L3MON4D3/LuaSnip'
     use 'saadparwaiz1/cmp_luasnip'
-    -- LSP
-    use { 'williamboman/mason.nvim' }
-    use { 'williamboman/mason-lspconfig.nvim'}
+    use { 'onsails/lspkind.nvim' }      -- vscode-like pictograms for neovim built-in lsp
 
 
 

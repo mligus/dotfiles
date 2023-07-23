@@ -6,6 +6,7 @@ end
 
 local luasnip = require("luasnip")
 local cmp = require("cmp")
+local lspkind = require('lspkind')
 
 cmp.setup({
     snippet = {
@@ -51,23 +52,28 @@ cmp.setup({
   -- Let's configure the item's appearance
   -- source: https://github.com/hrsh7th/nvim-cmp/wiki/Menu-Appearance
   formatting = {
-      -- Set order from left to right
-      -- kind: single letter indicating the type of completion
-      -- abbr: abbreviation of "word"; when not empty it is used in the menu instead of "word"
-      -- menu: extra text for the popup menu, displayed after "word" or "abbr"
-      fields = { 'abbr', 'menu' },
+        -- customize the appearance of the completion menu
+        format = lspkind.cmp_format({
+            -- show only symbol annotations
+            mode = 'symbol_text',
+            -- prevent the popup from showing more than provided characters (e.g 50 will not show more than 50 characters)
+            maxwidth = 100,
+            -- when popup menu exceed maxwidth, the truncated part would show ellipsis_char instead (must define maxwidth first)
+            ellipsis_char = '...',
 
-      -- customize the appearance of the completion menu
-      format = function(entry, vim_item)
-          vim_item.menu = ({
-              nvim_lsp = '[Lsp]',
-              luasnip = '[Luasnip]',
-              buffer = '[File]',
-              path = '[Path]',
-          })[entry.source.name]
-          return vim_item
-      end,
-  },
+            -- The function below will be called before any actual modifications from lspkind
+            -- so that you can provide more controls on popup customization. (See [#30](https://github.com/onsails/lspkind-nvim/pull/30))
+            before = function(entry, vim_item)
+                vim_item.menu = ({
+                        nvim_lsp = '[Lsp]',
+                        luasnip = '[Luasnip]',
+                        buffer = '[File]',
+                        path = '[Path]',
+                    })[entry.source.name]
+                return vim_item
+            end,
+        })
+    },
 
   -- Set source precedence
   sources = cmp.config.sources({
