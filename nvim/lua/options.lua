@@ -50,8 +50,6 @@ vim.opt.splitbelow = true               -- place new window below the current on
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 
-
-
-
 -- Auto-commands
 -- vim.api.nvim_command[[autocmd BufWritePre *.py execute 'Black']]  -- auto execute black for python files on save
+vim.api.nvim_command[[autocmd BufWritePre *.* :%s/\s\+$//e]]  -- trim whitespaces at the end of line
