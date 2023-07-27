@@ -1,6 +1,10 @@
 require("mason").setup()
 local null_ls = require("null-ls")
 
+-- NullLs builtins:
+-- https://github.com/jose-elias-alvarez/null-ls.nvim/blob/main/doc/BUILTINS.md
+
+
 local sources = {
 	null_ls.builtins.formatting.black.with({ extra_args = { "--target-version", "py310" } }),
 	null_ls.builtins.formatting.stylua,
@@ -19,7 +23,7 @@ require("mason-null-ls").setup({
 	ensure_installed = {
 		"black",
 		"stylua",
-		-- "ruff",
+	    "ruff",
 		"isort",
 	},
 	automatic_installation = false,

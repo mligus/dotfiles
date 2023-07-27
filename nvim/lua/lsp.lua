@@ -12,7 +12,13 @@ require('mason-lspconfig').setup({
     -- A list of servers to automatically install if they're not already installed
     -- https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
     -- Python, Haskell, Lua, Bash, Rust
-    ensure_installed = { 'pylsp', 'hls', 'lua_ls', 'bashls', 'rust_analyzer' },
+    ensure_installed = { 
+        'pylsp', 
+        'hls', 
+        'lua_ls', 
+        'bashls', 
+        'rust_analyzer', 
+    },
 })
 
 -- Set different settings for different languages' LSP
@@ -78,6 +84,7 @@ lspconfig.lua_ls.setup {
             workspace = {
                 -- Make the server aware of Neovim runtime files
                 library = vim.api.nvim_get_runtime_file("", true),
+                checkThirdParty = false,
             },
             -- Do not send telemetry data containing a randomized but unique identifier
             telemetry = {
