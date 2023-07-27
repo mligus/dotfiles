@@ -38,5 +38,10 @@ vim.keymap.set("n", "<leader>fh", "<cmd>lua require('telescope.builtin').help_ta
 vim.keymap.set('n', '<leader>e', ':NvimTreeToggle<CR>', opts)
 -- vim.api.nvim_set_keymap("n", "<C-h>", ":NvimTreeToggle<cr>", opts)
 
+
+-- symbols-outline
+vim.keymap.set("n", "<leader>so", ":SymbolsOutline<CR>")
+
+
 -- Extra
 vim.keymap.set("n", "<leader>,", ":update<CR>")

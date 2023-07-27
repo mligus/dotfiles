@@ -26,6 +26,7 @@ vim.cmd([[
 
 
 -- Install plugins here - `use ...`
+-- https://github.com/wbthomason/packer.nvim#specifying-plugins
 -- Packer.nvim hints
 --     after = string or list,           -- Specifies plugins to load before this plugin. See "sequencing" below
 --     config = string or function,      -- Specifies code to run after this plugin is loaded
@@ -131,14 +132,22 @@ return require('packer').startup(function(use)
         branch = 'v2', -- optional but strongly recommended
         config = function()
             -- you can configure Hop the way you like here; see :h hop-config
-            require'hop'.setup { keys = 'etovxqpdygfblzhckisuran' }
+            require("hop").setup({ keys = 'etovxqpdygfblzhckisuran' })
         end
     }
 
     use {
         'akinsho/toggleterm.nvim', tag = '*', config = function()
-        require("toggleterm").setup()
+            require("toggleterm").setup()
         end
+    }
+
+    -- A tree like view for symbols in Neovim using the Language Server Protocol
+    use {
+        'simrat39/symbols-outline.nvim',
+        -- for some reason following config won't be loaded properly
+        -- to set up symbols-outline we have following require in init.lua
+        -- config = [[require('config.symbols-outline')]]
     }
 
     -- Automatically set up your configuration after cloning packer.nvim

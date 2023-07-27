@@ -9,3 +9,6 @@ require('keymaps')
 require('plugins')
 require('colorscheme')
 require('lsp')
+
+-- hack to make symbols-outline plugin to work
+require('config.symbols-outline')
