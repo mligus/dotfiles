@@ -41,13 +41,19 @@ Toggleterm (https://github.com/akinsho/toggleterm.nvim#usage):
 
 ## Install NeoVim
 
+On Fedora Linus:
+
+```bash
+sudo dnf install -y neovim python3-neovim
+```
+
 Configure folders:
 
 ```bash
 mkdir ~/.config/nvim
-mkdir ~/.config/nvim/lua
-touch ~/.config/nvim/init.lua
 ```
+
+Clone `dotfiles` repo and copy config to that folder.
 
 
 ## Debug Adapter Protocol (DAP)
@@ -57,6 +63,11 @@ Links:
 * https://github.com/mfussenegger/nvim-dap
 * https://microsoft.github.io/debug-adapter-protocol/overview
 
+
+## Fonts and Colorschemes
+
+* Nerd Fonts - https://www.nerdfonts.com/
+* iTetm 2 Color Schemes - https://iterm2colorschemes.com/
 
 ## References and Links
 

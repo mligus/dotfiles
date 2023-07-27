@@ -37,3 +37,6 @@ vim.keymap.set("n", "<leader>fh", "<cmd>lua require('telescope.builtin').help_ta
 -- NVim-tree
 vim.keymap.set('n', '<leader>e', ':NvimTreeToggle<CR>', opts)
 -- vim.api.nvim_set_keymap("n", "<C-h>", ":NvimTreeToggle<cr>", opts)
+
+-- Extra
+vim.keymap.set("n", "<leader>,", ":update<CR>")
