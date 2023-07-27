@@ -3,6 +3,15 @@
 
 ## Cheatsheet
 
+Navigation:
+* `[number]k` or `[number]+` jump up (useful with relative line number)
+* `[number]j` or `[number]-` jump down (useful with relative line number)
+* `:[number]` jump to absolute line number
+* `gg` go to the top of a buffer
+* `G` go to the bottom
+* `Ctrl+B` jump up (back)
+* `Ctrl+F` jump down (forward)
+
 Window navigation:
 * Use `<C-h/j/k/l>` to move the cursor among windows
 * Use `Ctrl` + arrow keys to resize windows
