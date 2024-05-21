@@ -12,12 +12,12 @@ require('mason-lspconfig').setup({
     -- A list of servers to automatically install if they're not already installed
     -- https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
     -- Python, Haskell, Lua, Bash, Rust
-    ensure_installed = { 
-        'pylsp', 
-        'hls', 
-        'lua_ls', 
-        'bashls', 
-        'rust_analyzer', 
+    ensure_installed = {
+        'pylsp',
+        -- 'hls',
+        'lua_ls',
+        'bashls',
+        'rust_analyzer',
     },
 })
 
