@@ -30,7 +30,7 @@ vim.cmd([[
 -- Packer.nvim hints
 --     after = string or list,           -- Specifies plugins to load before this plugin. See "sequencing" below
 --     config = string or function,      -- Specifies code to run after this plugin is loaded
---     requires = string or list,        -- Specifies plugin dependencies. See "dependencies". 
+--     requires = string or list,        -- Specifies plugin dependencies. See "dependencies".
 --     ft = string or list,              -- Specifies filetypes which load this plugin.
 --     run = string, function, or table, -- Specify operations to be run after successful installs/updates of a plugin
 return require('packer').startup(function(use)
@@ -39,7 +39,8 @@ return require('packer').startup(function(use)
 
     -- Colorscheme
     -- use 'Mofiqul/dracula.nvim'
-    use 'tanvirtin/monokai.nvim'
+    -- use 'tanvirtin/monokai.nvim'
+    use 'dracula/vim'
 
     -- LSP manager
     use { 'williamboman/mason.nvim' }
@@ -58,7 +59,7 @@ return require('packer').startup(function(use)
     use { 'saadparwaiz1/cmp_luasnip', after = { 'nvim-cmp', 'LuaSnip' } }  -- luasnip completion source for nvim-cmp
 
     -- Add hooks to LSP to support Linters and Formatters
-    use { 'nvim-lua/plenary.nvim' }  -- all the Lua functions I don't want to write twice. 
+    use { 'nvim-lua/plenary.nvim' }  -- all the Lua functions I don't want to write twice.
     use {  -- mason-null-ls bridges mason.nvim with the null-ls plugin - making it easier to use both plugins together.
         'jay-babu/mason-null-ls.nvim',
         after = 'plenary.nvim',
@@ -148,6 +149,32 @@ return require('packer').startup(function(use)
         -- for some reason following config won't be loaded properly
         -- to set up symbols-outline we have following require in init.lua
         -- config = [[require('config.symbols-outline')]]
+    }
+
+    use {
+        "scalameta/nvim-metals",
+        dependencies = {
+            "nvim-lua/plenary.nvim",
+        },
+        ft = { "scala", "sbt", "java" },
+        opts = function()
+            local metals_config = require("metals").bare_config()
+            metals_config.on_attach = function(client, bufnr)
+            -- your on_attach function
+            end
+
+            return metals_config
+        end,
+        config = function(self, metals_config)
+            local nvim_metals_group = vim.api.nvim_create_augroup("nvim-metals", { clear = true })
+            vim.api.nvim_create_autocmd("FileType", {
+                pattern = self.ft,
+                callback = function()
+                    require("metals").initialize_or_attach(metals_config)
+                end,
+                group = nvim_metals_group,
+            })
+        end
     }
 
     -- Automatically set up your configuration after cloning packer.nvim
