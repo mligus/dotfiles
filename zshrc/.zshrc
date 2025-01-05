@@ -50,4 +50,6 @@ source ~/.zplug/init.zsh
 zplug "zsh-users/zsh-autosuggestions"
 zplug "zsh-users/zsh-syntax-highlighting"
 
+zplug "plugins/git",   from:oh-my-zsh
+
 zplug load
