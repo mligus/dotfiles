@@ -82,7 +82,7 @@
     }
   },
   "hyprland/language": {
-    "format": "<span size='13000' foreground='#a6e3a1'></span> {}",
+    "format": " {} ",
     "format-uk": "🇺🇦",
     "format-en": "🇨🇦",
     "on-click": "hyprctl switchxkblayout current next"
