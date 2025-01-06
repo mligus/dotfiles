@@ -150,6 +150,29 @@ return {
 					},
 				})
 			end,
+			["rust_analyzer"] = function()
+				lspconfig["rust_analyzer"].setup({
+					capabilities = lsp_capabilities,
+					settings = {
+						rust_analyzer = {
+							imports = {
+								granularity = {
+									group = "module",
+								},
+								prefix = "self",
+							},
+							cargo = {
+								buildScripts = {
+									enable = true,
+								},
+							},
+							procMacro = {
+								enable = true,
+							},
+						},
+					},
+				})
+			end,
 		})
 	end,
 }

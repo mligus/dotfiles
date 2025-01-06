@@ -1,8 +1,20 @@
+// https://github.com/Alexays/Waybar/wiki/Configuration
 {
   "position": "top",
   "modules-left": ["hyprland/workspaces"],
   "modules-center": ["hyprland/window"],
-  "modules-right": ["network", "pulseaudio", "battery", "clock"],
+  "modules-right": [
+    "hyprland/language",
+    "power-profiles-daemon",
+    "cpu",
+    "memory",
+    "temperature",
+    "backlight",
+    "network",
+    "pulseaudio",
+    "battery",
+    "clock"
+  ],
   "clock": {
     "format": "<span foreground='#f5c2e7'>   </span>{:%a %d %H:%M}",
     "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
@@ -30,11 +42,49 @@
     "tooltip-format-wifi": "Signal Strenght: {signalStrength}%"
   },
   "pulseaudio": {
-      "format": "{icon}  {volume}%",
-      "format-muted": "",
-      "format-icons": {
-          "default": ["", "", " "]
-      },
-      "on-click": "pavucontrol"
+    "format": "{icon}  {volume}%",
+    "format-muted": "",
+    "format-icons": {
+      "default": ["", "", " "]
+    },
+    "on-click": "pavucontrol"
+  },
+  "cpu": {
+    "format": " {usage}%",
+    "tooltip": false
+  },
+  "memory": {
+    "format": " {}%"
+  },
+  "temperature": {
+    // "thermal-zone": 2,
+    // "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
+    "critical-threshold": 80,
+    // "format-critical": "{temperatureC}°C {icon}",
+    "format": "{icon} {temperatureC}°C",
+    "format-icons": ["", "", ""]
+  },
+  "backlight": {
+    // "device": "acpi_video1",
+    "format": "{percent}% {icon}",
+    "format-icons": ["", "", "", "", "", "", "", "", ""]
+  },
+  "power-profiles-daemon": {
+    "format": " {icon} ",
+    // "format": "{profile}",
+    "tooltip-format": "Power profile: {profile}\nDriver: {driver}",
+    "tooltip": true,
+    "format-icons": {
+      "default": "",
+      "performance": "",
+      "balanced": "",
+      "power-saver": ""
+    }
+  },
+  "hyprland/language": {
+    "format": "<span size='13000' foreground='#a6e3a1'></span> {}",
+    "format-uk": "🇺🇦",
+    "format-en": "🇨🇦",
+    "on-click": "hyprctl switchxkblayout current next"
   }
 }
