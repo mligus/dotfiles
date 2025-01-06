@@ -1,7 +1,12 @@
 # === Default editor ===
 
-export EDITOR="nvim"
-export VISUAL="nvim"
+if [[ -n $SSH_CONNECTION ]]; then
+  export EDITOR="vim"
+else
+  export EDITOR="nvim"
+  export VISUAL="nvim"
+fi
+
 export SUDO_EDITOR="$EDITOR"
 
 
@@ -43,7 +48,9 @@ export NVM_DIR="$HOME/.nvm"
 # Set up fzf key bindings and fuzzy completion
 source <(fzf --zsh)
 
+
 # === Plugins (with zplug) ===
+# https://github.com/zplug/zplug
 
 source ~/.zplug/init.zsh
 
@@ -52,4 +59,12 @@ zplug "zsh-users/zsh-syntax-highlighting"
 
 zplug "plugins/git",   from:oh-my-zsh
 
-zplug load
+# Install plugins if there are plugins that have not been installed
+if ! zplug check --verbose; then
+    printf "Install? [y/N]: "
+    if read -q; then
+        echo; zplug install
+    fi
+fi
+
+zplug load  # --verbose
