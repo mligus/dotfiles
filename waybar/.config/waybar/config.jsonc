@@ -13,7 +13,8 @@
     "network",
     "pulseaudio",
     "battery",
-    "clock"
+    "clock",
+    "custom/power"
   ],
   "clock": {
     "format": "<span foreground='#f5c2e7'>   </span>{:%a %d %H:%M}",
@@ -86,5 +87,17 @@
     "format-uk": "🇺🇦",
     "format-en": "🇨🇦",
     "on-click": "hyprctl switchxkblayout current next"
+  },
+  "custom/power": {
+    "format" : "⏻ ",
+    "tooltip": false,
+    "menu": "on-click",
+    "menu-file": "$HOME/.config/waybar/power_menu.xml", // Menu file in resources folder
+    "menu-actions": {
+      "shutdown": "shutdown",
+      "reboot": "reboot",
+      "suspend": "systemctl suspend",
+      "hibernate": "systemctl hibernate"
+    }
   }
 }

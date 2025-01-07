@@ -73,6 +73,7 @@ button:hover {
 #temperature,
 #power-profiles-daemon,
 #language,
+#custom-power,
 #scratchpad {
   margin-top: 2px;
   margin-bottom: 2px;
@@ -126,6 +127,11 @@ button:hover {
 }
 
 #language {
+  color: @overlay2;
+  border-bottom: 2px solid @overlay2;
+}
+
+#custom-power {
   color: @overlay2;
   border-bottom: 2px solid @overlay2;
 }
