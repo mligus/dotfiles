@@ -68,3 +68,6 @@ if ! zplug check --verbose; then
 fi
 
 zplug load  # --verbose
+
+# === Extend path ===
+export PATH=$HOME/.local/bin:$PATH

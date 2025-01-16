@@ -8,6 +8,13 @@ alias grep="rg"
 alias vi="nvim"
 alias vim="nvim"
 
+alias gis="git status"
+alias giss="git status --short"
+alias gid="git diff"
+alias gids="git diff --staged"  # or `--cached`
+alias gilp="git log --pretty=format:'%h - %an, %ar : %s'"
+alias gilg="git log --pretty=format:'%h %s' --graph"
+
 # Framework Laptop charge control
 # requires fw-ectool-git to be installed
 alias charge_idle="sudo ectool chargecontrol idle"
