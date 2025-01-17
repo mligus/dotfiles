@@ -7,6 +7,12 @@
 // custom settings, run `zed: open default settings` from the
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
+  "auto_install_extensions": {
+    "html": true,
+    "catppuccin": true
+    // "dockerfile": true,
+    // "docker-compose": false
+  },
   "ui_font_size": 16,
   "buffer_font_size": 16,
   "theme": {
@@ -18,5 +24,7 @@
     "diagnostics": true,
     "metrics": false
   },
-  "vim_mode": true
+  "vim_mode": true,
+  "autosave": "on_focus_change",
+  "file_icons": true
 }
