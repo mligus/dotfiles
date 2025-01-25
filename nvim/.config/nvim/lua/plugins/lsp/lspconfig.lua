@@ -21,12 +21,20 @@ return {
 		})
 
 		lspconfig.basedpyright.setup({
-			-- capabilities = capabilities,
+      capabilities = capabilities,
+      -- Following might have been used to remove duplicate diagnostic messages
+			-- capabilities = (function()
+			-- 	local pyright_capabilities = vim.lsp.protocol.make_client_capabilities()
+			-- 	pyright_capabilities.textDocument.publishDiagnostics.tagSupport.valueSet = { 2 }
+			-- 	return capabilities
+			-- end)(),
 			settings = {
 				-- pyright: https://microsoft.github.io/pyright/#/settings
 				-- basedpyright: https://docs.basedpyright.com/latest/configuration/language-server-settings/
 				basedpyright = {
+					disableOrganizeImports = true,
 					analysis = {
+						ignore = { "*" },
 						typeCheckingMode = "basic",
 						diagnosticMode = "openFilesOnly",
 						inlayHints = {
@@ -34,14 +42,11 @@ return {
 						},
 					},
 				},
-				python = {
-					analysis = {},
-				},
 			},
 		})
 
 		lspconfig.ruff.setup({
-			-- capabilities = capabilities,
+			capabilities = capabilities,
 			init_options = {
 				settings = {
 					-- https://docs.astral.sh/ruff/editors/settings/

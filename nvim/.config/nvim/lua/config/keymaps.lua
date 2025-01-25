@@ -37,15 +37,11 @@ vim.keymap.set("n", "N", "Nzzzv", opts)
 
 vim.keymap.set("x", "<leader>p", [["_dP]], opts) -- paste over and preserve yanked text
 
--- Yank to system clipboard
+-- Copy (yank) to system clipboard
 vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]], opts)
 vim.keymap.set("n", "<leader>Y", [["+Y]], opts)
-
-vim.keymap.set({ "n", "v" }, "<leader>d", [["_d]], opts) -- delete to void register
-
-vim.keymap.set("n", "Q", "<nop>", opts)
-vim.keymap.set("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>", opts)
-vim.keymap.set("n", "<leader>f", vim.lsp.buf.format, opts)
+-- Delete to void register
+vim.keymap.set({ "n", "v" }, "<leader>d", [["_d]], opts)
 
 -- Quickfix
 vim.keymap.set("n", "<C-k>", "<cmd>cnext<CR>zz", opts)

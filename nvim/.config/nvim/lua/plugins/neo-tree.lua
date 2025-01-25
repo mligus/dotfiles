@@ -12,6 +12,7 @@ return {
       vim.g.loaded_netrwPlugin = 1
 
       vim.keymap.set("n", "<leader>ee", "<cmd>Neotree filesystem reveal left toggle<cr>", { desc = "Toggle Neotree file explorer" })
-      vim.keymap.set("n", "<leader>eb", "<cmd>Neotree buffers reveal left toggle<cr>", { desc = "Toggle Neotree buffers explorer" })
+      -- using mini.visits to see recent open buffers
+      -- vim.keymap.set("n", "<leader>eb", "<cmd>Neotree buffers reveal left toggle<cr>", { desc = "Toggle Neotree buffers explorer" })
     end
 }
