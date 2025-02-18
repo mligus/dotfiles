@@ -55,3 +55,5 @@ vim.opt.splitbelow = true               -- place new window below the current on
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 
+-- Config added for better Markdown editing
+vim.opt.conceallevel = 2
