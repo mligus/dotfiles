@@ -16,7 +16,8 @@
 
 #workspaces,
 #window,
-#language{
+#language,
+#clock{
   background-color: rgba(15,27,53,0.9);
   padding: 4px 6px;
   margin-top: 6px;
@@ -26,7 +27,6 @@
   border-width: 0px;
 }
 
-#clock,
 #custom-power{
   background-color: rgba(15,27,53,0.9);
   margin-top: 6px; 
@@ -50,6 +50,7 @@
 
 #custom-reboot,
 #battery,
+#power-profiles-daemon,
 #pulseaudio,
 #backlight,
 #custom-temperature,

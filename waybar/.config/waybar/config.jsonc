@@ -7,49 +7,38 @@
     "hyprland/workspaces"
   ],
   "modules-center": [
-    "hyprland/window"
+    // "hyprland/window"
+    "clock"
   ],
   "modules-right": [
     "hyprland/language",
     "network",
     "battery",
+    "power-profiles-daemon",
     "pulseaudio",
     // "backlight",
     // "custom/temperature",
     // "memory",
     // "cpu",
-    "clock",
-    "custom/hibernate",
+    // "custom/hibernate",
     "custom/reboot",
     "custom/power"
   ],
   "hyprland/workspaces": {
-    // "disable-scroll": false,
-    // "all-outputs": true,
-    // "format": "{icon}",
-    // "on-click": "activate",
-    // "persistent-workspaces": {
-    //   "*":[1,2]
-    // },
-    // https://www.nerdfonts.com/cheat-sheet
-    // "format-icons": {
-    //  "1": "",
-    //  "2": ""
-    // }
-
     "format": "{icon}: {windows}",
     "window-rewrite-default": "",
     "window-rewrite": {
       "title<.*youtube.*>": "",
       "class<librewolf>": "",
       "class<librewold> title<.*github.*>": "",
-      "kitty": ""
+      "kitty": "",
+      "ghostty": ""
     }
   },
   "hyprland/language": {
-    "format": "<span color='#74c7ec'></span>  {}",
-    "format-uk": "UA",
-    "format-en": "CA",
+    "format": "{}",
+    "format-uk": " UA ",
+    "format-en": " CA ",
     "on-click": "hyprctl switchxkblayout current next"
   },
   "custom/hibernate": {
@@ -65,18 +54,17 @@
     "tooltip-format": "Reboot"
   },
   "custom/power": {
-    "format": "<span color='#FF4040'>  </span>",
+    "format": "<span color='#FF4040'>  </span> ",
     "on-click": "systemctl poweroff",
     "tooltip": true,
     "tooltip-format": "Poweroff"
   },
   "network": {
-    "format-wifi": "<span color='#00FFFF'> 󰤨 </span>{essid} ",
-    "format-ethernet": "<span color='#7FFF00'> </span>Wired ",
-    "tooltip-format": "<span color='#FF1493'> 󰅧 </span>{bandwidthUpBytes}  <span color='#00BFFF'> 󰅢 </span>{bandwidthDownBytes}",
-    "format-linked": "<span color='#FFA500'> 󱘖 </span>{ifname} (No IP) ",
-    "format-disconnected": "<span color='#FF4040'>  </span>Disconnected ",
-    "format-alt": "<span color='#00FFFF'> 󰤨 </span>{signalStrength}% ",
+    "format-wifi": " <span color='#00FFFF'>  </span> {essid} ",
+    "format-ethernet": " <span color='#7FFF00'>  </span> Wired ",
+    "tooltip-format": " <span color='#FF1493'> 󰅧 </span>{bandwidthUpBytes}  <span color='#00BFFF'> 󰅢 </span>{bandwidthDownBytes} <span color='#00FFFF'> 󰤨 </span>{signalStrength}%",
+    "format-linked": " <span color='#FFA500'> 󱘖 </span>{ifname} (No IP) ",
+    "format-disconnected": " <span color='#FF4040'>  </span>Disconnected ",
     "interval": 1
   },
   "battery": {
@@ -84,11 +72,26 @@
       "warning": 30,
       "critical": 15
     },
-    "format": "<span color='#28CD41'> {icon} </span>{capacity}% ",
-    "format-charging": " 󱐋{capacity}%",
-    "interval": 1,
-    "format-icons": ["󰂎", "󰁼", "󰁿", "󰂁", "󰁹"],
-    "tooltip": true
+    "format": "<span size='13000' foreground='#a6e3a1'>{icon} </span> {capacity}%",
+    "format-warning": "<span size='13000' foreground='#B1E3AD'>{icon} </span> {capacity}%",
+    "format-critical": "<span size='13000' foreground='#E38C8F'>{icon} </span> {capacity}%",
+    "format-charging": "<span size='13000' foreground='#B1E3AD'> </span>{capacity}%",
+    "format-plugged": "<span size='13000' foreground='#B1E3AD'> </span>{capacity}%",
+    "format-alt": "<span size='13000' foreground='#B1E3AD'>{icon} </span> {time}",
+    "format-full": "<span size='13000' foreground='#B1E3AD'> </span>{capacity}%",
+    "format-icons": ["", "", "", "", ""],
+    "tooltip-format": "{time}"
+  },
+  "power-profiles-daemon": {
+    "format": " {icon} ",
+    "tooltip-format": "Power profile: {profile}\nDriver: {driver}",
+    "tooltip": true,
+    "format-icons": {
+      "default": "",
+      "performance": "",
+      "balanced": "",
+      "power-saver": ""
+    }
   },
   "pulseaudio": {
     "format": "<span color='#00FF7F'>{icon}</span>{volume}% ",
@@ -130,7 +133,7 @@
   "clock": {
     "interval": 1,
     "timezone": "America/Edmonton",
-    "format": "<span color='#BF00FF'>  </span>{:%H:%M} ",
+    "format": " {:%a %d %H:%M} ",
     "tooltip": true,
     "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
   },
