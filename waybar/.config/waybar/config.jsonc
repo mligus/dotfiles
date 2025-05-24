@@ -1,3 +1,4 @@
+// Hyprland docs: https://github.com/Alexays/Waybar/wiki/Module:-Hyprland#module-hyprland-window-rewrite-example
 {
   "layer": "top",
   "position": "top",

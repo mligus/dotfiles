@@ -1,0 +1,5 @@
+font-family = "CaskaydiaCove Nerd Font Mono"
+font-size = 13
+theme = catppuccin-mocha.conf
+background-opacity = 0.9
+background-blur = false
