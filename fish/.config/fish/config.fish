@@ -4,3 +4,4 @@ end
 
 starship init fish | source
 fzf --fish | source
+direnv hook fish | source
