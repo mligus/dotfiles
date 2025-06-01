@@ -2,13 +2,12 @@ return {
 	"echasnovski/mini.nvim",
 	version = "*",
 	config = function()
-		require("mini.pairs").setup()
-		require("mini.comment").setup()
-		require("mini.visits").setup()
-		require("mini.notify").setup()
-		require("mini.git").setup()
+        require("mini.pairs").setup()  -- autopairs
+		require("mini.comment").setup()  -- comment lines
+		require("mini.visits").setup()  -- track and reuse file system visits
+		require("mini.notify").setup()  -- show notifications
 
-		local miniclue = require("mini.clue")
+		local miniclue = require("mini.clue")  -- show next key clues
 		miniclue.setup({
 			triggers = {
 				-- Leader triggers
@@ -29,8 +28,8 @@ return {
 				{ mode = "x", keys = "`" },
 
 				-- Registers
-				{ mode = "n", keys = '"' },
-				{ mode = "x", keys = '"' },
+                { mode = "n", keys = '"' },
+                { mode = "x", keys = '"' },
 				{ mode = "i", keys = "<C-r>" },
 				{ mode = "c", keys = "<C-r>" },
 

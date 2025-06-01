@@ -1,8 +1,6 @@
--- Make sure to setup `mapleader` and `maplocalleader` before
--- loading lazy.nvim so that mappings are correct.
--- This is also a good place to setup other settings (vim.opt)
+-- Setu `mapleader` and `maplocalleader` before loading lazy.nvim!
 vim.g.mapleader = " "
-vim.g.maplocalleader = "\\"
+vim.g.maplocalleader = " "
 
 -- define common options
 local opts = {
@@ -32,14 +30,13 @@ vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv", opts)
 vim.keymap.set("n", "J", "mzJ`z", opts)       -- same J but keep cursos in the same spot
 vim.keymap.set("n", "<C-d>", "<C-d>zz", opts) -- go page down and keep cursor in the middle
 vim.keymap.set("n", "<C-u>", "<C-u>zz", opts) -- go page up and keep cursor in the middle
-vim.keymap.set("n", "n", "nzzzv", opts)
-vim.keymap.set("n", "N", "Nzzzv", opts)
 
 vim.keymap.set("x", "<leader>p", [["_dP]], opts) -- paste over and preserve yanked text
 
 -- Copy (yank) to system clipboard
 vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]], opts)
 vim.keymap.set("n", "<leader>Y", [["+Y]], opts)
+
 -- Delete to void register
 vim.keymap.set({ "n", "v" }, "<leader>d", [["_d]], opts)
 
@@ -51,3 +48,7 @@ vim.keymap.set("n", "<leader>j", "<cmd>lprev<CR>zz", opts)
 
 -- Search and replace word under cursor
 vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]], opts)
+
+-- Move between search results (next/prev) in a better way
+vim.keymap.set("n", "n", "nzzzv", opts)
+vim.keymap.set("n", "N", "Nzzzv", opts)

@@ -16,34 +16,32 @@ return {
 		local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
 		-- Configure LSPs
-		lspconfig.lua_ls.setup({
-			-- capabilities = capabilities,
-		})
+		lspconfig.lua_ls.setup({})
 
-		lspconfig.basedpyright.setup({
-      capabilities = capabilities,
-      -- Following might have been used to remove duplicate diagnostic messages
-			-- capabilities = (function()
-			-- 	local pyright_capabilities = vim.lsp.protocol.make_client_capabilities()
-			-- 	pyright_capabilities.textDocument.publishDiagnostics.tagSupport.valueSet = { 2 }
-			-- 	return capabilities
-			-- end)(),
-			settings = {
-				-- pyright: https://microsoft.github.io/pyright/#/settings
-				-- basedpyright: https://docs.basedpyright.com/latest/configuration/language-server-settings/
-				basedpyright = {
-					disableOrganizeImports = true,
-					analysis = {
-						ignore = { "*" },
-						typeCheckingMode = "basic",
-						diagnosticMode = "openFilesOnly",
-						inlayHints = {
-							callArgumentNames = true,
-						},
-					},
-				},
-			},
-		})
+		-- lspconfig.basedpyright.setup({
+		--           capabilities = capabilities,
+		--           -- Following might have been used to remove duplicate diagnostic messages
+		-- 	-- capabilities = (function()
+		-- 	-- 	local pyright_capabilities = vim.lsp.protocol.make_client_capabilities()
+		-- 	-- 	pyright_capabilities.textDocument.publishDiagnostics.tagSupport.valueSet = { 2 }
+		-- 	-- 	return capabilities
+		-- 	-- end)(),
+		-- 	settings = {
+		-- 		-- pyright: https://microsoft.github.io/pyright/#/settings
+		-- 		-- basedpyright: https://docs.basedpyright.com/latest/configuration/language-server-settings/
+		-- 		basedpyright = {
+		-- 			disableOrganizeImports = true,
+		-- 			analysis = {
+		-- 				ignore = { "*" },
+		-- 				typeCheckingMode = "basic",
+		-- 				diagnosticMode = "openFilesOnly",
+		-- 				inlayHints = {
+		-- 					callArgumentNames = true,
+		-- 				},
+		-- 			},
+		-- 		},
+		-- 	},
+		-- })
 
 		lspconfig.ruff.setup({
 			capabilities = capabilities,
