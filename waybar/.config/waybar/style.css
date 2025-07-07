@@ -1,114 +1,65 @@
-@import "mocha.css";
-
 * {
   font-family: "CaskaydiaCove Nerd Font";
-  font-weight: bold;
   font-size: 16px;
-  color: @text;
+  color: #cdd6f4;
+  min-height: 0;
 }
 
 #waybar {
-  background-color: rgba(0, 0, 0, 0);
-  border: none;
-  box-shadow: none;
-  opacity: 0.8;
+  background: transparent;
+  margin: 2px 2px;
 }
 
-#workspaces,
-#window,
-#language,
-#clock{
+#workspaces {
+  border-radius: 5px;
+  margin: 5px;
   background-color: rgba(15,27,53,0.9);
-  padding: 4px 6px;
-  margin-top: 6px;
-  margin-left: 6px;
-  margin-right: 6px;
-  border-radius: 10px;
-  border-width: 0px;
-}
-
-#custom-power{
-  background-color: rgba(15,27,53,0.9);
-  margin-top: 6px; 
-  margin-right: 6px;
-  /*margin-bottom: 4px;*/
-  padding: 4px 2px;
-  border-radius: 0 10px 10px 0;
-  border-width: 0px;
-}
-
-#network,
-#custom-hibernate{
-  background-color: rgba(15,27,53,0.9);
-  margin-top: 6px;
-  margin-left: 6px;
-  /*margin-bottom: 4px;*/
-  padding: 4px 2px;
-  border-radius: 10px 0 0 10px;
-  border-width: 0px;
-}
-
-#custom-reboot,
-#battery,
-#power-profiles-daemon,
-#pulseaudio,
-#backlight,
-#custom-temperature,
-#memory,
-#cpu{
-  background-color: rgba(15,27,53,0.9);
-  margin-top: 6px;
-  /*margin-bottom: 4px;*/
-  padding: 4px 2px;
-  border-width: 0px;
-}
-
-#custpm-temperature.critical,
-#pulseaudio.muted {
-  color: #FF0000;
-  padding-top: 0;
-}
-
-#network:hover,
-#backlight:hover,
-#battery:hover,
-#pulseaudio:hover,
-#custom-temperature:hover,
-#memory:hover,
-#cpu:hover,
-#clock:hover,
-#custom-hibernate:hover,
-#custom-reboot:hover,
-#custom-power:hover,
-#window:hover {
-  background-color: rgba(70, 75, 90, 0.9);
-}
-
-#workspaces button:hover{
-  background-color: rgba(97, 175, 239, 0.2);
-  padding: 2px 8px;
-  margin: 0 2px;
-  border-radius: 10px;
-}
-
-#workspaces button.active {
-  background-color: #61afef;
-  color: #ffffff;
-  padding: 2px 8px;
-  margin: 0 2px;
-  border-radius: 10px;
 }
 
 #workspaces button {
+  border-radius: 5px;
+  padding: 0.4rem;
   background: transparent;
   border: none;
   color: #888888;
   padding: 2px 8px;
   margin: 0 2px;
-  font-weight: bold;
 }
 
-#window {
-  font-weight: 500;
+#workspaces button.active {
+  border-radius: 5px;
+  background-color: #27455e;
+  color: #ffffff;
+  padding: 2px 8px;
+  margin: 0 2px;
 }
 
+#clock,
+#pulseaudio,
+#language,
+#network {
+  background-color: rgba(15,27,53,0.9);
+  margin: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
+  border-radius: 5px;
+}
+
+#battery{
+  background-color: rgba(15,27,53,0.9);
+  margin: 5px 0px 5px 5px;
+  padding-left: 10px;
+  border-radius: 5px 0px 0px 5px;
+}
+
+#power-profiles-daemon {
+  background-color: rgba(15,27,53,0.9);
+  margin: 5px 5px 5px 0px;
+  padding-right: 15px;
+  border-radius: 0px 5px 5px 0px;
+}
+
+#pulseaudio.muted {
+  color: #FF0000;
+  padding-top: 0;
+}

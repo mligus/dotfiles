@@ -2,70 +2,38 @@
 {
   "layer": "top",
   "position": "top",
-  "height": 42,
-  "spacing": 0,
   "modules-left": [
     "hyprland/workspaces"
   ],
   "modules-center": [
-    // "hyprland/window"
     "clock"
   ],
   "modules-right": [
-    "hyprland/language",
     "network",
     "battery",
     "power-profiles-daemon",
     "pulseaudio",
-    // "backlight",
-    // "custom/temperature",
-    // "memory",
-    // "cpu",
-    // "custom/hibernate",
-    "custom/reboot",
-    "custom/power"
+    "hyprland/language",
   ],
   "hyprland/workspaces": {
-    "format": "{icon}: {windows}",
-    "window-rewrite-default": "",
-    "window-rewrite": {
-      "title<.*youtube.*>": "",
-      "class<librewolf>": "",
-      "class<librewold> title<.*github.*>": "",
-      "kitty": "",
-      "ghostty": ""
+    "format": "{name}: {icon}",
+    "format-icons": {
+      "active": "",
+      "default": ""
     }
   },
   "hyprland/language": {
     "format": "{}",
-    "format-uk": " UA ",
-    "format-en": " CA ",
+    "format-uk": "UA",
+    "format-en": "CA",
     "on-click": "hyprctl switchxkblayout current next"
   },
-  "custom/hibernate": {
-    "format": "<span color='#00FFFF'> ⏹ </span>",
-    "on-click": "systemctl hibernate",
-    "tooltip": true,
-    "tooltip-format": "Hibernate"
-  },
-  "custom/reboot": {
-    "format": "<span color='#FFD700'>  </span>",
-    "on-click": "systemctl reboot",
-    "tooltip": true,
-    "tooltip-format": "Reboot"
-  },
-  "custom/power": {
-    "format": "<span color='#FF4040'>  </span> ",
-    "on-click": "systemctl poweroff",
-    "tooltip": true,
-    "tooltip-format": "Poweroff"
-  },
   "network": {
-    "format-wifi": " <span color='#00FFFF'>  </span> {essid} ",
-    "format-ethernet": " <span color='#7FFF00'>  </span> Wired ",
-    "tooltip-format": " <span color='#FF1493'> 󰅧 </span>{bandwidthUpBytes}  <span color='#00BFFF'> 󰅢 </span>{bandwidthDownBytes} <span color='#00FFFF'> 󰤨 </span>{signalStrength}%",
-    "format-linked": " <span color='#FFA500'> 󱘖 </span>{ifname} (No IP) ",
-    "format-disconnected": " <span color='#FF4040'>  </span>Disconnected ",
+    "format-wifi": "<span color='#00FFFF'></span>  {essid}",
+    "format-ethernet": "<span color='#7FFF00'></span>  Wired",
+    "tooltip-format": "<span color='#FF1493'> 󰅧 </span> {bandwidthUpBytes}  <span color='#00BFFF'> 󰅢 </span> {bandwidthDownBytes} <span color='#00FFFF'> 󰤨 </span> {signalStrength}%",
+    "format-linked": "<span color='#FFA500'>󱘖</span>{ifname}  (No IP)",
+    "format-disconnected": "<span color='#FF4040'></span>  Disconnected",
     "interval": 1
   },
   "battery": {
@@ -84,18 +52,18 @@
     "tooltip-format": "{time}"
   },
   "power-profiles-daemon": {
-    "format": " {icon} ",
+    "format": " {icon}",
     "tooltip-format": "Power profile: {profile}\nDriver: {driver}",
     "tooltip": true,
     "format-icons": {
-      "default": "",
-      "performance": "",
-      "balanced": "",
-      "power-saver": ""
+      "default": "<span size='13000' foreground='#E38C8F'></span>",
+      "performance": "<span size='13000' foreground='#E38C8F'></span>",
+      "balanced": "<span size='13000' foreground='#FFFF66'></span>",
+      "power-saver": "<span size='13000' foreground='#B1E3AD'></span>"
     }
   },
   "pulseaudio": {
-    "format": "<span color='#00FF7F'>{icon}</span>{volume}% ",
+    "format": "<span color='#00FF7F'>{icon}</span>{volume}%",
     "format-muted": "<span color='#FF4040'> 󰖁 </span>0% ",
     "format-icons": {
       "headphone": "<span color='#BF00FF'>  </span>",
@@ -105,9 +73,9 @@
       "portable": "<span color='#00FFFF'>  </span>",
       "car": "<span color='#FFA500'>  </span>",
       "default": [
-        "<span color='#808080'>  </span>",
-        "<span color='#FFFF66'>  </span>",
-        "<span color='#00FF7F'>  </span>"
+        "<span color='#808080'> </span>",
+        "<span color='#FFFF66'> </span>",
+        "<span color='#00FF7F'> </span>"
       ]
     },
     "on-click-right": "pavucontrol -t 3",
@@ -134,16 +102,8 @@
   "clock": {
     "interval": 1,
     "timezone": "America/Edmonton",
-    "format": " {:%a %d %H:%M} ",
+    "format": "{:%a %d %H:%M}",
     "tooltip": true,
     "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
-  },
-  "backlight": {
-    "device": "intel_backlight",
-    "format": "<span color='#FFD700'>{icon}</span>{percent}% ",
-    "tooltip": true,
-    "tooltip-format": "Backlight: {percent}%",
-    "format": "{percent}% {icon}",
-    "format-icons": ["", "", "", "", "", "", "", "", ""]
   }
 }
