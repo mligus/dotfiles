@@ -8,42 +8,51 @@ return {
 	config = function()
 		local lspconfig = require("lspconfig")
 
-		-- Reserve a space in the gutter
-		-- This will avoid an annoying layout shift in the screen
-		vim.opt.signcolumn = "yes"
-
 		-- Advertize nvim-cmp capabilities to LSPs
 		local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
 		-- Configure LSPs
-		lspconfig.lua_ls.setup({})
 
-		-- lspconfig.basedpyright.setup({
-		--           capabilities = capabilities,
-		--           -- Following might have been used to remove duplicate diagnostic messages
-		-- 	-- capabilities = (function()
-		-- 	-- 	local pyright_capabilities = vim.lsp.protocol.make_client_capabilities()
-		-- 	-- 	pyright_capabilities.textDocument.publishDiagnostics.tagSupport.valueSet = { 2 }
-		-- 	-- 	return capabilities
-		-- 	-- end)(),
-		-- 	settings = {
-		-- 		-- pyright: https://microsoft.github.io/pyright/#/settings
-		-- 		-- basedpyright: https://docs.basedpyright.com/latest/configuration/language-server-settings/
-		-- 		basedpyright = {
-		-- 			disableOrganizeImports = true,
-		-- 			analysis = {
-		-- 				ignore = { "*" },
-		-- 				typeCheckingMode = "basic",
-		-- 				diagnosticMode = "openFilesOnly",
-		-- 				inlayHints = {
-		-- 					callArgumentNames = true,
-		-- 				},
-		-- 			},
-		-- 		},
-		-- 	},
-		-- })
+        -- Lua
+		lspconfig.lua_ls.setup({ capabilities = capabilities })
 
-		lspconfig.ruff.setup({
+        -- C lang
+        lspconfig.clangd.setup({ capabilities = capabilities })
+
+        -- Python
+        local on_attach_pyright = function(client, _)
+            client.server_capabilities.hoverProvider = true
+        end
+        lspconfig.pyright.setup({
+            on_attach = on_attach_pyright,
+            capabilities = (function()
+                local capabilities = vim.lsp.protocol.make_client_capabilities()
+                capabilities.textDocument.publishDiagnostics.tagSupport.valueSet = { 2 }
+                return capabilities
+            end) (),
+            settings = {
+                python = {
+                    analysis = {
+                        useLibraryCodeForTypes = true,
+                        diagnosticSeverityOverrides = {
+                            reportUnusedVariable = "warning",
+                        },
+                        typeCheckingMode = "off", -- Set type-checking mode to off
+                        diagnosticMode = "off", -- Disable diagnostics entirely
+                    },
+                },
+            },
+        })
+
+        local on_attach_ruff = function(client, _)
+            if client.name == "ruff" then
+                -- disable hover in favor of pyright
+                client.server_capabilities.hoverProvider = false
+            end
+        end
+
+        lspconfig.ruff.setup({
+            on_attach = on_attach_ruff,
 			capabilities = capabilities,
 			init_options = {
 				settings = {
@@ -53,6 +62,8 @@ return {
 				},
 			},
 		})
+
+        --
 
 		-- Keymaps when LSP is attached
 		vim.api.nvim_create_autocmd("LspAttach", {

@@ -52,3 +52,7 @@ vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><
 -- Move between search results (next/prev) in a better way
 vim.keymap.set("n", "n", "nzzzv", opts)
 vim.keymap.set("n", "N", "Nzzzv", opts)
+
+-- Netrw
+-- vim.keymap.set("n", "<leader>ec", ":Lexplore %:p:h<CR>", opts)  -- open in the directory of the current file
+vim.keymap.set("n", "<leader>ee", ":Lexplore<CR>", opts)        -- open in the current working directory

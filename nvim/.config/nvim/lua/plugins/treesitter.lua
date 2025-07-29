@@ -7,9 +7,13 @@ return {
 		configs.setup({
 			ensure_installed = {
 				"python",
+                "java",
 				"scala",
 				"rust",
 				"c",
+                "go",
+                "cpp",
+                "haskell",
 				"sql",
 				"dockerfile",
 				"javascript",
