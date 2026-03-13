@@ -34,7 +34,7 @@ window#waybar {
 }
 
 /* Modules General Styling */
-#workspaces, #window, #pulseaudio, #temperature, #cpu, #memory, #battery, #clock {
+#workspaces, #window, #tray, #network, #bluetooth, #pulseaudio, #temperature, #cpu, #memory, #battery, #language, #clock {
     padding: 0 12px;
     margin: 4px 4px;
     border-radius: 8px;
@@ -117,6 +117,28 @@ window#waybar {
 
 #battery.critical {
     color: @red;
+}
+
+#language {
+    color: @flamingo;
+    font-weight: bold;
+}
+
+#network {
+    color: @peach;
+    font-weight: bold;
+}
+
+#network.disconnected {
+    color: @red;
+}
+
+#bluetooth {
+    color: @blue;
+}
+
+#bluetooth.connected {
+    color: @green; /* Turns green when a device connects! */
 }
 
 #clock {
