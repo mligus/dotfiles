@@ -1,11 +1,11 @@
--- Setu `mapleader` and `maplocalleader` before loading lazy.nvim!
+-- Set `mapleader` and `maplocalleader` before loading lazy.nvim!
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
 -- define common options
 local opts = {
-    noremap = true, -- non-recursive
-    silent = true,  -- do not show message
+  noremap = true, -- non-recursive
+  silent = true,  -- do not show message
 }
 
 -- Better window navigation
@@ -27,7 +27,7 @@ vim.keymap.set("v", ">", ">gv", opts)
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv", opts)
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv", opts)
 
-vim.keymap.set("n", "J", "mzJ`z", opts)       -- same J but keep cursos in the same spot
+vim.keymap.set("n", "J", "mzJ`z", opts)     -- same J but keep cursos in the same spot
 vim.keymap.set("n", "<C-d>", "<C-d>zz", opts) -- go page down and keep cursor in the middle
 vim.keymap.set("n", "<C-u>", "<C-u>zz", opts) -- go page up and keep cursor in the middle
 
@@ -55,4 +55,4 @@ vim.keymap.set("n", "N", "Nzzzv", opts)
 
 -- Netrw
 -- vim.keymap.set("n", "<leader>ec", ":Lexplore %:p:h<CR>", opts)  -- open in the directory of the current file
-vim.keymap.set("n", "<leader>ee", ":Lexplore<CR>", opts)        -- open in the current working directory
+vim.keymap.set("n", "<leader>ee", ":Lexplore<CR>", opts)    -- open in the current working directory
