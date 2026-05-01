@@ -31,7 +31,6 @@ window#waybar {
     color: @text;
     transition-property: background-color;
     transition-duration: .5s;
-    border-bottom: 2px solid @mantle;
 }
 
 /* Modules General Styling */
